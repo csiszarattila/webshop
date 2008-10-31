@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
-	has_and_belongs_to_many :attributes, :join_table => "product_attributes"
+	has_many :attrs, :class_name => "ProductAttribute" 
+	has_many :category_attributes, :through => :attrs
 end
