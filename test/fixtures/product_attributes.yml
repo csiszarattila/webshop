@@ -2,10 +2,8 @@
 
 one:
   value: MyString
-  format: MyString
   product_id: 1
 
 two:
   value: MyString
-  format: MyString
   product_id: 1

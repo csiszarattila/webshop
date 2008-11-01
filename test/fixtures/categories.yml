@@ -1,9 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  parent_id: 1
+books:
+  id: 1
+  name: Books
+  parent_id: nil
 
-two:
-  name: MyString
+movies:
+  id: 2
+  name: Movies
+  parent_id: nil
+
+computer_books:
+  name: Computer Books
+  parent_id: 1
+  
+classic_books:
+  name: Classic Books
   parent_id: 1

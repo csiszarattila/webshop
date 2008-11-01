@@ -1,11 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  format: MyString
+books_author:
+  id: 1
+  name: author
   category_id: 1
 
-two:
-  name: MyString
-  format: MyString
+book_has_isbn:
+  name: ISBN
   category_id: 1
