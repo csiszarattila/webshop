@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+my_address:
+  name: Csiszár Attila
+  city: Törökszentmiklós
+  zipcode: 5200
+  street: Batthyány út 99.
+
+# two:
+#   column: value
