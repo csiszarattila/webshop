@@ -10,7 +10,7 @@ class LabelTest < ActiveSupport::TestCase
 	
   test "label must be unique" do
 		label = Label.new()
-		label.name = labels(:rails)
+		label.name = labels(:rails).name
 		
 		assert !label.valid?
 		assert_equal I18n.translate('activerecord.errors.messages.taken'), label.errors.on(:name)

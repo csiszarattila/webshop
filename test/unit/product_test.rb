@@ -17,7 +17,7 @@ class ProductTest < ActiveSupport::TestCase
 	
   test "empty product is invalid" do
 		product = Product.new
-		assert !product.valid?
+ 		assert !product.valid?
 		assert product.errors.invalid?(:name)
 		assert product.errors.invalid?(:price)
 		assert product.errors.invalid?(:category_id)
