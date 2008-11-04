@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+me:
+  username: attila
+  hashed_password: MyString
+  salt: MyString
+  group_id: 1
+
+two:
+  username: MyString
+  hashed_password: MyString
+  salt: MyString
+  group_id: 1

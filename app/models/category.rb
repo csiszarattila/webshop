@@ -4,13 +4,14 @@ class Category < ActiveRecord::Base
 	acts_as_tree :order => "name"
 
 	validates_presence_of :name
-	
-	protected
-	def validate
-		#
-		# Név: Kategórián belül egyedinek kell lennie
-		siblings.each do |s|
-			errors.add(:name, "a kategórián belül egyedinek kell lennie") if s.name == self.name
-		end
-	end
+	validates_uniqueness_of :name, :scope => [:parent_id], :message => "a kategórián belül egyedinek kell lennie"
+
+	# protected
+	# def validate
+	# 	#
+	# 	# Név: Kategórián belül egyedinek kell lennie
+	# 	siblings.each do |s|
+	# 		errors.add(:name, "a kategórián belül egyedinek kell lennie") if s.name == self.name
+	# 	end
+	# end
 end

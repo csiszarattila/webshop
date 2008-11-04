@@ -1,6 +1,51 @@
 require 'test_helper'
 
 class AddressTest < ActiveSupport::TestCase
+	def setup
+		@valid_telephone_numbers = [
+			"06/30/622/3456", 
+			"06-30-622-3456", 
+			"06 30 622 3456", 
+			"06/30 622 3456"]
+			
+		@expected_number = "06306223456" #how we store in db
+		@read_tel_as = ""#how we get back in formatted way
+		
+		@invalid_telephone_numbers = [
+			"abc234",
+			"234abc",
+			"2",
+			"234",
+			"30235",
+			"06/23-445-223"
+			]
+			
+		@valid_email_addresses = [
+			"csiszar.ati@gmail.com",
+			"stevejobs@apple.com",
+			"bill-gates@micro-soft.com",
+			"news@office.bbc.co.uk"]
+			
+		@invalid_email_addresses = [
+			"csiszár.ati@gémél.com",
+			"csiszar ati@gmail.com",
+			"csiszar.ati@gmail com",
+			"csiszar.ati kukac gmail pont com"]
+		
+		@valid_street_addresses = [
+				"Batthyány út 99. 1lh 4/13.",
+				"Lestár tér 22./B",
+				"Széchényi utca 12.",
+				"Dob utca 75-81.",
+				"Béke sugárút 38."]
+			
+		@invalid_street_addresses = [
+			"Batthyány",
+			"Lestár tér",
+			"Széchényi utca 12",
+			"Dob utca 11-."]
+	end
+		
 
 	test "empty address is invalid" do
 		address = Address.new
@@ -31,31 +76,63 @@ class AddressTest < ActiveSupport::TestCase
   end
 
 	test "street address match format" do
-		street_addresses = [
-			"Batthyány út 99. 1lh 4/13.",
-			"Lestár tér 22./B",
-			"Széchényi utca 12.",
-			"Dob utca 75-81.",
-			"Béke sugárút 38."]
-			
 		address = addresses(:my_address)
-		street_addresses.each do |street|
+		@valid_street_addresses.each do |street|
 			address.street = street
-			assert address.valid?, "Tested with:#{street}"
+			assert address.valid?, "Failed with:#{street}"
 		end
 	end
 	
 	test "street address dont match format" do
-		street_addresses = [
-			"Batthyány",
-			"Lestár tér",
-			"Széchényi utca 12",
-			"Dob utca 11-."]
-			
 		address = addresses(:my_address)
-		street_addresses.each do |street|
+		@invalid_street_addresses.each do |street|
 			address.street = street
-			assert !address.valid?, "Tested with:#{street}"
+			assert !address.valid?, "Passed with:#{street}"
+		end
+	end
+	
+	test "store telephone numbers in plain digits" do
+		address = addresses(:my_address)
+		@valid_telephone_numbers.each do |tel|
+			address.tel = tel
+			assert_equal @expected_number, address.strip_everything_but_digits(tel)
+			address.valid? # after valid? we have to get back just plain numbers
+			assert_equal @expected_number, address.tel
+		end
+	end
+	
+	test "accept various telephone numbers" do
+		address = addresses(:my_address)
+		@valid_telephone_numbers.each do |tel|
+			address.tel = tel
+			address.valid?
+			assert address.valid?, "Failed with: #{tel}, #{address.errors.full_messages}"
+		end
+	end
+	
+	test "dont accept exact telephone numbers" do
+		address = addresses(:my_address)
+		@invalid_telephone_numbers.each do |tel|
+			address.tel = tel
+			assert !address.valid?, "Passed with:#{tel}"
+			assert_equal I18n.translate('activerecord.errors.models.address.tel.invalid'), address.errors.on(:tel)
+		end
+	end
+	
+	test "accepted email addresses" do
+		address = addresses(:my_address)
+		@valid_email_addresses.each do |email|
+			address.email = email
+			assert address.valid?, "Failed with:#{email}, #{address.errors.full_messages}"
+		end
+	end
+	
+	test "invalid email addresses" do
+		address = addresses(:my_address)
+		@invalid_email_addresses.each do |email|
+			address.email = email
+			assert !address.valid?, "Passed with:#{email}"
+			assert_equal I18n.translate('activerecord.errors.messages.invalid'), address.errors.on(:email)
 		end
 	end
 end

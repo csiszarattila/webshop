@@ -5,6 +5,8 @@ my_address:
   city: Törökszentmiklós
   zipcode: 5200
   street: Batthyány út 99.
+  tel: '06203451111'
+  email: csiszar.ati@gmail.com
 
 # two:
 #   column: value

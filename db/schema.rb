@@ -9,15 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081103095345) do
+ActiveRecord::Schema.define(:version => 20081103184139) do
 
   create_table "addresses", :force => true do |t|
     t.string  "name"
     t.string  "city"
     t.string  "street"
-    t.integer "zipcode",          :precision => 4, :scale => 0
+    t.integer "zipcode"
     t.integer "addressable_id"
     t.string  "addressable_type"
+    t.string  "tel"
+    t.string  "email"
   end
 
   create_table "categories", :force => true do |t|
@@ -31,12 +33,25 @@ ActiveRecord::Schema.define(:version => 20081103095345) do
     t.integer "category_id"
   end
 
+  create_table "customers", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "labels", :force => true do |t|
     t.string "name"
   end
 
   create_table "labels_products", :id => false, :force => true do |t|
     t.integer "label_id"
+    t.integer "product_id"
+  end
+
+  create_table "order_items", :force => true do |t|
+    t.integer "total_price", :limit => 8
+    t.integer "decimal",     :limit => 8
+    t.integer "quantity"
+    t.integer "order_id"
     t.integer "product_id"
   end
 
@@ -69,8 +84,19 @@ ActiveRecord::Schema.define(:version => 20081103095345) do
 
   create_table "products", :force => true do |t|
     t.string  "name"
-    t.integer "price",       :limit => 8, :precision => 8, :scale => 0
+    t.integer "price",       :limit => 8
     t.integer "category_id"
+  end
+
+  create_table "user_groups", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string  "username"
+    t.string  "hashed_password"
+    t.string  "salt"
+    t.integer "group_id"
   end
 
 end
