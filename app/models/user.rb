@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	belongs_to :group, :class_name => "UserGroup"
 	
-	validates_presence_of :username, :hashed_password, :salt
+	validates_presence_of :username, :password
 	validates_uniqueness_of :username
 	
 	# A felhasználónév nem tartalmazhat ékezetes karaktert sem szüntet
