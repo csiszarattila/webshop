@@ -5,9 +5,8 @@ class User < ActiveRecord::Base
 	validates_uniqueness_of :username
 	
 	# A felhasználónév nem tartalmazhat ékezetes karaktert sem szüntet
-	validates_format_of :username, :with => /\A[_0-9a-zA-Z]+\Z/, 
-		:message  => "A felhasználónév nem tartalmazhat ékezetes karaktert sem szüntet."
-
+	validates_format_of :username, :with => /\A[_0-9a-zA-Z]+\Z/
+	
 	
 	attr_reader :password
 	# +password+ is a virtual attribute for setting passwords easily.

@@ -64,7 +64,7 @@ class AddressTest < ActiveSupport::TestCase
 			address.zipcode = zipcode
 			assert !address.valid?, "Tested with #{zipcode}"
 			assert address.errors.invalid?(:zipcode)
-			#assert_equal I18n.translate('activerecord.errors.messages.greater_than',:count => 999), address.errors.on(:zipcode), "Errors was:#{address.errors.full_messages}"
+			assert_equal I18n.translate('activerecord.errors.models.address.attributes.zipcode.invalid',:count => 999), address.errors.on(:zipcode), "Errors was:#{address.errors.full_messages}"
 		end
 		
 		# valid test datas
@@ -115,7 +115,7 @@ class AddressTest < ActiveSupport::TestCase
 		@invalid_telephone_numbers.each do |tel|
 			address.tel = tel
 			assert !address.valid?, "Passed with:#{tel}"
-			assert_equal I18n.translate('activerecord.errors.models.address.tel.invalid'), address.errors.on(:tel)
+			assert_equal I18n.translate('activerecord.errors.models.address.attributes.tel.invalid'), address.errors.on(:tel)
 		end
 	end
 	

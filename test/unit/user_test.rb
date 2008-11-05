@@ -41,7 +41,7 @@ class UserTest < ActiveSupport::TestCase
 		@wrong_user_names.each do |name|
 			user.username = name
 			assert !user.valid?, "Passed with #{name}"
-			assert_equal I18n.translate('activerecord.errors.messages.user.invalid'), user.errors.on(:username)
+			assert_equal I18n.translate('activerecord.errors.models.user.invalid'), user.errors.on(:username)
 		end
 	end
 	

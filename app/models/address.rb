@@ -3,7 +3,7 @@ class Address < ActiveRecord::Base
 	
 	validates_presence_of :name, :city, :street, :zipcode, :tel, :email
 	# Irányítószámok: 4 számjegyűnek kell lenniük - 1000-9999
-	validates_numericality_of :zipcode, :greater_than => 999, :less_than => 10000
+	validates_numericality_of :zipcode, :greater_than => 999, :less_than => 10000, :message => I18n.translate('activerecord.errors.models.address.attributes.zipcode.invalid')
 	# Utca mező formája: 
 	# Utcanév Típus Házszám(1-9999)[-(1-9999)].(pont)[/(a-z)|(A-Z)] + egyeb pl.[emelet|lakas]
 	validates_format_of :street, :with => /\A\w+\s+\w+\s+[1-9]\d{1,3}([-][1-9]\d{1,3})?\.[\/]?[A-Za-z]?.*\Z/
