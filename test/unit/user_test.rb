@@ -52,4 +52,23 @@ class UserTest < ActiveSupport::TestCase
 			assert_valid(user)
 		end
 	end
+	
+	test "create_user and authenticate" do
+		password = "attila"
+		username = "somelonguniqueusername"
+		user = User.new do |u| 
+			u.username = username
+			u.password = password
+		end
+		user.save!
+		user_auth = User.authenticate(username,password)
+		assert_not_nil user
+		assert_equal user, user_auth 
+	end
+	
+	test "authenticate" do
+    user = User.authenticate("attila","attila")
+    assert_not_nil user
+    assert_equal user, users(:me)
+  end
 end

@@ -1,9 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
+<% SALT = "rubyonrails" %>
 me:
   username: attila
-  hashed_password: MyString
-  salt: MyString
+  hashed_password: <%= User.encrypt_password("attila",SALT) %>
+  salt: <%= SALT %>
   group_id: 1
 
 two:
