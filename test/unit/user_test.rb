@@ -3,9 +3,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 	def setup
 		@test_user = User.new do |u|
-			u.salt = "some salt"
 			u.username = "a_random_username"
-			u.hashed_password = "some random password"
+			u.password = "some random password"
 		end
 		
 		@wrong_user_names = [
@@ -24,8 +23,7 @@ class UserTest < ActiveSupport::TestCase
 		user = User.new()
     assert !user.valid?
 		assert user.errors.invalid?(:username)
-		assert user.errors.invalid?(:salt)
-		assert user.errors.invalid?(:hashed_password)
+		assert user.errors.invalid?(:password)
   end
 
 	test "username must be unique" do
@@ -41,7 +39,7 @@ class UserTest < ActiveSupport::TestCase
 		@wrong_user_names.each do |name|
 			user.username = name
 			assert !user.valid?, "Passed with #{name}"
-			assert_equal I18n.translate('activerecord.errors.models.user.invalid'), user.errors.on(:username)
+			assert_equal I18n.translate('activerecord.errors.models.user.attributes.username.invalid'), user.errors.on(:username)
 		end
 	end
 	

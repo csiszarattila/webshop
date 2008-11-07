@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081103184139) do
+ActiveRecord::Schema.define(:version => 20081107065137) do
 
   create_table "addresses", :force => true do |t|
     t.string  "name"
@@ -97,6 +97,11 @@ ActiveRecord::Schema.define(:version => 20081103184139) do
     t.string  "hashed_password"
     t.string  "salt"
     t.integer "group_id"
+  end
+
+  create_table "zipcodes", :force => true do |t|
+    t.integer "zipcode"
+    t.string  "city"
   end
 
 end

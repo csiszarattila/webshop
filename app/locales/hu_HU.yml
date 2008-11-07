@@ -116,13 +116,16 @@ hu-HU:
       models:
         # Overrides default messages
         address:
+          zip_and_city_not_match: "A megadott városhoz nem ez az irányítószám tartozik vagy fordítva."
           attributes:
             tel:
               invalid: "érvénytelen"
             zipcode:
               invalid: "nem négyjegyű"
         user:
-          invalid: "A felhasználónév nem tartalmazhat ékezetes karaktert sem szüntet"
+          attributes:
+            username:
+              invalid: "Nem tartalmazhat ékezetes karaktert sem szüntet"
   date:
     formats:
       # Use the strftime parameters for formats.
