@@ -2,18 +2,18 @@
 
 books:
   id: 1
-  name: Books
+  name: Könyvek
   parent_id: nil
+
+classic_books:
+  name: Klasszikus irodalom
+  parent_id: books
+
+computer_books:
+  name: Számítástechnikai könyvek
+  parent_id: books
 
 movies:
   id: 2
-  name: Movies
+  name: Filmek
   parent_id: nil
-
-computer_books:
-  name: Computer Books
-  parent_id: 1
-  
-classic_books:
-  name: Classic Books
-  parent_id: 1

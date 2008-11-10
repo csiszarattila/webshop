@@ -32,7 +32,9 @@ class Address < ActiveRecord::Base
 	end
 	
 	def validate
-		errors.add_to_base I18n.translate('activerecord.errors.models.address.zip_and_city_not_match') unless ZipcodeMatch::match?(self.city, self.zipcode)
+		unless ZipcodeMatch::match?(self.city, self.zipcode)
+			errors.add_to_base I18n.translate('activerecord.errors.models.address.zip_and_city_not_match')
+		end
 	end
 
 	def strip_everything_but_digits(string)
