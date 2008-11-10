@@ -1,0 +1,41 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+marple_book_picture:
+  image_url: marple_book.jpg
+  product: marple_book
+  description: Sample image
+
+sony_tv_picture:
+  image_url: sony_tv.jpg
+  product: sony_tv
+  description: Sample image
+
+bob_dvd_picture:
+  image_url: bob.jpg
+  product: bob_dvd
+  description: Sample image
+
+lego_picture:
+  image_url: lego.jpg
+  product: lego
+  description: Sample image
+
+keane_cd_picture:
+  image_url: keane.jpg
+  product: keane_cd
+  description: Sample image
+
+vs_display_picture:
+  image_url: vs.jpg
+  product: vs_display
+  description: Sample image
+  
+why_book_picture:
+  image_url: book_why.jpg
+  product: why_book
+  description: Sample image
+  
+rails_book_picture:
+  image_url: book_rails.jpg
+  product: rails_book.jpg
+  description: Sample image

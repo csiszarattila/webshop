@@ -9,13 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081107065137) do
+ActiveRecord::Schema.define(:version => 20081110191207) do
 
   create_table "addresses", :force => true do |t|
     t.string  "name"
     t.string  "city"
     t.string  "street"
-    t.integer "zipcode"
+    t.integer "zipcode",          :precision => 4, :scale => 0
     t.integer "addressable_id"
     t.string  "addressable_type"
     t.string  "tel"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20081107065137) do
   end
 
   create_table "order_items", :force => true do |t|
-    t.integer "total_price", :limit => 8
-    t.integer "decimal",     :limit => 8
+    t.integer "total_price", :limit => 8, :precision => 8, :scale => 0
+    t.integer "decimal",     :limit => 8, :precision => 8, :scale => 0
     t.integer "quantity"
     t.integer "order_id"
     t.integer "product_id"
@@ -76,15 +76,15 @@ ActiveRecord::Schema.define(:version => 20081107065137) do
     t.string  "value"
   end
 
-  create_table "product_pictures", :force => true do |t|
-    t.string  "text"
+  create_table "product_images", :force => true do |t|
     t.string  "image_url"
     t.integer "product_id"
+    t.string  "description"
   end
 
   create_table "products", :force => true do |t|
     t.string  "name"
-    t.integer "price",       :limit => 8
+    t.integer "price",       :limit => 8, :precision => 8, :scale => 0
     t.integer "category_id"
   end
 
