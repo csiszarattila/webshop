@@ -1,0 +1,7 @@
+%h2 Kiemelt ajánlataink
+.products
+  = render :partial => 'products/mini', :collection => Product.sale.limit(3), :as => :product
+
+%h2 Legnépszerűbb termékek
+.products
+  = render :partial => 'products/mini', :collection => Product.popular.limit(3), :as => :product

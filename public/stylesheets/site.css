@@ -1,0 +1,474 @@
+body{
+ background:#bbb;
+ color:#222;
+ font-family:"Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+}
+
+ul{
+ list-style:none;
+ margin:0px;
+}
+
+a{
+ text-decoration:none;
+ color:#551A8B;
+}
+
+form fieldset{
+ border:0px;
+}
+
+#head, #main{
+ min-width:75em;
+}
+
+#head{
+ background:#cf9;
+ overflow:hidden;
+}
+
+#head h1{
+ float:left;
+ margin:25px;
+ height:70px;
+ padding-top:30px;
+ background: url("/images/Shoppingcart.png") no-repeat top center;
+}
+
+#head h1 a{
+ color:#222;
+}
+
+#head ul{
+ overflow:hidden;
+ padding-left:4em;
+}
+
+#head ul li{
+ float:left;
+}
+
+#head ul li a{
+ display:block;
+ height:35px;
+ padding-top:115px;
+ padding-right:10px;
+ padding-left:10px;
+ text-decoration:none;
+ color:#222;
+ font-weight:bold;
+}
+
+#head ul li.user a{
+ background: transparent url("/images/user.png") no-repeat center center;
+}
+
+#head ul li.info a{
+ background: transparent url("/images/info.png") no-repeat center center;
+}
+
+#head ul li.about a{
+ background: transparent url("/images/about.png") no-repeat center center;
+}
+
+
+#head ul li a:hover{
+ background-color:#c00;
+ color:#fff;
+}
+
+#main{
+ clear:left;
+ overflow:hidden;
+ background:#fff;
+}
+
+#search{
+ overflow:hidden;
+ background:#b4d5fe;
+}
+
+#search, #leftcolumn, #middlecolumn{
+ padding-left:0.4em;
+ padding-top:0.4em;
+}
+
+#search h2, #leftcolumn h2, #middlecolumn h2:first-child{
+ margin:0px;
+}
+
+#search h2{
+ float:left;
+ margin-right:0.5em;
+}
+
+#search form input{
+ margin-top:0.4em;
+}
+
+#leftcolumn{
+ clear:left;
+ float:left;
+ min-width:15em;
+}
+
+#cartbox{
+ margin-top:1em;
+ margin-bottom:2em;
+ margin-left:1em;
+}
+
+table#index-cart{
+ text-align:center;
+}
+
+#index-cart td.quantity{
+ font-size:2em;
+ font-weight:bold;
+}
+
+#index-cart td.price{
+ font-size:2em !important;
+ text-align:right !important;
+}
+
+#index-cart tr.sum td{
+ border-top:1px solid #000;
+}
+
+#cartbox .cart-commands{
+ margin:1em 0em;
+}
+
+#cat-list{
+ margin:1em;
+ padding:0px;
+}
+
+#cat-list li{
+ font-weight:bold;
+ font-size:1.1em;
+}
+
+#cat-list li a{
+ color:#222;
+}
+
+#cat-list li a:hover{
+ background:#0c0;
+ color:#fff;
+}
+
+#cat-list li.current > a{
+ background:#0c0;
+ color:#fff;
+ display:block;
+}
+
+#cat-list li ul{
+ padding:0px 0.2em;
+ border-top:3px solid #3f3;
+ border-bottom:3px solid #3f3;
+ font-size:0.9em;
+}
+
+#middlecolumn{
+ float:left;
+ padding-left:3em;
+ padding-right:3em;
+ padding-bottom:5em;
+ width:53em;
+}
+
+#middlecolumn h2{
+ border-bottom:2px solid #222;
+ margin-top:3em;
+}
+
+form#sort{
+ border-bottom:1px solid #bbb;
+ text-align:right;
+ padding:0.4em 1em;
+}
+form#sort label{
+ font-weight:bold;
+}
+
+div.products{
+ overflow:hidden;
+ padding:0px;
+}
+
+div.product{
+ float:left;
+ text-align:center;
+ margin:0em 0.7em;
+ width:16em;
+}
+
+div.product h3{
+ height:2em;
+}
+
+table.products, div#product-details, div#related-products{
+ width:53em;
+}
+
+table.products tbody.product{
+ display:block;
+ margin-bottom:1em;
+}
+
+table.products .product .details img,
+#product-details .main-picture{
+ float:left;
+ margin: 2em;
+}
+
+table.products .product .details h3.title{
+ font-size:1.4em;
+}
+
+table.products .product .details td{
+ padding:0em 0.2em;
+}
+
+#index-cart td.price,
+#cart td.price,
+.product .details .price,
+#product-details .price{
+ font-weight:bold;
+ font-size:3em;
+ text-align:center;
+ margin:0.8em 0em;
+}
+
+#index-cart td.price .currency,
+#cart td.price .currency,
+.product .details .price .currency,
+#product-details .price .currency,
+#cart .price .currency{
+ font-weight:bold;
+ font-size:.5em;
+ color:#c00;
+}
+
+.product .commands,
+#product-details .commands,
+.tags span,
+#cart a,
+.cart-commands{
+ font-weight:bold;
+ font-size: 1.2em;
+}
+
+.tags span a,
+.product .commands a,
+#product-details .commands a,
+#cart a,
+.cart-commands a{
+ padding:0em .2em;
+}
+
+.tags span a:hover,
+.product .commands a:hover,
+#product-details .commands a:hover,
+#cart a:hover,
+.cart-commands a:hover{
+ background:#0c0;
+ color:#fff;
+}
+
+.products tr.commands{
+ text-align:right;
+}
+
+#product-details{
+ overflow:hidden;
+}
+
+#product-details h2{
+ border-bottom:none;
+ padding-left:10.2em;
+}
+
+#product-details #imagecolumn{
+ float:left;
+ text-align:center;
+}
+
+#product-details #detailscolumn{
+ float:left;
+ width:38em;
+}
+
+.details, .attributes, .tags, .images{
+ margin-left:2em;
+}
+
+#detailscolumn .details{
+ margin-top:2em;
+ min-height:150px;
+}
+
+.attributes table th{
+ text-align:left;
+ margin-left:2em;
+ display:block;
+}
+
+.attributes table td{
+ text-align:left;
+ padding-left:1em;
+}
+
+#related-products h2{
+ margin-top:3em !important;
+}
+
+#cart{
+ margin-top:3em;
+ width:100%;
+ text-align:center;
+ border-collapse:collapse;
+}
+
+#cart th{
+ font-size:1.4em;
+ background:#0c0;
+ color:#fff;
+}
+
+#cart td.price, td.sum{
+ text-align:right;
+ font-weight:bold;
+}
+
+#cart td.price-sum{
+ border-top:1px solid #000;
+}
+
+#cart td.title img{
+ margin-top:1em;
+}
+
+#cart input.quantity{
+ font-size:1.6em;
+ border:1px solid #fff;
+ text-align:center;
+}
+
+#cart input.increase, input.decrease{
+ border: 1px solid #0c0;
+ background:#0c0;
+ color:#fff;
+ font-size:1.6em;
+}
+
+.cart-commands{
+ margin-top:3em;
+}
+
+.order-step-info h2{
+ border-bottom:0px !important;
+}
+
+.order-step-info p{
+ text-align:center;
+ font-weight:bold;
+ background:#0c0;
+ color:#fff;
+ padding:0.2em 1em;
+}
+
+#login-column, #registration-column{
+ width:50%;
+ float:left;
+}
+
+#registration-column{
+ border-left:1px solid #bbb;
+ width:49.8%;
+}
+
+form.login-or-registration{
+ padding:0em 1em 0em 3em;
+}
+
+#login-column h4, #registration-column h4{
+ font-size:1.2em;
+ min-height:2.6em;
+}
+
+form .input,
+form .submit input{
+ margin-top:1em;
+}
+
+form .input label,
+form legend.as-label{
+ margin-right:1em;
+ padding:0.2em;
+ background:#0c0;
+ color:#fff;
+ font-weight:bold;
+}
+
+form .input input,
+form .input textarea,
+form .radio-group{
+ border:2px solid #0c0;
+ font-size:1.2em;
+ margin:0px;
+}
+
+form .radio-group {
+ border-width:0px;
+}
+
+form .error-messages{
+ margin:2em 0.5em;
+ width:30em;
+ border:2px solid #c00;
+}
+
+form .error-messages h4{
+ margin:0px;
+ background:#c00;
+ color:#fff;
+ padding:0.2em;
+}
+
+form .error-messages p{
+ margin:10px 1em;
+ font-weight:bold;
+}
+
+form .field-with-error label, 
+form legend.as-label-with-error{
+ background:#c00;
+}
+
+form .field-with-error input,
+form .field-with-error textarea,
+form .radio-group-with-error{
+ border-color:#c00;
+}
+
+form .radio-group-with-error{
+ border-width:2px;
+}
+
+form#order-address legend{
+ display:none;
+}
+
+form#order-address legend.as-label{
+ display:block;
+ margin-top:1em;
+}
+
+.order-accept {
+ font-size:1.2em;
+ font-weight:bold;
+}
