@@ -5,13 +5,6 @@ class Category < ActiveRecord::Base
 
 	validates_presence_of :name
 	validates_uniqueness_of :name, :scope => [:parent_id], :message => "a kategórián belül egyedinek kell lennie"
-
-	# protected
-	# def validate
-	# 	#
-	# 	# Név: Kategórián belül egyedinek kell lennie
-	# 	siblings.each do |s|
-	# 		errors.add(:name, "a kategórián belül egyedinek kell lennie") if s.name == self.name
-	# 	end
-	# end
+	
+	named_scope :top, :conditions => {:parent_id => nil}
 end

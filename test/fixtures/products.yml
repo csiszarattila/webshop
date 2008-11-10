@@ -1,11 +1,41 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  price: 10
-  category_id: 1
+sony_tv:
+  name: Sony Bravo 60" LCD-TV
+  price: 129990
+  category: electronics
 
-two:
-  name: MyString
-  price: 9
-  category_id: 1
+bob_dvd:
+  name: Band Of Brothers DVD
+  price:  12450
+  category: movies
+
+marple_book:
+  name: Miss Marple At Bertram's Hotel
+  price:  1245
+  category: books
+
+lego:
+  name: Lego készlet
+  price: 5234
+  category: toys
+
+keane_cd:
+  name: Keane - Under The Iron Sea CD
+  price: 6888
+  category: musics
+
+vs_display: 
+  name: Viewsonic 17" VP730
+  price: 99,554
+  category: electronics
+
+why_book:
+  name: Why's (poignant) guide to ruby(angol)
+  price: 2566
+  category: computer_books
+  
+rails_book:
+  name: Agile Web Development with Rails(angol)
+  price: 6555
+  category: computer_books

@@ -1,19 +1,38 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 books:
-  id: 1
   name: Könyvek
-  parent_id: nil
+  parent: NULL
 
 classic_books:
   name: Klasszikus irodalom
-  parent_id: books
+  parent: books
 
 computer_books:
   name: Számítástechnikai könyvek
-  parent_id: books
+  parent: books
 
-movies:
-  id: 2
-  name: Filmek
-  parent_id: nil
+<% n= 1
+[ 
+  "Albumok", "Gasztronómia", "Ismeretterjesztő könyvek", "Idegennyelvű könyvek", 
+  "Regények", "Sport", "Számítástechnika", "Történelem"
+].each do |name|
+%>
+book_<%= n+=1  %>:
+  name: <%= name %>
+  parent: books
+<% end %>
+<%
+{ 
+  :musics => "Zenék",
+  :movies => "Filmek",
+  :tvs => "Szórakoztató-elektronika",
+  :toys  => "Játékok",
+  :presents => "Ajándéktárgyak",
+  :pc => "Szoftver-hardver"
+}.each do |name, title| %>
+<%= name %>:
+  name: <%= title %>
+  parent: NULL
+<% end %>
+
