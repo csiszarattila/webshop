@@ -4,15 +4,4 @@
   %input#submit{:type=> "submit", :value=>"Rendezd"}
 
 %table.products
-  -for product in @products
-    %tbody.product
-      %tr.details
-        %td
-          = image_for_product(product) unless product.images.empty?
-          %h3.title= product.name
-          .description= product.description
-        %td.price= price_for_product(product)
-      %tr.commands
-        %td{:colspan=>"2"}
-          %a{ :href=>"product-details.html"} Megnézem!
-          %a{ :href=>"show-cart.html" } Kosárba vele!
+  = render :partial => 'products/on_list', :collection => @products, :as => :product

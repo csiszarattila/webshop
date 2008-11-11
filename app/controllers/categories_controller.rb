@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 	before_filter :find_root_categories
 	
   def show
-		@category = Category.find(params[:id])
+		@category = Category.find(params[:id]) 
 		# Find all +Product+ under the category tree
 		# Minden +Product+ -ot megkeres a kategóriától lefele a fában
 		sort = params[:sort_by] || "name"

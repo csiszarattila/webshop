@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
 
 	private
 	def find_root_categories
-		@root_categories = Category.roots
+		@categories = Category.roots
 	end
 end

@@ -5,5 +5,4 @@
     %p.price
       = price_for_product(product)
   .commands
-    = link_to "Megnézem", product_path(product)
-    %a{ :href=>"show-cart.html" } Kosárba vele!
+    = render :partial => 'products/commands', :locals => {:product => product}
