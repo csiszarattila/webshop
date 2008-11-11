@@ -1,7 +1,6 @@
 %form#sort
   %select{:name => "sort_by"}
-    %option{:name=>"name"} Név szerint 
-    %option{:name=>"price"} Ár szerint
+    = options_for_select([["Név szerint","name"],["Ár szerint","price"]], params[:sort_by])
   %input#submit{:type=> "submit", :value=>"Rendezd"}
 
 %table.products
@@ -9,7 +8,7 @@
     %tbody.product
       %tr.details
         %td
-          = image_for_product(product)
+          = image_for_product(product) unless product.images.empty?
           %h3.title= product.name
           .description= product.description
         %td.price= price_for_product(product)

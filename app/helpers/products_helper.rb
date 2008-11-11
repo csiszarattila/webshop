@@ -6,9 +6,10 @@ module ProductsHelper
 	end
 	
 	def price_for_product(product)
-		number_to_currency( 1245, 
+		number_to_currency(	product.price, 
+			:precision => 0,
 			:unit => "Ft", 
-			:delimiter => ",", 
-			:format => "%n <span class='currency'>%u</span>" )
+			:delimiter => ",",
+			:format => "%n<span class='currency'>%u</span>" )
 	end
 end
