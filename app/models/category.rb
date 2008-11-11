@@ -6,5 +6,5 @@ class Category < ActiveRecord::Base
 	validates_presence_of :name
 	validates_uniqueness_of :name, :scope => [:parent_id], :message => "a kategórián belül egyedinek kell lennie"
 	
-	named_scope :top, :conditions => {:parent_id => nil}
+	named_scope :roots, :conditions => {:parent_id => nil}
 end
