@@ -1,0 +1,19 @@
+%form#sort
+  %select{:name => "sort_by"}
+    %option{:name=>"name"} Név szerint 
+    %option{:name=>"price"} Ár szerint
+  %input#submit{:type=> "submit", :value=>"Rendezd"}
+
+%table.products
+  -for product in @products
+    %tbody.product
+      %tr.details
+        %td
+          = image_for_product(product)
+          %h3.title= product.name
+          
+        %td.price= price_for_product(product)
+      %tr.commands
+        %td{:colspan=>"2"}
+          %a{ :href=>"product-details.html"} Megnézem!
+          %a{ :href=>"show-cart.html" } Kosárba vele!
