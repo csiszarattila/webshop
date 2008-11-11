@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
+	before_filter :find_root_categories
+	
 	private
 	def find_root_categories
 		@categories = Category.roots

@@ -1,6 +1,4 @@
-class CategoriesController < ApplicationController
-	before_filter :find_root_categories
-	
+class CategoriesController < ApplicationController	
   def show
 		@category = Category.find(params[:id]) 
 		# Find all +Product+ under the category tree

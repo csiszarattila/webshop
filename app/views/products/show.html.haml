@@ -1,0 +1,38 @@
+#product-details
+  %h2= @product.name
+  #imagecolumn
+    =sample_image_for_product(@product,:class=>"main-picture")
+    .price 
+      = price_for_product(@product)
+    .commands
+      = link_to 'Kosárba vele!'
+  #detailscolumn
+    .details= @product.description
+    
+    .attributes
+      %h3 A termék jellemzői
+      %table
+        %tr
+          %th Szerző
+          %td Why
+          %th Kiadási év
+          %td 2007
+        %tr
+          %th Oldalszám
+          %td 205
+          %th ISBN-szám
+          %td 122-1233456789
+    .images
+      %h3 További képek a termékről
+      -for image in @product.images
+        =image_for_product(image)
+    -unless @product.labels.empty?
+      .tags
+        %h3 Keresés a hasonló címkéjű termékek között
+        -for label in @product.labels
+          %span
+            =link_to label.name
+
+#related-products
+  %h2 Kapcsolódó termékek
+  = render :partial => 'mini', :collection => @product.releated(3), :as => :product

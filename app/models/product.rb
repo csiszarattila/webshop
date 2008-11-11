@@ -20,4 +20,9 @@ class Product < ActiveRecord::Base
 	named_scope :order_by, lambda{ |field| 
 		{ :order => "#{field} ASC" }
 	}
+	
+	# A Termékhez kapcsolódó további termékek pl. hasonló kategóriájúak, címkéjűek stb.
+	def releated(limit=10)
+		Product.in_category(self.category).order_by(:price).limit(limit)
+	end
 end
