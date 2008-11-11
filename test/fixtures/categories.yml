@@ -22,6 +22,23 @@ book_<%= n+=1  %>:
   name: <%= name %>
   parent: books
 <% end %>
+
+classic_books_20th_century:
+  name: 20. századi irodalom
+  parent: classic_books
+
+books_from_a_to_k:
+  name: A-K
+  parent: classic_books_20th_century
+
+books_from_l_to_z:
+  name: L-Z
+  parent: classic_books_20th_century
+  
+classic_books_19th_century:
+  name: 19. századi irodalom
+  parent: classic_books
+
 <%
 { 
   :musics => "Zenék",

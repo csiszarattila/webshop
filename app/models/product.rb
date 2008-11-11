@@ -13,4 +13,11 @@ class Product < ActiveRecord::Base
 	named_scope :popular, :conditions => {}
 	named_scope :sale, :conditions => {}
 	named_scope :limit, :limit => 3
+	named_scope :in_category, lambda { |ids| 
+		{ :conditions => { :category_id => ids } } 
+	}
+	
+	named_scope :order_by, lambda{ |field| 
+		{ :order => "#{field} ASC" }
+	}
 end

@@ -37,5 +37,5 @@ why_book_picture:
   
 rails_book_picture:
   image_url: book_rails.jpg
-  product: rails_book.jpg
+  product: rails_book
   description: Sample image
