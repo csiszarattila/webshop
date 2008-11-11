@@ -1,5 +1,6 @@
 class MainController < ApplicationController
+	before_filter :find_root_categories
+	
   def index
-		@categories = Category.roots
   end
 end
