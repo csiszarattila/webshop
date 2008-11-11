@@ -11,7 +11,7 @@
         %td
           = image_for_product(product)
           %h3.title= product.name
-          
+          .description= product.description
         %td.price= price_for_product(product)
       %tr.commands
         %td{:colspan=>"2"}
