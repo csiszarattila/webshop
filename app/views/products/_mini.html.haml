@@ -1,9 +1,9 @@
 .product
   %h3= product.name
-  = image_tag(product.images.first.image_url, :size => "150x150", :alt => product.images.first.description) unless product.images.empty?
+  = image_for_product(product) unless product.images.empty?
   .details
     %p.price
-      = number_to_currency(1245, :unit => "Ft", :delimiter => ",", :format => "%n <span class='currency'>%u</span>" )
+      = price_for_product(product)
   .commands
     = link_to "Megnézem", product_path(product)
     %a{ :href=>"show-cart.html" } Kosárba vele!
