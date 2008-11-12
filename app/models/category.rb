@@ -35,4 +35,8 @@ class Category < ActiveRecord::Base
 		end
 		ids
 	end
+	
+	def is_root?
+		return self.parent.nil?
+	end
 end
