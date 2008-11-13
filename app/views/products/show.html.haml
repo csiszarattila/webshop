@@ -5,23 +5,24 @@
     .price 
       = price_for_product(@product)
     .commands
-      = link_to 'Kosárba vele!'
+      = link_to 'Kosárba vele!', add_to_cart_path(:id => @product.id)
   #detailscolumn
     .details= @product.description
     
-    .attributes
-      %h3 A termék jellemzői
-      %table
-        %tr
-          %th Szerző
-          %td Why
-          %th Kiadási év
-          %td 2007
-        %tr
-          %th Oldalszám
-          %td 205
-          %th ISBN-szám
-          %td 122-1233456789
+    -unless @product.attrs.empty?
+      .attributes
+        %h3 A termék jellemzői
+        %table
+          -@product.attrs.each_with_index do |attribute,index|
+            - index+=1
+            - unless (index % 2).zero?
+              <tr>
+            %th= attribute.name
+            %td= attribute.value
+            - if (index % 2).zero?
+              </tr>
+          
+      
     .images
       %h3 További képek a termékről
       -for image in @product.images

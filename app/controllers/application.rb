@@ -14,9 +14,19 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
 	before_filter :find_root_categories
+	before_filter :find_cart
+	before_filter :show_cart
 	
 	private
 	def find_root_categories
 		@categories = Category.roots
+	end
+	
+	def find_cart
+		@cart = session[:cart]
+	end
+	
+	def show_cart
+		@show_cart ||= true
 	end
 end

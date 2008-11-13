@@ -1,9 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  value: MyString
-  product_id: 1
+  value: Why
+  product: why_book
+  category_attribute: books_author
 
 two:
-  value: MyString
-  product_id: 1
+  value: 112-2345678
+  product: why_book
+  category_attribute: book_has_isbn

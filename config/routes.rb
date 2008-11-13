@@ -32,6 +32,14 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.resources :categories
 	map.resources :products
+	
+	map.with_options :controller => "cart" do |cart|
+		cart.show_cart 'cart', :action => 'index'
+		cart.add_to_cart 'cart/add/:id', :action => 'add'
+		cart.remove_from_cart 'cart/remove/:id', :action => 'remove'
+		cart.destroy_cart_item 'cart/destroy/:id', :action => 'destroy'
+		cart.empty_cart 'cart/empty', :action => 'empty'
+	end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "main"

@@ -1,0 +1,12 @@
+%tr
+  %td.title
+    = sample_image_for_product(cart_item.product, {:size => '75x75'})        
+    %h4= cart_item.product.name
+  %td.quantity
+    = link_to '-', remove_from_cart_path(:id => cart_item.product), :class=>'decrease'
+    %span.quantity= cart_item.quantity
+    = link_to '+', add_to_cart_path(:id => cart_item.product), :class => 'increase'
+  %td.price
+    = format_price(cart_item.price)
+  %td
+    = link_to 'Kiveszem a kosárból', destroy_cart_item_path(:id => cart_item.product.id)

@@ -1,0 +1,15 @@
+%table#index-cart
+  -for item in @cart.items 
+    %tr
+      %td.img= sample_image_for_product(item.product, :size => '50x50')
+      %td.quantity= item.quantity
+      %td.price= format_price(item.product.price)
+    %tr.title
+      %td{ :colspan => '3' }= item.product.name
+  %tr.sum
+    %td{ :colspan => '2' } Összesen
+    %td.price.price-sum= format_price(@cart.total_price)
+.cart-commands
+  =link_to 'Mutasd a kosaram', show_cart_path
+  %br
+  <a href='login-or-registration.html'>Tovább a rendeléshez</a>

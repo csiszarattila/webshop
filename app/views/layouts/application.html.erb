@@ -27,6 +27,12 @@
       </form>
     </div>
     <div id="leftcolumn">
+      <% if @cart and @show_cart %>
+      <h2>A kosarad tartalma</h2>
+      <div id="cartbox">
+        <%= render :partial => 'cart/mini', :object => @cart %>
+      </div>
+      <% end %>
       <h2>Kategóriák</h2>
       <ul id="cat-list">
         <% if @current_category %>

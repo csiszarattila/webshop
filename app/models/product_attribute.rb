@@ -14,7 +14,6 @@ class ProductAttribute < ActiveRecord::Base
 # 	end
 # end
 	
-	public
 	#
 	# A x.category_attribute.name elérés helyett x.name 
 	# Call x.name explicitly instead of x.category_attribute.name
