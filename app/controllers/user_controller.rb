@@ -1,7 +1,7 @@
 class UserController < ApplicationController
 	
 	skip_before_filter :find_user
-	before_filter :destroy_user_session, :except => [:show, :password_remember]
+	before_filter :destroy_user_session, :except => [:show, :edit, :password_remember]
 	before_filter :authorize, :only => [:show,:edit]
 	
 	def login_or_registration
@@ -38,6 +38,9 @@ class UserController < ApplicationController
 		end
   end
 
+	# Create a new application user in the database 
+	# 
+	# Létrehoz egy új +User+ modellt a megadott regisztrációs adatokkal
 	def registration		
 		@user = User.new(params[:user])
 		if @user.save
@@ -54,16 +57,28 @@ class UserController < ApplicationController
 	def password_remember
 	end
 
+	# Unset user's session and redirect
+	# 
+	# Törli a felhasználó munkamenetét ás átirányít
+	# Megjegyzés: a destroy_user_session -t már meghívtuk before_filter-ként
   def logout
 		redirect_to root_path
   end
 
+	# Show user's profile
+	# 
+	# Megmutatja a felhasználó profilját
 	def show
 	end
 	
+	# Change user's profile
+	# 
+	# Felhasználói adatok megváltoztatása
 	def edit
-		@user = User.new(params[:user])
-		render :action => show
+		@user.password = params[:user][:password]
+		@user.password_confirmation = params[:user][:password_confirmation]
+		@user.save
+		render :action => 'show'
 	end
 
 	private

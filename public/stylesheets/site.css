@@ -395,6 +395,7 @@ table.products .product .details td{
 }
 
 #middlecolumn div#notice,
+#middlecolumn div#error,
 .order-step-info p{
  text-align:center;
  font-weight:bold;
@@ -418,7 +419,7 @@ table.products .product .details td{
  width:49.8%;
 }
 
-form.login-or-registration{
+form.login-or-registration, #registration-column p{
  padding:0em 1em 0em 3em;
 }
 
