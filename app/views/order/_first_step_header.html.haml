@@ -1,0 +1,9 @@
+- login ||= false
+.order-step-info
+  -if not user.errors.empty? and login
+    %h2 1 / 3 lépés : Regisztráció vagy Belépés  | Sikertelen belépés  
+  -elsif not user.errors.empty?
+    %h2 1 / 3 lépés : Regisztráció vagy Belépés  | Sikertelen regisztráció  
+  -else
+    %h2 1 / 3 lépés : Regisztráció vagy Belépés 
+    %p A rendelésed feladásához felhasználói fiókkal kell rendelkezned áruházunkban.

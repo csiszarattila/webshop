@@ -1,0 +1,15 @@
+- form_for @user, :url => login_path, :html => { :class => "login-or-registration" }, :builder => MyFormBuilder do |f|
+  -if @login_failed
+    .error-messages
+      %h4 Hibás felhasználónév és/vagy jelszó páros
+  -unless @login_failed
+    %h4 Már rendelkezem felhasználói fiókkal, bejelentkeznék
+  %fieldset
+    -if @login_failed
+      %legend Kérlek add meg a belépési adataidat újra
+    -else
+      %legend Kérlek add meg a belépési adataidat
+    = f.text_field :username, :label => 'Felhasználónév'
+    = f.password_field :password, :label => 'Jelszó'
+    .submit
+      = submit_tag "Belépés"

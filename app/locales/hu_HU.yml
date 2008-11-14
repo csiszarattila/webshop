@@ -83,9 +83,7 @@ hu-HU:
   activerecord:
     errors:
       template:
-        header:
-          one:   "1 error prohibited this {{model}} from being saved" 
-          many:  "{{count}} errors prohibited this {{model}} from being saved" 
+        header: "{{count}} errors prohibited this {{model}} from being saved" 
         # The variable :count is also available
         body: "There were problems with the following fields:" 
 
@@ -95,14 +93,14 @@ hu-HU:
         inclusion: "is not included in the list" 
         exclusion: "is reserved" 
         invalid: "is invalid" 
-        confirmation: "doesn't match confirmation" 
+        confirmation: "megerősítése nem egyezik" 
         accepted: "must be accepted" 
-        empty: "can't be empty" 
-        blank: "can't be blank" 
+        empty: "nem lehet üres" 
+        blank: "kötelező megadni" 
         too_long: "is too long (maximum is {{count}} characters)" 
         too_short: "is too short (minimum is {{count}} characters)" 
         wrong_length: "is the wrong length (should be {{count}} characters)" 
-        taken: "has already been taken" 
+        taken: "már foglalt" 
         not_a_number: "is not a number" 
         greater_than: "must be greater than {{count}}" 
         greater_than_or_equal_to: "must be greater than or equal to {{count}}" 
@@ -125,7 +123,12 @@ hu-HU:
         user:
           attributes:
             username:
-              invalid: "Nem tartalmazhat ékezetes karaktert sem szüntet"
+              invalid: "nem tartalmazhat ékezetes karaktert sem szüntet"
+    models:
+    attributes:
+      user:
+        username: "Felhasználónév"
+        password: "Jelszó"
   date:
     formats:
       # Use the strftime parameters for formats.

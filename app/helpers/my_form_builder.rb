@@ -46,4 +46,16 @@ class MyFormBuilder < ActionView::Helpers::FormBuilder
 			@template.content_tag(:div,label+"<br />"+super,:class=>wrapper_div_classes)
 		end
 	end
+	
+	def custom_error_messages(options = {})
+		return if @object.errors.empty?
+		options[:header_message] = "" unless options.include?(:header_message)
+	  options[:message] ||= "" unless options.include?(:message)
+	 
+	  contents = "<div class='error-messages'>"
+    contents << "<h4>#{options[:header_message]}</h4>" unless options[:header_message].blank?
+    contents << "<p>#{options[:message]}</p>" unless options[:message].blank?
+    contents << @object.errors.full_messages.map {|msg| "<p>#{msg}</p>" }.join
+		contents << "</div>"
+	end
 end

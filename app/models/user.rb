@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 	# A felhasználónév nem tartalmazhat ékezetes karaktert sem szüntet
 	validates_format_of :username, :with => /\A[_0-9a-zA-Z]+\Z/
 	
+	# Létrehozáskor legyen jelszó megerősítés
+	validates_confirmation_of :password
 	
 	attr_reader :password
 	# +password+ is a virtual attribute for setting passwords easily.

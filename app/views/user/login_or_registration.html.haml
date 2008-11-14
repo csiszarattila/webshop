@@ -1,0 +1,8 @@
+= render :partial => 'order/first_step_header', :locals => {:user => @user}
+#login-column
+  = render 'user/login_form'
+  = render 'user/password_remember_form'
+      
+#registration-column
+  = render 'user/registration_form', { :title => "Szeretnék új fiókot létrehozni" }
+  %p Új fiók regisztrálása nem kerül semmibe, segítségével nyomonkövetheted a megrendeléseidet, mentesülsz a címadatok állandó megadása alól, és akár személyre szabott kedvezményekről is értesítést kaphatsz.

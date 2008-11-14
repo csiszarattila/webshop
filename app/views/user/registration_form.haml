@@ -1,0 +1,12 @@
+- form_for @user, :url => registration_path, :html => {:class => 'login-or-registration'}, :builder => MyFormBuilder do |f|
+  -if title
+    %h4=title
+  = f.custom_error_messages :header_message => 'A regisztráció a következők miatt nem sikerült:'
+  %fieldset
+    %legend Kérlek add meg a jövőbeni fiókod adatait
+    = f.text_field :username, :label => 'Felhasználónév'
+    = f.password_field :password, :label => 'Jelszó'
+    %p.info Megengedett karakterek(a-z 0-9)
+    = f.password_field :password_confirmation, :label =>'Jelszó megerősítése'
+    .submit
+      = submit_tag 'Regisztráció'

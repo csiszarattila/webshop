@@ -403,6 +403,11 @@ table.products .product .details td{
  padding:0.2em 1em;
 }
 
+#middlecolumn div#error{
+ background:#c00;
+}
+
+
 #login-column, #registration-column{
  width:50%;
  float:left;

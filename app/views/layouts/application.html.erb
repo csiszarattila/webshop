@@ -12,7 +12,13 @@
   <div id="head">
     <h1><%= link_to 'Webshop', root_path %></h1>
     <ul>
-      <li class="user"><a href="login-or-registration.html">Bejelentkezés vagy Regisztráció</a></li>
+      <li class="user">
+        <% unless session[:user_id] %>
+          <%= link_to 'Bejelentkezés vagy Regisztráció', login_or_registration_path %>
+        <% else %>
+          <%= link_to 'Felhasználói adatok', user_show_path() %>
+        <% end %>
+      </li>
       <li class="info"><a href="">Vásárlási információk</a></li>
       <li class="about"><a href="">A boltról</a></li>
     </ul>
@@ -57,6 +63,9 @@
     <div id="middlecolumn">
       <% if flash[:notice]%>
         <div id="notice"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:error] %>
+        <div id="error"><%= flash[:error] %></div>
       <% end %>
       <%= yield :layout %>
     </div>

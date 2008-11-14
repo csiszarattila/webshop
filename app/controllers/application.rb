@@ -29,4 +29,13 @@ class ApplicationController < ActionController::Base
 	def show_cart
 		@show_cart ||= true
 	end
+	
+	def authorize
+		
+		@user = User.find_by_id(session[:user_id])
+		unless @user
+			flash[:error] = "Nincs jogod ezt a funkciót elérni!"
+			redirect_to login_path
+		end
+	end
 end
