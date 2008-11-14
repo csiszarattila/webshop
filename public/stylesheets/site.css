@@ -186,6 +186,10 @@ table#index-cart{
  width:53em;
 }
 
+#middlecolumn div#notice + h2{
+ margin-top:1em;
+}
+
 #middlecolumn h2{
  border-bottom:2px solid #222;
  margin-top:3em;
@@ -390,6 +394,7 @@ table.products .product .details td{
  border-bottom:0px !important;
 }
 
+#middlecolumn div#notice,
 .order-step-info p{
  text-align:center;
  font-weight:bold;

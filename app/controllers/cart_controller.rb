@@ -24,13 +24,13 @@ class CartController < ApplicationController
 		
 		redirect_to :action => 'empty' and return if @cart.items.empty? 
 		
-		flash[:notice] = I18n.translate('cart.destroyed')
+		flash[:notice] = I18n.t('cart.item.destroyed')
 		redirect_to :action => 'index'
 	end
 	
 	def empty
 		session[:cart] = nil
-		flash[:notice] = I18n.translate('cart.emptied')
+		flash[:notice] = I18n.t('cart.emptied')
 		redirect_to root_path
 	end
 	

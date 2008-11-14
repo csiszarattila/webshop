@@ -35,6 +35,15 @@ class CartTest < ActiveSupport::TestCase
 		assert_equal 1*@lego.price, @cart.total_price
 	end
 	
+	test "destroy removes product from cart at all" do
+		@cart.add_product(@lego)
+		@cart.add_product(@marple_book)
+		
+		@cart.destroy_item(@lego.id)
+		assert !@cart.items.empty?, "Cart content was: #{@cart.items.collect{|item| item.product.inspect}}"
+		assert !@cart.items.include?(@lego.id), "Cart content was: #{@cart.items.collect{|item| item.product.inspect}}"
+	end
+	
 	test "add n times then remove n times" do
 		add_n_times = 45
 		remove_n_times = 26

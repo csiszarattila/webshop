@@ -1,4 +1,5 @@
 hu-HU:
   cart:
     emptied: "A kosarad most már üres."
-    destroyed: "A termék kikerült a kosaradból."
+    item:
+      destroyed: "A termék kikerült a kosaradból."

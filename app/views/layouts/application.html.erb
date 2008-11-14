@@ -55,6 +55,9 @@
     	</ul>
     </div>
     <div id="middlecolumn">
+      <% if flash[:notice]%>
+        <div id="notice"><%= flash[:notice] %></div>
+      <% end %>
       <%= yield :layout %>
     </div>
   </div>
