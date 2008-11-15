@@ -2,7 +2,7 @@ class UserController < ApplicationController
 	
 	skip_before_filter :find_user
 	before_filter :destroy_user_session, :except => [:show, :edit, :password_remember]
-	before_filter :authorize, :only => [:show,:edit]
+	before_filter :authorize_as_customer, :only => [:show,:edit]
 	
 	def login_or_registration
 		@user = User.new()
@@ -37,14 +37,17 @@ class UserController < ApplicationController
 		end
   end
 
-	# Create a new application user in the database 
+	# Create a new customer user in the database 
 	# 
-	# Létrehoz egy új +User+ modellt a megadott regisztrációs adatokkal
+	# Létrehoz egy új +User+ és +Customer+ modellt a megadott regisztrációs adatokkal
 	def registration		
 		@user = User.new(params[:user])
+		@user.group_id = 2
+		
 		if @user.save
-			flash[:notice] = I18n.t 'user.registration.succeed'
+			Customer.create(:user => @user)
 			
+			flash[:notice] = I18n.t 'user.registration.succeed'
 			if request.request_uri == registration_url
 				redirect_to root_path
 			else
@@ -68,6 +71,7 @@ class UserController < ApplicationController
 	# 
 	# Megmutatja a felhasználó profilját
 	def show
+		@user = @customer
 	end
 	
 	# Change user's profile
