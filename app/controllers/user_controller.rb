@@ -71,7 +71,7 @@ class UserController < ApplicationController
 	# 
 	# Megmutatja a felhasználó profilját
 	def show
-		@user = @customer
+		@user = @customer.user
 	end
 	
 	# Change user's profile

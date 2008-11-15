@@ -50,6 +50,12 @@ ActionController::Routing::Routes.draw do |map|
 		user.user_show 'user/show', :action => 'show'
 		user.user_edit 'user/edit', :action => 'edit'
 	end
+	
+	map.with_options :controller => "order" do |order|
+		order.order_address 'order/address', :action => 'address'
+		order.order_confirm 'order/confirm', :action => 'confirm'
+		order.create_order 'order/create', :action => 'create'
+	end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "main"

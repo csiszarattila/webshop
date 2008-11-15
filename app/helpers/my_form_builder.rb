@@ -47,18 +47,26 @@ class MyFormBuilder < ActionView::Helpers::FormBuilder
 		end
 	end
 	
-	def custom_error_messages(options = {})
-		return if @object.errors.empty?
-		options[:header_message] = "" unless options.include?(:header_message)
-	  options[:message] ||= "" unless options.include?(:message)
-	 
-	  contents = "<div class='error-messages'>"
-    contents << "<h4>#{options[:header_message]}</h4>" unless options[:header_message].blank?
-    contents << "<p>#{options[:message]}</p>" unless options[:message].blank?
-    contents << @object.errors.full_messages.map {|msg| "<p>#{msg}</p>" }.join
-		contents << "</div>"
+	def custom_error_messages(options={})
+		objects = [@object]
+		objects += options[:additional_models] unless options[:additional_models].nil?
+		count = objects.inject(0) {|sum, object| sum + object.errors.count }
+		
+		unless count.zero?
+		  error_messages = objects.sum {|object| object.errors.full_messages.map {|msg| @template.content_tag(:p, msg) } }.join
+
+			options[:header_message] = "" unless options.include?(:header_message)
+		  options[:message] ||= "" unless options.include?(:message)
+
+		  contents = "<div class='error-messages'>"
+	    contents << "<h4>#{options[:header_message]}</h4>" unless options[:header_message].blank?
+	    contents << "<p>#{options[:message]}</p>" unless options[:message].blank?
+	    contents << error_messages
+			contents << "</div>"
+		else
+		  return
+		end
 	end
-	
 	
 	# Wrap around a radio button group in such a way:
 	# 
@@ -96,7 +104,7 @@ class MyFormBuilder < ActionView::Helpers::FormBuilder
 	# 
 	def radio_group(method,radio_group_options,options = {}, &blk)
 		legend_class = "" << "as-label"
-		legend_class << "as-label-with-error" if @object.errors.invalid?(method)
+		legend_class << " as-label-with-error" if @object.errors.invalid?(method)
 		
     wrapper_div_classes = "" << "radio-group"
 		wrapper_div_classes << " radio-group-with-error" if @object.errors.invalid?(method)
@@ -107,7 +115,7 @@ class MyFormBuilder < ActionView::Helpers::FormBuilder
 			radio_group_contents << "<br/>"
 		end
 		
-		output = @template.content_tag(:legend, options[:legend], :class => legend_class)
+		output = @template.content_tag(:legend, options.delete(:legend), :class => legend_class)
 		output << @template.content_tag(:div,radio_group_contents, :class => wrapper_div_classes)
 	end
 end

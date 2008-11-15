@@ -3,7 +3,7 @@
     %tr
       %td.img= sample_image_for_product(item.product, :size => '50x50')
       %td.quantity= item.quantity
-      %td.price= format_price(item.product.price)
+      %td.price= format_price(item.price)
     %tr.title
       %td{ :colspan => '3' }= item.product.name
   %tr.sum
@@ -12,4 +12,4 @@
 .cart-commands
   =link_to 'Mutasd a kosaram', show_cart_path
   %br
-  <a href='login-or-registration.html'>Tovább a rendeléshez</a>
+  =link_to 'Tovább a rendeléshez', order_address_path

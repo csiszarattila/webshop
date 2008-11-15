@@ -1,7 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-cc:
-  name: CreditCard
+delivery_with_bank_payment:
+  name: Banki átutalással fizetek és futár kiszálítást kérek
 
-two:
-  name: MyString
+no_delivery_with_cash:
+  name:  A boltban veszem át és készpénzzel vagy kártyával fizetek
+  
+no_delivery_with_cc:  
+  name: A boltban veszem át, de banki átutalással egyenlítem az összeget

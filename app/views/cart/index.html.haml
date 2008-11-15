@@ -1,19 +1,5 @@
 %h2 A kosarad pillanatnyi tartalma
-%table#cart
-  %tr
-    %th Termék
-    %th Mennyiség
-    %th.price Összár
-    %th Kivétel
-  
-  = render :partial => 'cart_item', :collection => @cart.items
-  
-  %tr
-    %td.sum{ :colspan => "2" } Összesen
-    %td.price.price-sum 
-      = format_price(@cart.total_price)
-    %td
-      = link_to 'Kosár kiürítése', empty_cart_path
+= render "cart/cart"
 .cart-commands
   = link_to 'Vásárlás folytatása', root_path
-  %a{ :href => "login-or-registration.html" } Tovább a rendeléshez
+  = link_to 'Tovább a rendeléshez', order_address_path

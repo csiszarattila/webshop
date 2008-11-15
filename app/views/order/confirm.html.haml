@@ -1,0 +1,7 @@
+.order-step-info
+  %h2 3 / 3 lépés : Rendelés áttekintése
+  %p Kérlek tekintsd át mégegyszer a rendelésed, ellenőrizd a kosaradban lévő termékeket és a hozzájuk kapcsolodó rendelési mennyiségeket. Ha mindent rendben találtál kattints a rendelés feladására, illetve ha még szeretnél további termékeket vásárolni válaszd a 'Szeretnék még tovább vásárolni' opciót.
+= render 'cart/cart'
+.cart-commands
+  =link_to 'Szeretnék még tovább vásárolni', root_path
+  =link_to 'Rendelés feladása', create_order_path

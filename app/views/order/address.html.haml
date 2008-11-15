@@ -1,0 +1,29 @@
+.order-step-info
+  -unless @address.errors.empty? and @order.errors.empty?
+    %h2 2 / 3 lépés : Rendelési adatok és cím megadása | Hibás adatok
+  -else
+    %h2 2 / 3 lépés : Rendelési adatok és cím megadása
+    
+-form_for @order, :url => order_address_path, :html => {:id => 'order-address'}, :builder => MyFormBuilder do |f|
+  =f.custom_error_messages :additional_models => [@address], :header_message => 'Az adataid mentése a következő okok miatt nem sikerült'
+  -fields_for @address, :builder => MyFormBuilder do |address|
+    %fieldset
+      %legend Személyi adatok
+      = address.text_field :name, :label => 'Név'
+    %fieldset
+      %legend Cím adatok
+      = address.text_field :city, :label => 'Település'
+      = address.text_field :zipcode, :label => 'Irányítószám'
+      = address.text_field :street, :label => 'Utca, házszám'
+    %fieldset
+      %legend Elérhetőségek
+      = address.text_field :email, :label => 'Email cím'
+      = address.text_field :tel, :label => 'Telefonszám'
+  %fieldset
+    = f.radio_group :order_type, @order_types, :legend => "Fizetési és szállítási mód" do |ot|
+      - radio_button("order", "order_type_id", ot.id) + f.label(:order_type, ot.name)
+  %fieldset
+    %legend Speciális kérések
+    =f.text_area :notes, :label => "Megjegyzések (pl. kiszállítási időpont)", :size => "40x5"
+  .submit
+    =submit_tag "Mentés és folytatás"

@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
 		@show_cart ||= true
 	end
 	
+	def destroy_cart
+		session[:cart] = nil
+	end
+	
 	def authorize
 		
 		@user = User.find_by_id(session[:user_id])
@@ -39,6 +43,7 @@ class ApplicationController < ActionController::Base
 		end
 	end
 	
+	# Logged in user has to be a +Customer+
 	def authorize_as_customer
 			customer = Customer.find_by_user_id(session[:user_id])
 			unless customer

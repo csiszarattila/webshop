@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081115073257) do
+ActiveRecord::Schema.define(:version => 20081115201357) do
 
   create_table "addresses", :force => true do |t|
     t.string  "name"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20081115073257) do
 
   create_table "order_items", :force => true do |t|
     t.integer "total_price", :limit => 8, :precision => 8, :scale => 0
-    t.integer "decimal",     :limit => 8, :precision => 8, :scale => 0
     t.integer "quantity"
     t.integer "order_id"
     t.integer "product_id"
@@ -69,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20081115073257) do
     t.integer  "order_type_id"
     t.integer  "order_state_id"
     t.integer  "customer_id"
+    t.text     "notes"
   end
 
   create_table "product_attributes", :id => false, :force => true do |t|
