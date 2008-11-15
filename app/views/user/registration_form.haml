@@ -1,3 +1,4 @@
+- title ||=false
 - form_for @user, :url => registration_path, :html => {:class => 'login-or-registration'}, :builder => MyFormBuilder do |f|
   -if title
     %h4=title

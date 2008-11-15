@@ -29,7 +29,6 @@ class UserController < ApplicationController
 				redirect_to (original_uri || root_path)
 			else
 				@user = User.new()
-				@login_failed = true
 				@user.errors.add(:username,'')
 				@user.errors.add(:password,'')
 			end
