@@ -31,7 +31,9 @@ class Cart
 	end
 	
 	def destroy_item(id)
-		@items.delete_if &find(id)
+		item = @items.index &find(id)
+		raise ActiveRecord::RecordNotFound if item.nil?
+		@items.delete_at(item)
 	end
 	
 	def total_price

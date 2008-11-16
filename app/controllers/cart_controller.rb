@@ -9,6 +9,10 @@ class CartController < ApplicationController
 		product = Product.find(params[:id])
 		@cart.add_product(product)
 		redirect_to :action => 'index'
+		
+	rescue ActiveRecord::RecordNotFound
+		logger.error("Olyan terméket akartak elhelyezni a kosárban amely nem nem létezik. ID: #{params[:id]}")
+		redirect_to :root
 	end
 	
 	def remove
@@ -17,6 +21,10 @@ class CartController < ApplicationController
 		redirect_to :action => 'empty' and return if @cart.items.empty?
 		
 		redirect_to :action => 'index'
+		
+	rescue ActiveRecord::RecordNotFound
+		logger.error("Olyan terméket akartak kivenni a kosárból amely benne sem volt. ID: #{params[:id]}")
+		redirect_to :root
 	end
 	
 	def destroy
@@ -26,6 +34,10 @@ class CartController < ApplicationController
 		
 		flash[:notice] = I18n.t('cart.item.destroyed')
 		redirect_to :action => 'index'
+		
+	rescue ActiveRecord::RecordNotFound
+		logger.error("Olyan terméket akartak törölni a kosárból amely benne sem volt. ID: #{params[:id]}")
+		redirect_to :root
 	end
 	
 	def empty

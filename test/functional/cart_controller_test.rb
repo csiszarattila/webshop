@@ -12,8 +12,38 @@ class CartControllerTest < ActionController::TestCase
 		@cart.add_product @keane_cd
 	end
 	
+	test "show cart when action performed" do
+		get :add, {:id => Product.first.id}, {:cart => @cart}
+		assert_redirected_to :show_cart
+		
+		get :remove, {:id => @sony_tv.id}, {:cart => @cart}
+		assert_redirected_to :show_cart
+		
+		get :destroy, {:id => @keane_cd.id}, {:cart => @cart}
+		assert_redirected_to :show_cart
+	end
+	
+	test "actions without id params redirect to root" do
+		get :add, nil
+		assert_redirected_to :root
+		
+		get :remove, nil
+		assert_redirected_to :root
+		
+		get :destroy, nil
+		assert_redirected_to :root
+	end
+
+	test "destroy and remove redirect to root when no product in cart with given params id" do
+		get :remove, {:id => products(:bob_dvd).id}, {:cart => @cart}
+		assert_redirected_to :root
+		
+		get :destroy, {:id => products(:bob_dvd).id}, {:cart => @cart}
+		assert_redirected_to :root
+	end
+	
 	test "cart created when first product added" do
-		get :add, {:id => Product.first}
+		get :add, {:id => Product.first.id}
 
 		assert_not_nil assigns(:cart)
 		assert_not_nil session[:cart]
