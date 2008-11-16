@@ -1,7 +1,20 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+peters_order_one:
+  product: marple_book
+  quantity: 1
+  total_price: 1245 
+  order: peters_order
+
+peters_order_two:
+  product: bob_dvd
+  quantity: 2
+  total_price: 3456
+  order: peters_order
+  
+peters_order_three:
+  product: keane_cd
+  quantity: 1
+  total_price: 6555
+  order: peters_order
+  

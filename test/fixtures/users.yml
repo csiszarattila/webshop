@@ -5,10 +5,16 @@ me:
   username: attila
   hashed_password: <%= User.encrypt_password("attila",SALT) %>
   salt: <%= SALT %>
-  group_id: 1
+  group: admin
 
-two:
-  username: MyString
-  hashed_password: MyString
-  salt: MyString
-  group_id: 1
+peter:
+  username: peter
+  hashed_password: <%= User.encrypt_password("peter",SALT) %>
+  salt: <%= SALT %>
+  group: customer
+
+me_as_customer:
+  username: ati
+  hashed_password: <%= User.encrypt_password("ati",SALT) %>
+  salt: <%= SALT %>
+  group: customer

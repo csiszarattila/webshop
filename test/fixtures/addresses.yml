@@ -7,6 +7,22 @@ my_address:
   street: Batthyány út 99.
   tel: '06203451111'
   email: csiszar.ati@gmail.com
+  addressable: me_as_customer (Customer)
 
-# two:
-#   column: value
+peters_address:
+  name: Csiszár Péter
+  city: Szeged
+  zipcode: 6700
+  street: Siha köz 1./B
+  tel: '394801'
+  email: peter@nowhere.com
+  addressable: peter (Customer)
+
+address_of_peters_order:
+  name: Csiszár Péter
+  city: Szeged
+  zipcode: 6700
+  street: Siha köz 1./B
+  tel: '394801'
+  email: peter@nowhere.com
+  addressable: peters_order (Order)
