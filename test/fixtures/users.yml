@@ -2,7 +2,7 @@
 
 <% SALT = "rubyonrails" %>
 me:
-  username: attila
+  username: ati
   hashed_password: <%= User.encrypt_password("attila",SALT) %>
   salt: <%= SALT %>
   group: admin
@@ -13,8 +13,14 @@ peter:
   salt: <%= SALT %>
   group: customer
 
-me_as_customer:
-  username: ati
-  hashed_password: <%= User.encrypt_password("ati",SALT) %>
+attila:
+  username: attila
+  hashed_password: <%= User.encrypt_password("attila",SALT) %>
+  salt: <%= SALT %>
+  group: customer
+
+tesztelek:
+  username: tesztelek
+  hashed_password: <%= User.encrypt_password("tesztelek",SALT) %>
   salt: <%= SALT %>
   group: customer

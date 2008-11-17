@@ -67,6 +67,15 @@ class UserTest < ActiveSupport::TestCase
 	test "authenticate" do
     user = User.authenticate("attila","attila")
     assert_not_nil user
-    assert_equal user, users(:me)
+    assert_equal user, users(:attila)
   end
+
+	test "create a customer" do
+		
+		user = User.create_a_customer(@test_user)
+		
+		assert_not_nil User.find(user.id)
+		assert_equal user_groups(:customer), user.group
+		assert_not_nil Customer.find_by_user_id(user.id)
+	end
 end

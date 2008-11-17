@@ -6,7 +6,8 @@ class AddressTest < ActiveSupport::TestCase
 			"06/30/622/3456", 
 			"06-30-622-3456", 
 			"06 30 622 3456", 
-			"06/30 622 3456"]
+			"06/30 622 3456",
+			"6223456"]
 			
 		@expected_number = "06306223456" #how we store in db
 		@read_tel_as = ""#how we get back in formatted way
@@ -37,7 +38,10 @@ class AddressTest < ActiveSupport::TestCase
 				"Lestár tér 22./B",
 				"Széchényi utca 12.",
 				"Dob utca 75-81.",
-				"Béke sugárút 38."]
+				"Béke sugárút 38.",
+				"Siha köz 11.",
+				"Siha köz 10.",
+				"Siha köz 1."]
 			
 		@invalid_street_addresses = [
 			"Batthyány",

@@ -1,4 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-customer:
+peter:
   user: peter
+  
+attila_customer:
+  user: attila
+  
+customer_without_address:
+  user: tesztelek

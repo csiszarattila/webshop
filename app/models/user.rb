@@ -37,6 +37,13 @@ class User < ActiveRecord::Base
     user
   end
 
+	def self.create_a_customer(user)
+		user.group = UserGroup.find_by_name("customer")
+		user.save()
+		Customer.create(:user => user)
+		user
+	end
+
   private
 	# Generate a random +salt+
 	# 

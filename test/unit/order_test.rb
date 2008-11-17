@@ -10,6 +10,5 @@ class OrderTest < ActiveSupport::TestCase
 		
 		assert_not_nil order.items
 		assert_equal cart.items.size, order.items.size
-		assert_equal cart.total_price, order.total_price
   end
 end

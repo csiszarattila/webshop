@@ -4,33 +4,31 @@ class OrderController < ApplicationController
 	before_filter :find_cart, :only => [:confirm, :create]
 		
 	def create
+		redirect_to :root and return unless session[:order] or session[:address]
 		@order = session[:order]
 		@address = session[:address]
-		
-		@address.addressable = @order
-		@address.save
 		
 		@order.add_items_from_cart(@cart)
 		@order.customer = @customer
 		@order.save
 		
+		@address.addressable = @order
+		@address.save
+		
 		destroy_cart()
+		session[:order], session[:address] = nil
 	end
 	
 	def address
 		@order_types = OrderType.all()
 		
-		if session[:order]
-			@order = session[:order]
-			@address = session[:address]
-			session[:order] = nil
-			session[:address] = nil
-			
-		elsif params[:order]
+		# kitöltött	form adatainak ellenőrzése, 
+		# adatok mentése sessionbe
+		if params[:order]
 			@order = Order.new(params[:order])
 			@address = Address.new(params[:address])
 			
-			@address.valid? # otherwise errors dont added because of if condition
+			@address.valid? # az if miatt, maskülönben nem adná hozzá a hibaüzeneteket
 			if @order.valid? and @address.valid?
 				# Save the address if the customer haven't got one
 				# A címet mindenképp elmentjük, ha még nincs a vásárlónak
@@ -45,7 +43,12 @@ class OrderController < ApplicationController
 				session[:address] = @address
 				redirect_to order_confirm_path and return
 			end
-			
+		# a sessionben már vannak adatok
+		# a vásárló már kitöltötte elküldte a formot korábban
+		elsif session[:order]
+			@order = session[:order]
+			@address = session[:address]
+		# Első kitöltés	
 		else
 			@order = Order.new()
 			@address = @customer.address || Address.new()
@@ -54,6 +57,5 @@ class OrderController < ApplicationController
 	
 	def confirm
 		redirect_to order_address_path and return unless session[:order]
-		@cart
 	end
 end

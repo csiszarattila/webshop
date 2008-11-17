@@ -7,7 +7,7 @@ class Address < ActiveRecord::Base
 
 	# Utca mező formája: 
 	# Utcanév Típus Házszám(1-9999)[-(1-9999)].(pont)[/(a-z)|(A-Z)] + egyeb pl.[emelet|lakas]
-	validates_format_of :street, :with => /\A\w+\s+\w+\s+[1-9]\d{1,3}([-][1-9]\d{1,3})?\.[\/]?[A-Za-z]?.*\Z/
+	validates_format_of :street, :with => /\A\w+\s+\w+\s+[1-9]{1,3}([-][1-9]\d{1,3})?\.[\/]?[A-Za-z]?.*\Z/
 	
 	#-- 
 	# Here tel numbers is validated after 
@@ -33,7 +33,7 @@ class Address < ActiveRecord::Base
 	
 	def validate
 		unless ZipcodeMatch::match?(self.city, self.zipcode)
-			errors.add_to_base I18n.translate('activerecord.errors.models.address.zip_and_city_not_match')
+				errors.add_to_base I18n.translate('activerecord.errors.models.address.zip_and_city_not_match')
 		end
 	end
 
