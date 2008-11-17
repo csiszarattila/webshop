@@ -1,7 +1,8 @@
 require 'test_helper'
 
+require 'test/mocks/zipcode_match.rb'
 class AddressTest < ActiveSupport::TestCase
-	def setup
+	def setup		
 		@valid_telephone_numbers = [
 			"06/30/622/3456", 
 			"06-30-622-3456", 
