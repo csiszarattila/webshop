@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
 
-  # Sample resource route with options:
+  # Sample resource route with o	ptions:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
 
   # Sample resource route with sub-resources:
@@ -32,6 +32,10 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.resources :categories
 	map.resources :products
+	
+	map.namespace :admin do |admin|
+		admin.resources	:orders
+	end
 	
 	map.with_options :controller => "cart" do |cart|
 		cart.show_cart 'cart', :action => 'index'

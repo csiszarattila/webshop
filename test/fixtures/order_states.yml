@@ -1,7 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-new:
-  name: New order
+new_order:
+  name: 'Újak'
 
-two:
-  name: MyString
+pending_order:
+  name: 'Függőben lévők'
+
+delivered_order:
+  name: 'Teljesítettek'

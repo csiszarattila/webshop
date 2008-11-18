@@ -17,4 +17,12 @@ class Order < ActiveRecord::Base
 		end
 		self.save
 	end
+	
+	def before_validation_on_create
+		self.order_state = OrderState.find_by_name("Újak")
+	end
+	
+	def total_price
+		self.items.collect{ |item| item.total_price }.sum
+	end
 end

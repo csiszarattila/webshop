@@ -1,6 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 peters_order:
-  order_type: no_deliver_with_cash
+  order_type: no_delivery_with_cash
   customer: peter
   notes: "Este 6h után vagyok elérhető"
+  order_state: new_order

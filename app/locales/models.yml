@@ -1,0 +1,14 @@
+hu-HU:
+  activerecord:
+    models:
+    attributes:
+      user:
+        username: "Felhasználónév"
+        password: "Jelszó"
+      address:
+        name: "Név"
+        zipcode: "Irányítószám"
+        city: "Település"
+        street: "Utca, házszám"
+        email: "E-mail"
+        tel: "Telefonszám"

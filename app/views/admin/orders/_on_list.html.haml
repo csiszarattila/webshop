@@ -1,0 +1,7 @@
+%tr{ :class => cycle('tarka','barka') }
+  %td= order.created_at
+  %td 
+    -for item in order.items
+      %p= "#{item.quantity} x #{item.product.name}"
+  %td= order.total_price
+  %td= link_to 'Részletesen', admin_order_path(order)

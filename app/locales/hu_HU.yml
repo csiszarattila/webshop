@@ -124,11 +124,6 @@ hu-HU:
           attributes:
             username:
               invalid: "nem tartalmazhat ékezetes karaktert sem szüntet"
-    models:
-    attributes:
-      user:
-        username: "Felhasználónév"
-        password: "Jelszó"
   date:
     formats:
       # Use the strftime parameters for formats.

@@ -1,0 +1,15 @@
+%h2 Megrendelések
+
+%form#sort
+  %select{:name => "order_state"}
+    = options_for_select(@order_states, @state.id)
+  %input#submit{:type=> "submit", :value=>"Rendezd"}
+  
+%table{:class=>"orders list"}
+  %tr
+    %th Dátum
+    %th Tételek
+    %th Összérték
+    %th Mutasd
+    
+  = render( :partial => "on_list", :collection => @orders, :as => :order )

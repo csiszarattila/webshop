@@ -1,0 +1,46 @@
+%h2= "Megrendelések - #{@order.id}  számú rendelés"
+
+.order
+  -form_for @order, :url => admin_order_path(@order) do |f|
+    %label{:for=>"order_state"}A rendelés státusza:
+    =select "order", "order_state_id", @order_states
+    =submit_tag 'Jelöld'
+    %h3 A vevő adatai
+    .buyers
+    %table
+      -for attribute in [:name,:zipcode,:city,:street,:email,:tel]
+        %tr
+          %th= Address.human_attribute_name(attribute.to_s)
+          %td= @address.send(attribute)
+    %h3 Rendelési tételek
+    %table
+      %tr
+        %th Név
+        %th Darabszám
+        %th Érték
+      -for item in @order.items
+        %tr 
+          %td= item.product.name
+          %td= item.quantity
+          %td= item.total_price
+      %tr.summary 
+        %th{:colspan=>"2"} Összesen 
+        %td= @order.total_price
+      %tr
+        %th{:colspan=>"2"} Fizetési és rendelési mód
+        %td= @order.order_type.name
+    %h3 A vevő megjegyzései
+    .div
+      = @order.notes
+  
+    %h3 Saját megjegyzések
+    =f.text_area :admin_notes, :size=>"100x10"
+    %br
+    =submit_tag 'Mentés'
+    
+.navigation
+  %a.first{:href=>""} Első
+  %a{:href=>""} 1
+  %a{:href=>""} 2
+  %span.current 3
+  %a.last{:href=>""} Utolsó
