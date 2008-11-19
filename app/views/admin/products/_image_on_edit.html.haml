@@ -1,0 +1,4 @@
+.picture
+  = image_for_product(image)
+  = link_to 'Szerkeszt', edit_admin_product_image_path( [product, image] )
+  = link_to 'Törlés', admin_product_image_path( [product, image] ), :method => :delete, :confirm => I18n.t('application.delete-confirm')

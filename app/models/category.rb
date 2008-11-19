@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
 	validates_presence_of :name
 	validates_uniqueness_of :name, :scope => [:parent_id], :message => "a kategórián belül egyedinek kell lennie"
 	
-	named_scope :roots, :conditions => {:parent_id => nil}
+	named_scope :roots, :conditions => {:parent_id => 0}
 	
 	# Return all sub categories id under the tree
 	# 
@@ -38,5 +38,17 @@ class Category < ActiveRecord::Base
 	
 	def is_root?
 		return self.parent.nil?
+	end
+	
+	# Collect all ancestors attributes
+	# 
+	def ancestors_category_attributes()
+		self.ancestors.collect { |category| category.attrs }.flatten
+	end
+	
+	def category_attributes=(category_attributes)
+		category_attributes.each do |attribute|
+			attrs.build(attribute) unless attribute[:name].length.zero?
+		end
 	end
 end

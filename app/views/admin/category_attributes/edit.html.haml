@@ -1,0 +1,8 @@
+%h1 Kategóriajellemző szerkesztése
+%h2= "Kategória: #{@category.name}"
+%h2= "Jellemző: #{@attribute.name}"
+-form_for @attribute, :url => admin_category_category_attribute_path(@category,@attribute), :method => :put do |f|
+  =label_tag :name, "Elnevezés"
+  =f.text_field :name
+  %br
+  =f.submit "Módosítsd"

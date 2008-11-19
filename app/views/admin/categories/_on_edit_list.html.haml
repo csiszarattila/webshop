@@ -1,0 +1,7 @@
+%li
+  = category.name
+  = link_to 'Szerkeszt', edit_admin_category_path(category)
+  = link_to 'Törlés', admin_category_path(category), :method => :delete, :confirm => 'Biztosan törölni akarod?'
+  -if category.children
+    %ul
+      =render :partial => 'admin/categories/on_edit_list' , :collection => category.children, :as => :category

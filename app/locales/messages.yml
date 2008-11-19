@@ -1,0 +1,13 @@
+hu-HU:
+  application:
+    delete-confirm: "Biztosan törölni akarod?"
+  cart:
+    emptied: "A kosarad most már üres."
+    item:
+      destroyed: "A termék kikerült a kosaradból."
+  user:
+    registration:
+      succeed: "Sikeresen regisztráltál."
+  categories:
+    created: "A kategória sikeresen létrejött."
+    updated: "A kategória sikeresen frissült."

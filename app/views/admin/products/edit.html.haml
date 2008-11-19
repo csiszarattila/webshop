@@ -1,0 +1,37 @@
+%h2 Termék szerkesztése
+- form_for @product, :url => admin_product_path(@product), :html =>{ :id=> "product" } do |f|
+  #left-column
+    %fieldset
+      %legend Általános jellemzők
+      .input
+        %label{ :for => "name"} Név
+        =f.text_field :name
+      .input
+        %label{ :for => "category" } Kategória
+        =select_tag "product[category_id]", product_category_options_for_select(@root_categories,@product.category)
+      .input
+        %label{ :for => "price" } Ár 
+        =f.text_field :price
+      .input
+        %label{ :for => "description" } Leírás
+        =f.text_area :description, :size => "60x20"
+    %fieldset
+      %legend Termék jellemzők
+      -if @product.category_attributes.nil?
+        %p A termék kategóriájához nem adtak meg jellemzőket.
+      -else
+        - @product.attrs.each do |attribute|
+          - fields_for 'product_attributes[]' , attribute do |attribute_form|
+            .input
+              = attribute.name
+              = attribute_form.text_field :value
+              = attribute_form.hidden_field :category_attribute_id
+    %fieldset#new-picture 
+      %legend Új kép csatolása
+      =f.file_field :image_file
+  #right-column
+    %fieldset#pictures
+      %legend Kapcsolódó képek
+      = render :partial => 'admin/products/image_on_edit.html.haml', :collection => @product.images, :as => :image, :locals => { :product => @product }
+  #submit
+    =f.submit "Mentés"

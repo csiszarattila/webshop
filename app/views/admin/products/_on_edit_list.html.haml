@@ -1,0 +1,9 @@
+%tr
+  %td
+    %img= sample_image_for_product(product, :size => "50x50")
+  %td
+    %h3=product.name
+  %td
+    =link_to 'Mutasd', product_path(product)
+    =link_to 'Szerkeszt', edit_admin_product_path(product)
+    =link_to 'Törlés', admin_product_path(product), :method => :delete, :confirm => 'Biztosan törölni akarod?'

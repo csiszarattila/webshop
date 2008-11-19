@@ -50,12 +50,12 @@ class MyFormBuilder < ActionView::Helpers::FormBuilder
 	def custom_error_messages(options={})
 		objects = [@object]
 		objects += options[:additional_models] unless options[:additional_models].nil?
-		count = objects.inject(0) {|sum, object| sum + object.errors.count }
+		error_count = objects.inject(0) {|sum, object| sum + object.errors.count }
 		
-		unless count.zero?
+		unless error_count.zero?
 		  error_messages = objects.sum {|object| object.errors.full_messages.map {|msg| @template.content_tag(:p, msg) } }.join
 
-			options[:header_message] = "" unless options.include?(:header_message)
+			options[:header_message] = I18n.t('activerecord.errors.template.header', :count =>error_count, :model => @object.class.human_name ) unless options.include?(:header_message)
 		  options[:message] ||= "" unless options.include?(:message)
 
 		  contents = "<div class='error-messages'>"

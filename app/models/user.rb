@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
 	# 
 	# Jelszó kódolása SHA1 kódra egy megadott salt-tal
   def self.encrypt_password(password,salt)
-    string_to_hash = password + "foobar" + salt #notice plus salt
+    string_to_hash = password + salt
     Digest::SHA1.hexdigest(string_to_hash)
   end
 end

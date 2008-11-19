@@ -1,0 +1,4 @@
+.category-attribute
+  - fields_for "category[category_attributes][]", attribute do |attribute_form|
+    =label_tag :name, "Termék-jellemző hozzáadása"
+    =attribute_form.text_field :name

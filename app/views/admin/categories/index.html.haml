@@ -1,0 +1,4 @@
+= render 'admin/categories/header.html'
+= link_to 'Új kategória', new_admin_category_path()
+%ul#categories
+  = render :partial => 'admin/categories/on_edit_list', :collection => @categories, :as => :category

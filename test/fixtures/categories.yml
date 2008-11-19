@@ -2,7 +2,7 @@
 
 books:
   name: Könyvek
-  parent: NULL
+  parent_id: 0
 
 classic_books:
   name: Klasszikus irodalom
@@ -50,6 +50,6 @@ classic_books_19th_century:
 }.each do |name, title| %>
 <%= name %>:
   name: <%= title %>
-  parent: NULL
+  parent_id: 0
 <% end %>
 

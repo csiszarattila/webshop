@@ -1,6 +1,7 @@
 hu-HU:
   activerecord:
     models:
+      category: "Kategória"
     attributes:
       user:
         username: "Felhasználónév"
@@ -12,3 +13,5 @@ hu-HU:
         street: "Utca, házszám"
         email: "E-mail"
         tel: "Telefonszám"
+      category:
+        name: "Elnevezés"

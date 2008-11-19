@@ -1,0 +1,10 @@
+= f.custom_error_messages
+%fieldset
+  =f.text_field :name, :label => "Átnevezés"
+  .input
+    %label{:for=>"parent_id"} Ebben a kategóriában található
+    =select_tag "category[parent_id]", category_options_for_select(@root_categories, @category)
+
+%fieldset
+  %legend A kategóriához kapcsolódó termék jellemzők
+  %p Információ: a kategóriához kapcsolódó jellemzők lefelé is öröklődnek

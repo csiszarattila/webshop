@@ -25,4 +25,11 @@ class Product < ActiveRecord::Base
 	def releated(limit=10)
 		Product.in_category(self.category).order_by(:price).limit(limit)
 	end
+	
+	def image_file=(uploaded_data)
+		images << ProductImage.new do |i|
+			i.image_url = uploaded_data.original_filename
+			i.description = ""
+		end
+	end
 end

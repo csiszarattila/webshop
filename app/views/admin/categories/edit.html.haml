@@ -1,0 +1,12 @@
+= render 'admin/categories/header.html' 
+%h2="#{@category.name} kategória"
+-form_for @category, :url => admin_category_path(@category), :builder => MyFormBuilder do |f|
+  
+  =render :partial => 'admin/categories/form', :locals => {:f => f}
+  
+  =render :partial => 'admin/categories/attribute', :collection => @category_attributes, :as => :attribute
+  
+  =render :partial => 'admin/categories/new_attribute', :collection => @new_category_attributes, :as => :attribute
+  = f.submit "Mentés"
+
+= link_to 'Vissza', admin_categories_path

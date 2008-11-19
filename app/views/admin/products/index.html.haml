@@ -1,0 +1,10 @@
+%h2 Termékek
+=link_to 'Új termék', new_admin_product_path()
+%form.sort
+  %label{ :for => "category" } Kategória:
+  =select_tag "category", product_category_options_for_select(@root_categories,@category)
+  %input{ :type => "submit", :value => "Mutasd" }
+  =link_to 'Összes termék', admin_products_path()
+  
+%table{:class=>"products list"}
+  = render :partial => 'admin/products/on_edit_list.html.haml', :collection => @products, :as => :product

@@ -1,0 +1,4 @@
+.category-attribute
+  %span=attribute.name
+  =link_to 'Szerkeszt', edit_admin_category_category_attribute_path(@category,attribute)
+  =link_to 'Töröl', admin_category_category_attribute_path(@category,attribute), :method => :delete, :confirm => "Biztosan törölni akarod?"
