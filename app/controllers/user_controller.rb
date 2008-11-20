@@ -41,10 +41,10 @@ class UserController < ApplicationController
 	# 
 	# Létrehoz egy új +User+ és +Customer+ modellt a megadott regisztrációs adatokkal
 	def registration		
-		user = User.new(params[:user])
+		@user = User.new(params[:user])
 		
-		if user.valid?
-			user = User.create_a_customer(user)
+		if @user.valid?
+			@user = User.create_a_customer(@user)
 			session[:user_id] = user.id
 			flash[:notice] = I18n.t 'user.registration.succeed'
 			if request.request_uri == registration_url
@@ -53,7 +53,6 @@ class UserController < ApplicationController
 				redirect_to order_address_path
 			end
 		end
-		@user = User.new(:username => params[:user][:username])
 	end
 	
 	def password_remember
