@@ -60,8 +60,7 @@ class ApplicationController < ActionController::Base
 	def authorize_as_customer
 			customer = Customer.find_by_user_id(session[:user_id])
 			unless customer
-				flash[:error] = "Nincs jogod ezt a funkciót elérni!"
-				redirect_to login_path
+				redirect_to login_or_registration_path
 			else
 				@customer = customer
 			end
