@@ -22,6 +22,19 @@ class ApplicationController < ActionController::Base
 		@categories = Category.roots
 	end
 	
+	# Beállítja az aktuális categóriát a kategória menüben
+	def set_current_category(category)
+		if category.is_root?
+			@categories.delete(category)
+			elements = {:root => category, :ancestors => category.ancestors}
+		else
+			@categories.delete(category.root)
+			ancestors = category.ancestors
+			elements = {:root => ancestors.pop, :ancestors => ancestors }
+		end
+		elements.merge!({:current => category, :children => category.children})
+	end
+	
 	def find_cart
 		@cart = session[:cart]
 	end
