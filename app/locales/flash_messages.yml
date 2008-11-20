@@ -1,8 +1,0 @@
-hu-HU:
-  cart:
-    emptied: "A kosarad most már üres."
-    item:
-      destroyed: "A termék kikerült a kosaradból."
-  user:
-    registration:
-      succeed: "Sikeresen regisztráltál."
