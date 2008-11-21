@@ -1,6 +1,7 @@
 hu-HU:
   activerecord:
     models:
+      order_type: "Fizetési és rendelési mód"
       category: "Kategória"
     attributes:
       user:
@@ -15,3 +16,4 @@ hu-HU:
         tel: "Telefonszám"
       category:
         name: "Elnevezés"
+        

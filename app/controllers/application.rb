@@ -47,6 +47,18 @@ class ApplicationController < ActionController::Base
 		session[:cart] = nil
 	end
 	
+	MAX_SESSION_TIME = 20.minutes
+	
+	def check_session_expiry_time
+		if session[:expiry_time] or session[:expiry_time] < Time.now()
+			session[:user_id] = nil
+			return
+		end
+		session[:expiry_time] = MAX_SESSION_TIME.from_now()
+	end
+	
+	before_filter :check_session_expiry_time, :only => [:authorize_as_admin, :authorize_as_customer]
+
 	def authorize_as_admin
 		@user = User.find_by_id(session[:user_id])
 		unless @user
@@ -54,6 +66,7 @@ class ApplicationController < ActionController::Base
 			flash[:original_uri] = request.request_uri
 			redirect_to admin_login_path
 		end
+		
 	end
 	
 	# Logged in user has to be a +Customer+
