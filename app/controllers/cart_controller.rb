@@ -1,6 +1,6 @@
 class CartController < ApplicationController
 	before_filter :find_cart, :except => [:empty]
-	skip_filter :show_cart
+	skip_before_filter :show_cart
 	
 	def index
 	end

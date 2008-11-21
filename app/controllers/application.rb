@@ -47,12 +47,12 @@ class ApplicationController < ActionController::Base
 		session[:cart] = nil
 	end
 	
-	def authorize
-		
+	def authorize_as_admin
 		@user = User.find_by_id(session[:user_id])
 		unless @user
 			flash[:error] = "Nincs jogod ezt a funkciót elérni!"
-			redirect_to login_path
+			flash[:original_uri] = request.request_uri
+			redirect_to admin_login_path
 		end
 	end
 	

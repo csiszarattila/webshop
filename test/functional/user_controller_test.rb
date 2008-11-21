@@ -31,4 +31,12 @@ class UserControllerTest < ActionController::TestCase
 		assert_nil session[:user_id]
 		assert_redirected_to :root
 	end
+	
+	test "admin login" do
+		post :admin_login, {:user => {:username => users(:me).username, :password => "attila"}}
+		
+		assert_not_nil session[:user_id]
+		assert_equal users(:me).id, session[:user_id]
+		assert_redirected_to admin_root_path
+	end
 end

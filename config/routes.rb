@@ -33,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :categories
 	map.resources :products
 	
+	map.admin_root '/admin/', :controller => 'admin', :action => 'index'
 	map.namespace :admin do |admin|
 		admin.resources	:orders
 		admin.resources :categories, :has_many => [ :category_attributes ]
@@ -55,6 +56,7 @@ ActionController::Routing::Routes.draw do |map|
 		user.logout	'user/logout/', :action => 'logout'
 		user.user_show 'user/show', :action => 'show'
 		user.user_edit 'user/edit', :action => 'edit'
+		user.admin_login 'admin/login', :action => 'admin_login'
 	end
 	
 	map.with_options :controller => "order" do |order|

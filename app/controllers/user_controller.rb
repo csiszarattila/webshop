@@ -20,7 +20,8 @@ class UserController < ApplicationController
 	# Ha igen beállítja az felhasználó azonosítóját session-be - session[:user_id] és
 	# visszairányít az eredeti url-re, ha session[:original_uri] létezik, máskülönben
 	# a rendelés második részére.
-  def login	
+  def login
+		@user = User.new()	
 		if params[:user]
 			user = User.authenticate(params[:user][:username],params[:user][:password])
 			if user
@@ -28,15 +29,42 @@ class UserController < ApplicationController
 				original_uri = flash[:original_uri]
 				redirect_to (original_uri || root_path)
 			else
-				@user = User.new()
 				@user.errors.add(:username,'')
 				@user.errors.add(:password,'')
 			end
-		else
-			@user = User.new()
 		end
   end
 
+	def admin_login
+		@user = User.new()
+		if params[:user]
+			user = User.authenticate(params[:user][:username],params[:user][:password])
+			if user
+				session[:user_id] = user.id
+				original_uri = flash[:original_uri]
+				redirect_to (original_uri || admin_root_path) and return
+			else
+				@user.errors.add(:username,'')
+				@user.errors.add(:password,'')
+			end
+		end
+		render :layout => 'admin'
+	end
+	
+	def login_a_user
+		@user = User.new()
+		if params[:user]
+			user = User.authenticate(params[:user][:username],params[:user][:password])
+			if user
+				session[:user_id] = user.id
+				original_uri = flash[:original_uri]
+				redirect_to (original_uri || admin_root_path) and return
+			else
+				@user.errors.add(:username,'')
+				@user.errors.add(:password,'')
+			end
+		end
+	end
 	# Create a new customer user in the database 
 	# 
 	# Létrehoz egy új +User+ és +Customer+ modellt a megadott regisztrációs adatokkal
