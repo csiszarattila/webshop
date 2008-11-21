@@ -1,5 +1,5 @@
 %h2 Termék szerkesztése
-- form_for @product, :url => admin_product_path(@product), :html =>{ :id=> "product" } do |f|
+- form_for @product, :url => admin_product_path(@product), :html =>{ :id=> "product", :multipart => "true" } do |f|
   #left-column
     %fieldset
       %legend Általános jellemzők
@@ -26,7 +26,7 @@
               = attribute.name
               = attribute_form.text_field :value
               = attribute_form.hidden_field :category_attribute_id
-    %fieldset#new-picture 
+    %fieldset#new-picture
       %legend Új kép csatolása
       =f.file_field :image_file
   #right-column

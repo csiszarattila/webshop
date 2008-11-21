@@ -1,5 +1,5 @@
 %tr{ :class => cycle('tarka','barka') }
-  %td= order.created_at
+  %td= order.created_at.to_s(:long)
   %td 
     -for item in order.items
       %p= "#{item.quantity} x #{item.product.name}"

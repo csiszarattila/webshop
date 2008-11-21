@@ -145,10 +145,10 @@ hu-HU:
   time:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z" 
-      short: "%d %b %H:%M" 
-      long: "%B %d, %Y %H:%M" 
-    am: "am" 
-    pm: "pm" 
+      short: "%d %b %H:%M"
+      long: "%Y. %B %d. %H:%M"
+    am: "de" 
+    pm: "du" 
 
 # Used in array.to_sentence.
   support:

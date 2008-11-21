@@ -70,6 +70,7 @@ form label{
  border-top:1px solid #bbb;
  background:#fff;
  overflow:hidden;
+ min-width:900px;
 }
 
 form.sort{
@@ -163,6 +164,7 @@ form#product #left-column{
 
 #product #right-column{
  float:left;
+ width:500px;
 }
 
 #product #pictures .picture{
