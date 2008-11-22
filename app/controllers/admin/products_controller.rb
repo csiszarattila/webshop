@@ -1,6 +1,7 @@
 class Admin::ProductsController < AdminController
 	
 	before_filter :find_root_categories, :only => [:index, :new, :edit, :update, :create]
+	before_filter :find_all_tags, :except => [:index,:destroy]
  
 	# GET /admin/products
   # GET /admin/products.xml
@@ -45,7 +46,10 @@ class Admin::ProductsController < AdminController
         format.html { redirect_to admin_products_path }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
-        format.html { render :action => "new" }
+        format.html do
+					@tags += @product.tags # add newly builded tags to checkbox
+					render :action => "new"
+				end
         format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
       end
     end
@@ -82,5 +86,9 @@ class Admin::ProductsController < AdminController
 	private
 	def find_root_categories
 		@root_categories = Category.roots()
+	end
+	
+	def find_all_tags
+		@tags = Tag.all()
 	end
 end

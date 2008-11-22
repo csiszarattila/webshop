@@ -1,5 +1,5 @@
 %h2 Termék szerkesztése
-- form_for @product, :url => admin_products_path(), :html =>{ :id=> "product" } do |f|
+- form_for @product, :url => admin_products_path(), :html =>{ :id=> "product", :multipart => "true" } do |f|
   = render :partial => 'admin/products/form', :locals => {:f => f}
   #submit
     =f.submit "Mentés"

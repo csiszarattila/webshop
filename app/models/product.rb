@@ -31,18 +31,31 @@ class Product < ActiveRecord::Base
 	end
 	
 	def image_file=(uploaded_data)
-		return unless uploaded_data
+		return if uploaded_data == ''
 		file_extension = uploaded_data.original_filename.split(".").last
-		file_upload_name = "product_#{self.id}_image_#{self.images.size.next}.#{file_extension}"
+		file_upload_name = "product_image_#{self.images.count.next}.#{file_extension}"
 		
-		images.create do |i|
+		images.build do |i|
 			i.image_url = file_upload_name
-			i.description = file_upload_name
-			i.data = uploaded_data # ProductImage will handle upload
+			i.description = ""
+			i.data = uploaded_data # ProductImage will be handle the upload
 		end
 	end
 	
 	def self.search(name)
 		self.name_is_like(name)
+	end
+	
+	def new_tags_from_checkbox=(tags)
+		tags.each do |tag_name|
+			self.tags.build(:name => tag_name)
+		end
+	end
+	
+	def new_tags_from_string=(tags_string)
+		return if tags_string == ""
+		tags_string.split(", ").each do |tag_name|
+			self.tags.build(:name => tag_name)
+		end
 	end
 end
