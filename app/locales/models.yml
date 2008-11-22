@@ -3,6 +3,7 @@ hu-HU:
     models:
       order_type: "Fizetési és rendelési mód"
       category: "Kategória"
+      product: "termék"
     attributes:
       user:
         username: "Felhasználónév"
@@ -16,4 +17,9 @@ hu-HU:
         tel: "Telefonszám"
       category:
         name: "Elnevezés"
+      product:
+        name: "Elnevezés"
+        image_file: "Termékkép"
+        description: "Leírás"
+        price: "Ár"
         

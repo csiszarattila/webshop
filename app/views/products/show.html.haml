@@ -27,12 +27,12 @@
       %h3 További képek a termékről
       -for image in @product.images
         =image_for_product(image)
-    -unless @product.labels.empty?
+    -unless @product.tags.empty?
       .tags
         %h3 Keresés a hasonló címkéjű termékek között
-        -for label in @product.labels
+        -for tag in @product.tags
           %span
-            =link_to label.name
+            =link_to tag.name
 
 #related-products
   %h2 Kapcsolódó termékek

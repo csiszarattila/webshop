@@ -2,7 +2,11 @@ module ProductsHelper
 	IMAGE_OPTIONS = {:size => '150x150', :alt => ""}
 	
 	def sample_image_for_product(product,args=nil)
-		image_for_product(product.images.first, args)
+		if product.images.size.zero?
+			image_for_product(product.images.default, args)
+		else
+			image_for_product(product.images.first, args)
+		end
 	end
 	
 	def image_for_product(image, args=nil)

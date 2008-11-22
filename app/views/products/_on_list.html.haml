@@ -1,7 +1,7 @@
 %tbody.product
   %tr.details
     %td
-      = sample_image_for_product(product) unless product.images.empty?
+      = sample_image_for_product(product)
       %h3.title= product.name
       .description= product.description
     %td.price= price_for_product(product)

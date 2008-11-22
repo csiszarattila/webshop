@@ -1,6 +1,6 @@
 .product
   %h3= product.name
-  = sample_image_for_product(product) unless product.images.empty?
+  = sample_image_for_product(product)
   .details
     %p.price
       = price_for_product(product)

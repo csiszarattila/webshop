@@ -124,6 +124,8 @@ hu-HU:
           attributes:
             username:
               invalid: "nem tartalmazhat ékezetes karaktert sem szüntet"
+        product:
+          one_image_required: "Egy képet mindenképp meg kell adnod."
   date:
     formats:
       # Use the strftime parameters for formats.
