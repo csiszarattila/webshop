@@ -6,6 +6,12 @@ me:
   hashed_password: <%= User.encrypt_password("attila",SALT) %>
   salt: <%= SALT %>
   group: admin
+  
+admin:
+  username: admin
+  hashed_password: <%= User.encrypt_password("admin",SALT) %>
+  salt: <%= SALT %>
+  group: admin
 
 peter:
   username: peter
