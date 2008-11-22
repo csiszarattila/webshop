@@ -3,5 +3,4 @@
     = options_for_select([["Név szerint","name"],["Ár szerint","price"]], params[:sort_by])
   %input#submit{:type=> "submit", :value=>"Rendezd"}
 
-%table.products
-  = render :partial => 'products/on_list', :collection => @products, :as => :product
+= render :partial => 'products/table_list', :object => @products

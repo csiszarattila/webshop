@@ -19,10 +19,11 @@
       %p A termék kategóriájához nem adtak meg jellemzőket.
     -else
       - @product.attrs.each do |attribute|
-      - f.form_for :attrs, attribute do |attribute_form|
-        .input
-          = attribute_form :name
-          = attribute_form :value
+        - fields_for 'product_attributes[]' , attribute do |attribute_form|
+          .input
+            = attribute.name
+            = attribute_form.text_field :value
+            = attribute_form.hidden_field :category_attribute_id
   %fieldset#new-picture 
     %legend Új kép csatolása
     %input{:type=>"file",:name=>"new_picture"}
