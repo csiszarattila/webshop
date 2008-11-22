@@ -1,0 +1,6 @@
+%h2 Keresési eredmények
+-if @products.nil? or @products.size.zero?
+  %p A keresésedre nincs találat.
+-else 
+  %p= "A keresésedre #{@products.size} találat van."
+  = render :partial => 'products/table_list', :object => @products

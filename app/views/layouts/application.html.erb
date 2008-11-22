@@ -27,9 +27,10 @@
   <div id="main">
     <div id="search">
       <h2>Keresés</h2>
-      <form action="search.html">
-        <input type="text" />
-        <input type="submit" value="Keresés" />
+        <% form_tag search_path, :method => :get do %>
+          <%= text_field_tag :name %>
+          <%= submit_tag 'Keresés', :name => nil %>
+        <% end %>
       </form>
     </div>
     <div id="leftcolumn">

@@ -21,6 +21,10 @@ class Product < ActiveRecord::Base
 		{ :order => "#{field} ASC" }
 	}
 	
+	named_scope :name_is_like, lambda { |name|
+		{:conditions => ['name LIKE ?', "%#{name}%"] }
+	}
+	
 	# A Termékhez kapcsolódó további termékek pl. hasonló kategóriájúak, címkéjűek stb.
 	def releated(limit=10)
 		Product.in_category(self.category).order_by(:price).limit(limit)
@@ -34,7 +38,11 @@ class Product < ActiveRecord::Base
 		images.create do |i|
 			i.image_url = file_upload_name
 			i.description = file_upload_name
-			i.data = uploaded_data
+			i.data = uploaded_data # ProductImage will handle upload
 		end
+	end
+	
+	def self.search(name)
+		self.name_is_like(name)
 	end
 end
