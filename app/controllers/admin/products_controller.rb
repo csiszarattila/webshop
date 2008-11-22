@@ -1,6 +1,6 @@
 class Admin::ProductsController < AdminController
 	
-	before_filter :find_root_categories, :only => [:index, :new, :edit, :update]
+	before_filter :find_root_categories, :only => [:index, :new, :edit, :update, :create]
  
 	# GET /admin/products
   # GET /admin/products.xml

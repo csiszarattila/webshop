@@ -30,13 +30,11 @@ class Product < ActiveRecord::Base
 		return unless uploaded_data
 		file_extension = uploaded_data.original_filename.split(".").last
 		file_upload_name = "product_#{self.id}_image_#{self.images.size.next}.#{file_extension}"
-		file_upload_path = File.join(RAILS_ROOT,'public',ProductImage::PRODUCT_IMAGES_PATH,file_upload_name)
 		
-		if File.open(file_upload_path,'w') { |file| file.write(uploaded_data.read) }
-			images.create do |i|
-				i.image_url = file_upload_name
-				i.description = file_upload_name
-			end
+		images.create do |i|
+			i.image_url = file_upload_name
+			i.description = file_upload_name
+			i.data = uploaded_data
 		end
 	end
 end
