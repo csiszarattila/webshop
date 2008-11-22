@@ -39,3 +39,8 @@ rails_book_picture:
   image_url: book_rails.jpg
   product: rails_book
   description: Sample image
+  
+arctic_monkeys_picture:
+  image_url: arctic_monkeys_cd.jpg
+  product: arctic_monkeys_cd
+  description: Sample image

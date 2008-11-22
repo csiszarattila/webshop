@@ -29,6 +29,10 @@
     %fieldset#new-picture
       %legend Új kép csatolása
       =f.file_field :image_file
+    %fieldset#tags
+      %legend Címkék
+        %p Új címkék hozzáadása, vesszővel válaszd el őket
+        = f.text_field :new_tags
   #right-column
     %fieldset#pictures
       %legend Kapcsolódó képek

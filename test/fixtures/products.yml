@@ -47,3 +47,9 @@ rails_book:
   price: 6555
   description: <%= DESCRIPTON %>
   category: computer_books
+  
+arctic_monkeys_cd:
+  name: Arctic Monkeys - Your Favourite Worst Nightmares
+  price: 4665
+  description: <%= DESCRIPTON %>
+  category: musics

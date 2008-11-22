@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081115201357) do
+ActiveRecord::Schema.define(:version => 20081118085121) do
 
   create_table "addresses", :force => true do |t|
     t.string  "name"
@@ -39,10 +39,6 @@ ActiveRecord::Schema.define(:version => 20081115201357) do
     t.integer  "user_id"
   end
 
-  create_table "labels", :force => true do |t|
-    t.string "name"
-  end
-
   create_table "labels_products", :id => false, :force => true do |t|
     t.integer "label_id"
     t.integer "product_id"
@@ -69,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20081115201357) do
     t.integer  "order_state_id"
     t.integer  "customer_id"
     t.text     "notes"
+    t.text     "admin_notes"
   end
 
   create_table "product_attributes", :id => false, :force => true do |t|
@@ -99,6 +96,10 @@ ActiveRecord::Schema.define(:version => 20081115201357) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "user_groups", :force => true do |t|
     t.string "name"

@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
 	belongs_to :category
 	has_many :attrs, :class_name => "ProductAttribute"
 	has_many :category_attributes, :through => :attrs
-	has_and_belongs_to_many :labels
+	has_and_belongs_to_many :tags
 	has_many :images, :class_name => "ProductImage"
 
 	validates_presence_of 		:name, :price, :category_id
