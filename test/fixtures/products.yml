@@ -45,6 +45,7 @@ why_book:
     As a result, many bits of the book have become inside jokes in the Ruby community such as references to the words chunky bacon. 
     The book includes many characters which have become popular too, particularly the cartoon foxes and Trady Blix, a large black cat who is a friend of _why and guides the foxes through the weird world in which they find themselves (and occasionally teaches them some Ruby).  
   category: computer_books
+  tags: ruby, rails, why, humor, programming
   
 rails_book:
   name: Agile Web Development with Rails(angol)
