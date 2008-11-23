@@ -5,6 +5,6 @@ class Tag < ActiveRecord::Base
 	validates_uniqueness_of :name
 	
 	def count
-		self.products.size
+		products.size
 	end
 end

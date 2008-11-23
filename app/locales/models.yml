@@ -5,6 +5,8 @@ hu-HU:
       category: "Kategória"
       product: "termék"
     attributes:
+      common_attributes: &commons
+        name: "Elnevezés"
       user:
         username: "Felhasználónév"
         password: "Jelszó"
@@ -18,7 +20,7 @@ hu-HU:
       category:
         name: "Elnevezés"
       product:
-        name: "Elnevezés"
+        <<: *commons
         image_file: "Termékkép"
         description: "Leírás"
         price: "Ár"

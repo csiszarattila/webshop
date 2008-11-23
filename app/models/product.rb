@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
 	# Minimun ar >= 1 Ft es egesz szam
 	# Minumun price must be >= 1 Ft and must be integer
 	validates_numericality_of :price, :only_integer => true, :greater_than_or_equal_to => 1
-	
+		
 	named_scope :popular, :conditions => {}
 	named_scope :sale, :conditions => {}
 	named_scope :limit, :limit => 3
