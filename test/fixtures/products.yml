@@ -39,7 +39,11 @@ vs_display:
 why_book:
   name: Why's (poignant) guide to ruby(angol)
   price: 2566
-  description: <%= DESCRIPTON %>
+  description: |
+    Why's (poignant) Guide to Ruby, sometimes called W(p)GtR or just "the poignant guide", is an introductory book to the Ruby programming language, written by why the lucky stiff.
+    The book is distributed under Creative Commons Attribution-ShareAlike license. The book is unusual among programming books that it includes quite a lot of strange humor and narrative side tracks that don't necessarily have anything to do with the topic. 
+    As a result, many bits of the book have become inside jokes in the Ruby community such as references to the words chunky bacon. 
+    The book includes many characters which have become popular too, particularly the cartoon foxes and Trady Blix, a large black cat who is a friend of _why and guides the foxes through the weird world in which they find themselves (and occasionally teaches them some Ruby).  
   category: computer_books
   
 rails_book:
