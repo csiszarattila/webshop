@@ -1,6 +1,7 @@
 class RenameLabelsToTags < ActiveRecord::Migration
   def self.up
 		drop_table :labels_products
+		rename_table :labels, :tags
 		create_table :products_tags, :id => false do |t|
 			t.references :tag, :product
 		end
