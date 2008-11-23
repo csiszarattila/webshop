@@ -33,7 +33,7 @@ class Address < ActiveRecord::Base
 	
 	def validate
 		unless ZipcodeMatch::match?(self.city, self.zipcode)
-				errors.add_to_base I18n.translate('activerecord.errors.models.address.zip_and_city_not_match')
+				errors.add_to_base :zip_and_city_not_match
 		end
 	end
 
