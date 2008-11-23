@@ -1,0 +1,6 @@
+%h2= "A(z) #{@tag.name} címke termékei"
+= render :partial => 'products/table_list', :object => @products
+= link_to 'Vissza', back_link()
+
+%h2 Vagy válassz az összes címke közül
+= render :partial => 'tags/tag_cloud', :locals => {:tags => Tag.all}

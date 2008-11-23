@@ -21,7 +21,6 @@
             %td= attribute.value
             - if (index % 2).zero?
               </tr>
-          
       
     .images
       %h3 További képek a termékről
@@ -30,9 +29,7 @@
     -unless @product.tags.empty?
       .tags
         %h3 Keresés a hasonló címkéjű termékek között
-        -for tag in @product.tags
-          %span
-            =link_to tag.name
+        = render :partial => 'tags/tag_cloud', :locals => {:tags => Tag.all}
 
 #related-products
   %h2 Kapcsolódó termékek

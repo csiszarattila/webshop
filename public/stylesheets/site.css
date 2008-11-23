@@ -263,26 +263,20 @@ table.products .product .details td{
  color:#c00;
 }
 
-.product .commands,
-#product-details .commands,
-.tags span,
+#middlecolumn a,
 #cart a,
 .cart-commands{
  font-weight:bold;
  font-size: 1.2em;
 }
 
-.tags span a,
-.product .commands a,
-#product-details .commands a,
+#middlecolumn a,
 #cart a,
 .cart-commands a{
  padding:0em .2em;
 }
 
-.tags span a:hover,
-.product .commands a:hover,
-#product-details .commands a:hover,
+#middlecolumn a:hover,
 #cart a:hover,
 .cart-commands a:hover{
  background:#0c0;
@@ -500,3 +494,10 @@ form#order-address legend.as-label{
  font-size:1.2em;
  font-weight:bold;
 }
+
+div#tag-cloud{
+	font-size:1.6em;
+}
+
+#tag-cloud .few{ font-size: 0.8em; }
+#tag-cloud .lot{ font-size: 1.2em; }

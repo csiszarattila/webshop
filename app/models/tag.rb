@@ -3,4 +3,8 @@ class Tag < ActiveRecord::Base
 	
 	validates_presence_of :name
 	validates_uniqueness_of :name
+	
+	def count
+		self.products.size
+	end
 end

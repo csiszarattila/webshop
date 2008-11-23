@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.resources :categories
 	map.resources :products
+	map.resources :tags, :only => [:index, :show] 
 	
 	map.admin_root '/admin/', :controller => 'admin', :action => 'index'
 	map.namespace :admin do |admin|
