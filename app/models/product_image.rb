@@ -1,7 +1,7 @@
 class ProductImage < ActiveRecord::Base
 	belongs_to :product
 	
-	validates_presence_of :description, :image_url
+	validates_presence_of :image_url
 	
 	# A termék képek elérése a gyökértől
 	PRODUCT_IMAGES_PATH = '/images/products'
