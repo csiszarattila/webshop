@@ -2,3 +2,4 @@ log/*.log
 tmp/**/*
 public/images/products
 config/*.online
+vendor/rails*
