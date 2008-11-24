@@ -31,11 +31,12 @@
   %fieldset#tags
     %legend Címkék
     -@tags.each do |tag|
-      -unless tag.new_record?
-        =check_box_tag('product[tag_ids][]', tag.id, @product.tag_ids.include?(tag.id))
-        =tag.name
-      -else
-        =check_box_tag('product[new_tags_from_checkbox][]', tag.name, @product.tag_ids.include?(tag.id))
-        =tag.name
+      %div
+        -unless tag.new_record?
+          =check_box_tag('product[tag_ids][]', tag.id, @product.tag_ids.include?(tag.id))
+          =tag.name
+        -else
+          =check_box_tag('product[new_tags_from_checkbox][]', tag.name, @product.tag_ids.include?(tag.id))
+          =tag.name
     %p Új címkék hozzáadása, vesszővel válaszd el őket.
     = text_field_tag 'product[new_tags_from_string]', nil, :size => 60
