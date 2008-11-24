@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
 	belongs_to :customer
 	has_many :items, :class_name => "OrderItem"
 	
-	validates_presence_of :order_type
+	validates_presence_of :order_type 
 	
 	def add_items_from_cart(cart)
 		cart.items.each do |item|

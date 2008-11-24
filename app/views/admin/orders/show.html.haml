@@ -39,8 +39,8 @@
     =submit_tag 'Mentés'
     
 .navigation
-  %a.first{:href=>""} Első
-  %a{:href=>""} 1
-  %a{:href=>""} 2
-  %span.current 3
-  %a.last{:href=>""} Utolsó
+  - @orders.each_with_index do |order,index|
+    -if order.id == @order.id
+      %span.current= index+1
+    -else
+      =link_to index+1, admin_order_path(order)

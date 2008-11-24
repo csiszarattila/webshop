@@ -3,4 +3,5 @@ tmp/**/*
 public/images/products
 config/*.online
 vendor/rails*
+vendor/gems*
 doc/api

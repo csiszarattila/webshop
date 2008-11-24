@@ -5,3 +5,19 @@ peters_order:
   customer: peter
   notes: "Este 6h után vagyok elérhető"
   order_state: new_order
+  
+attilas_order:
+  order_type: no_delivery_with_cash
+  customer: attila_customer
+  notes: "Napokon belül kellene"
+  order_state: delivered_order
+  
+peters_another_order:
+  order_type: delivery_with_bank_payment
+  customer: peter
+  notes: |
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  order_state: new_order

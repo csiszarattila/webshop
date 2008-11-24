@@ -129,6 +129,14 @@ ul#categories li a{
  font-size: 0.7em;
 }
 
+.orders .quantity{
+  text-align:left;
+}
+
+.orders .price{
+  text-align:right;
+}
+
 .order{
  padding:0.5em 1em;
  border: 1px solid #bbb;

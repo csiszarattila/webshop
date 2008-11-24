@@ -14,7 +14,7 @@ peters_address:
   city: Szeged
   zipcode: 6700
   street: Siha köz 12.
-  tel: '394801'
+  tel: '396601'
   email: peter@nowhere.com
   addressable: peter (Customer)
 
@@ -26,3 +26,21 @@ address_of_peters_order:
   tel: '394801'
   email: peter@nowhere.com
   addressable: peters_order (Order)
+
+address_of_peters_another_order:
+  name: Csiszár Péter
+  city: Törökszentmiklós
+  zipcode: 5200
+  street: Batthyány út 99.
+  tel: '396601'
+  email: peter@nowhere.com
+  addressable: peters_another_order (Order)
+
+address_of_peters_another_order:
+  name: Csiszár Attila
+  city: Törökszentmiklós
+  zipcode: 5200
+  street: Batthyány út 99.
+  tel: '06203451111'
+  email: csiszar.ati@gmail.com
+  addressable: attilas_order (Order)

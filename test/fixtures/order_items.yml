@@ -17,4 +17,27 @@ peters_order_three:
   quantity: 1
   total_price: 6555
   order: peters_order
+
+peters_another_order_one:
+  product: rails_book
+  quantity: 1
+  total_price: 1245 
+  order: peters_another_order
+
+peters_another_order_two:
+  product: why_book
+  quantity: 2
+  total_price: 3456
+  order: peters_another_order
+
+peters_another_order_three:
+  product: arctic_monkeys_cd
+  quantity: 1
+  total_price: 6555
+  order: peters_another_order
   
+attilas_order_one:
+  product: keane_cd
+  quantity: 2
+  total_price: 4566 
+  order: attilas_order
