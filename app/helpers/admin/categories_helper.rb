@@ -8,20 +8,26 @@ module Admin::CategoriesHelper
 			text << "<option values='0'>Főkategória</option>"
 		end
 		root_categories.each do |root_category|
-			text << category_options(root_category, selected_category, level=0)
+			text << category_options(root_category, selected_category, level=0, true)
 		end
 		text
 	end
 	
-	def category_options(category, selected_category, level)
+	def category_options(category, selected_category, level, select_parent=false)
 		text =	"<option value='#{category.id}'"
-		text << " selected='selected'" if selected_category and selected_category.parent and category.id == selected_category.parent.id
+		if selected_category
+			if select_parent and selected_category.parent and category.id == selected_category.parent.id
+				text << " selected='selected'"
+			elsif not select_parent and selected_category.id == category.id
+				text << " selected='selected'"
+			end
+		end
 		text << ">"
 		text << "-"*level + category.name
 		text << "</option>"
 		level+=1 if category.children
 		category.children.map do |child_category|
-			text << category_options(child_category, selected_category, level)
+			text << category_options(child_category, selected_category, level, select_parent)
 		end
 		text
   end

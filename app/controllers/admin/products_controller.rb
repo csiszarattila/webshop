@@ -34,7 +34,7 @@ class Admin::ProductsController < AdminController
   def edit
     @product = Product.find(params[:id])
 		ids = @product.attrs.collect(&:category_attribute_id)
-		@new_attrs = @product.category.attrs.delete_if do |category_attribute|
+		@new_attrs = (@product.category.attrs + @product.category.ancestors_category_attributes).delete_if do |category_attribute|
 				ids.include?(category_attribute.id)
 		end
   end

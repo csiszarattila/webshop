@@ -1,6 +1,6 @@
 %fieldset
   %legend Termék jellemzők
-  -if @product.category.attributes.nil?
+  -if @product.attrs.empty? and @new_attrs.empty?
     %p A termék kategóriájához nem adtak meg jellemzőket.
   -else
     - @product.attrs.each do |attribute|

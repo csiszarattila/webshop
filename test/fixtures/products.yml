@@ -4,7 +4,7 @@ sony_tv:
   name: Sony Bravo 60" LCD-TV
   price: 129990
   description: <%= DESCRIPTON %>
-  category: electronics
+  category: tvs
 
 bob_dvd:
   name: Band Of Brothers DVD
@@ -34,7 +34,7 @@ vs_display:
   name: Viewsonic 17" VP730
   price: 99,554
   description: <%= DESCRIPTON %>
-  category: electronics
+  category: tvs
 
 why_book:
   name: Why's (poignant) guide to ruby(angol)
