@@ -36,7 +36,7 @@ address_of_peters_another_order:
   email: peter@nowhere.com
   addressable: peters_another_order (Order)
 
-address_of_peters_another_order:
+address_of_attilas_order:
   name: Csiszár Attila
   city: Törökszentmiklós
   zipcode: 5200

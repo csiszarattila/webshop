@@ -3,5 +3,5 @@
   %td.quantity
     -for item in order.items
       %p= "#{item.quantity} x #{item.product.name}"
-  %td.price= order.total_price
+  %td.price= number_to_currency(order.total_price)
   %td= link_to 'Részletesen', admin_order_path(order)

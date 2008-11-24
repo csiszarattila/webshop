@@ -22,10 +22,10 @@
         %tr 
           %td= item.product.name
           %td= item.quantity
-          %td= item.total_price
+          %td= number_to_currency(item.total_price)
       %tr.summary 
         %th{:colspan=>"2"} Összesen 
-        %td= @order.total_price
+        %td= number_to_currency(@order.total_price)
       %tr
         %th{:colspan=>"2"} Fizetési és rendelési mód
         %td= @order.order_type.name
