@@ -14,29 +14,7 @@
     .input
       %label{ :for => "description" } Leírás
       =f.text_area :description, :size => "60x20"
-  %fieldset
-    %legend Termék jellemzők
-    -if @product.category_attributes.nil?
-      %p A termék kategóriájához nem adtak meg jellemzőket.
-    -else
-      - @product.attrs.each do |attribute|
-        - fields_for 'product_attributes[]' , attribute do |attribute_form|
-          .input
-            = attribute.name
-            = attribute_form.text_field :value
-            = attribute_form.hidden_field :category_attribute_id
   %fieldset#new-picture
     %legend Termékkép csatolása
     =f.file_field :image_file
-  %fieldset#tags
-    %legend Címkék
-    -@tags.each do |tag|
-      %div
-        -unless tag.new_record?
-          =check_box_tag('product[tag_ids][]', tag.id, @product.tag_ids.include?(tag.id))
-          =tag.name
-        -else
-          =check_box_tag('product[new_tags_from_checkbox][]', tag.name, @product.tag_ids.include?(tag.id))
-          =tag.name
-    %p Új címkék hozzáadása, vesszővel válaszd el őket.
-    = text_field_tag 'product[new_tags_from_string]', nil, :size => 60
+  =render :partial => 'tags', :local => {:product => @product, :tags => @tags}

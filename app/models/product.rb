@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
-	has_many :attrs, :class_name => "ProductAttribute"
+	has_many :attrs, 	:class_name => "ProductAttribute"
 	has_many :category_attributes, :through => :attrs
 	has_and_belongs_to_many :tags
 	has_many :images, :class_name => "ProductImage"
@@ -64,6 +64,19 @@ class Product < ActiveRecord::Base
 		return if tags_string == ""
 		tags_string.split(", ").each do |tag_name|
 			self.tags.build(:name => tag_name)
+		end
+	end
+	
+	def existing_attrs=(product_attributes)
+		attrs.reject(&:new_record?).each do |attribute|
+			attribute.value = product_attributes[attribute.id.to_s][:value]
+			attribute.save(false)
+		end
+	end
+	
+	def new_attrs=(product_attributes)
+		product_attributes.each do |attribute_hash|
+			attrs.build(attribute_hash)
 		end
 	end
 end

@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20081122165549) do
     t.text     "admin_notes"
   end
 
-  create_table "product_attributes", :id => false, :force => true do |t|
+  create_table "product_attributes", :force => true do |t|
     t.integer "product_id"
     t.integer "category_attribute_id"
     t.string  "value"

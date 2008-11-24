@@ -1,6 +1,7 @@
 %h2 Termék szerkesztése
 - form_for @product, :url => admin_product_path(@product), :html =>{ :id=> "product", :multipart => "true" } do |f|
-  = render :partial => 'admin/products/form', :locals => {:f => f}
+  = render :partial => 'form', :locals => {:f => f}
+  = render :partial => 'attributes', :locals => {:f => f}
   #right-column
     %fieldset#pictures
       %legend Kapcsolódó képek

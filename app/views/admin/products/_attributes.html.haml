@@ -1,0 +1,15 @@
+%fieldset
+  %legend Termék jellemzők
+  -if @product.category.attributes.nil?
+    %p A termék kategóriájához nem adtak meg jellemzőket.
+  -else
+    - @product.attrs.each do |attribute|
+      - f.fields_for 'existing_attrs[]', attribute do |form|
+        .input
+          = attribute.name
+          = form.text_field :value
+    - @new_attrs.each do |attribute|
+      .input
+        = attribute.name
+        = hidden_field_tag 'product[new_attrs][][category_attribute_id]', attribute.id
+        = text_field_tag 'product[new_attrs][][value]'

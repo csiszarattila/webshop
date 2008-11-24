@@ -13,7 +13,7 @@ class Admin::OrdersController < AdminController
 
   def show
 		@order = Order.find(params[:id])
-		@orders = Order.find(:all, :conditions => {:order_type_id => @order.order_type})
+		@orders = Order.find(:all, :conditions => {:order_state_id => @order.order_state})
 		@address = @order.address
   end
 

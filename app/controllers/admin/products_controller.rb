@@ -33,13 +33,17 @@ class Admin::ProductsController < AdminController
   # GET /admin/products/1/edit
   def edit
     @product = Product.find(params[:id])
+		ids = @product.attrs.collect(&:category_attribute_id)
+		@new_attrs = @product.category.attrs.delete_if do |category_attribute|
+				ids.include?(category_attribute.id)
+		end
   end
 
   # POST /admin/products
   # POST /admin/products.xml
   def create
     @product = Product.new(params[:product])
-
+			
     respond_to do |format|
       if @product.save
         flash[:notice] = I18n.t 'products.created'
