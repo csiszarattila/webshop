@@ -83,7 +83,19 @@ class UserController < ApplicationController
 		end
 	end
 	
+	# E-mailt küld a generált új jelszóval
+	# Bővebben: User.random_password és ApplicationMailer#password_remember.
+	# Csak vásárlókra, +Customer+ osztályúakra működik, 
+	# mivel csak az ő e-mail címeiket tároljuk
 	def password_remember
+		user = User.find_by_username(params[:username])
+		if user and ( customer = Customer.find_by_user_id(user.id) )
+			user.random_password()
+			email = ApplicationMailer.deliver_password_remember(customer.address.email, customer.address.name, user.password)
+			#flash[:notice] = I18n.t 'user.password.restored'
+			#redirect_to :root
+			render :text => email.encoded
+		end
 	end
 
 	# Unset user's session and redirect

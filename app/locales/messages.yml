@@ -8,6 +8,8 @@ hu-HU:
   user:
     registration:
       succeed: "Sikeresen regisztráltál."
+    password:
+      restored: "Jelszód sikeresen visszaállítottuk, a részletekért tekintsd meg a email postafiókod."
   categories:
     created: "A kategória sikeresen létrejött."
     updated: "A kategória sikeresen frissült."

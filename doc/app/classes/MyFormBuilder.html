@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: MyFormBuilder</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">MyFormBuilder</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/helpers/my_form_builder_rb.html">
+                app/helpers/my_form_builder.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                ActionView::Helpers::FormBuilder
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A Class that generates custom wrappers around an input
+</p>
+<p>
+Calling this:
+</p>
+<p>
+form.text_field :title, :label =&gt; &quot;Cím&quot;
+</p>
+<p>
+Would produce this:
+</p>
+<p>
+&lt;div class=&quot;input&quot;&gt;
+</p>
+<pre>
+      &lt;label for=&quot;post_title&quot;&gt;Cím&lt;/label&gt;
+      &lt;br /&gt;
+      &lt;input id=&quot;post_title&quot; label=&quot;Cím&quot; name=&quot;post[title]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt;
+</pre>
+<p>
+&lt;/div&gt;
+</p>
+<p>
+Using: Just give <a href="MyFormBuilder.html">MyFormBuilder</a> class name
+to :builder parameter in form_for.
+</p>
+<p>
+Example: form_for &#8230; :builder=&gt;<a
+href="MyFormBuilder.html">MyFormBuilder</a> &#8230; do |f|
+</p>
+<p>
+See for original idea: <a
+href="http://onrails.org/articles/2008/06/13/advanced-rails-studio-custom-form-builder">onrails.org/articles/2008/06/13/advanced-rails-studio-custom-form-builder</a>
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000001">custom_error_messages</a>&nbsp;&nbsp;
+      <a href="#M000002">radio_group</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">INPUT_CLASS_NAME</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;input&quot;</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+The wrapper div&#8216;s css class name
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ERROR_CLASS_NAME</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;field-with-error&quot;</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+The wrapper div&#8216;s class name if there is an error occured on the
+form&#8216;s field
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="#M000001" class="method-signature">
+          <span class="method-name">custom_error_messages</span><span class="method-args">(options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/helpers/my_form_builder.rb, line 50</span>
+50:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">custom_error_messages</span>(<span class="ruby-identifier">options</span>={})
+51:                 <span class="ruby-identifier">objects</span> = [<span class="ruby-ivar">@object</span>]
+52:                 <span class="ruby-identifier">objects</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:additional_models</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:additional_models</span>].<span class="ruby-identifier">nil?</span>
+53:                 <span class="ruby-identifier">error_count</span> = <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, <span class="ruby-identifier">object</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">count</span> }
+54:                 
+55:                 <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">error_count</span>.<span class="ruby-identifier">zero?</span>
+56:                   <span class="ruby-identifier">error_messages</span> = <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">sum</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">object</span><span class="ruby-operator">|</span> <span class="ruby-identifier">object</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">full_messages</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">msg</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">content_tag</span>(<span class="ruby-identifier">:p</span>, <span class="ruby-identifier">msg</span>) } }.<span class="ruby-identifier">join</span>
+57: 
+58:                         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:header_message</span>] = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'activerecord.errors.template.header'</span>, <span class="ruby-identifier">:count</span> =<span class="ruby-operator">&gt;</span><span class="ruby-identifier">error_count</span>, <span class="ruby-identifier">:model</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">human_name</span> ) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:header_message</span>)
+59:                   <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:message</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:message</span>)
+60: 
+61:                   <span class="ruby-identifier">contents</span> = <span class="ruby-value str">&quot;&lt;div class='error-messages'&gt;&quot;</span>
+62:             <span class="ruby-identifier">contents</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;h4&gt;#{options[:header_message]}&lt;/h4&gt;&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:header_message</span>].<span class="ruby-identifier">blank?</span>
+63:             <span class="ruby-identifier">contents</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;p&gt;#{options[:message]}&lt;/p&gt;&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:message</span>].<span class="ruby-identifier">blank?</span>
+64:             <span class="ruby-identifier">contents</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">error_messages</span>
+65:                         <span class="ruby-identifier">contents</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;/div&gt;&quot;</span>
+66:                 <span class="ruby-keyword kw">else</span>
+67:                   <span class="ruby-keyword kw">return</span>
+68:                 <span class="ruby-keyword kw">end</span>
+69:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">radio_group</span><span class="method-args">(method,radio_group_options,options = {}) {|option| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Wrap around a radio button group in such a way:
+</p>
+<p>
+&lt;legend class=&quot;as-label&quot;&gt;options[:legend]&lt;/legend&gt;
+&lt;div class=&quot;radio-group&quot;&gt;
+</p>
+<pre>
+     ...&amp;block return value...
+</pre>
+<p>
+&lt;/div&gt;
+</p>
+<p>
+The wrapper div&#8216;s content is the return value of the block
+</p>
+<p>
+The block got the radio_group_options one by one, so you can fetch elements
+and decide which attribute will be for example the label tag or anyhing.
+</p>
+<p>
+And of course it checks the error messages and adds the appropriate css
+classes Use it at forms as:
+</p>
+<h1>f.radio_group :order_type, @order_types, :legend =&gt; &quot;Fizetési és szállítási mód&quot; do |ot|</h1>
+<pre>
+     - radio_button(&quot;order&quot;, &quot;order_type_id&quot;, ot.id) + f.label(:order_type, ot.name)
+</pre>
+<p>
+A blokként átadott radio gombokat körülveszi a megadott módon. Minden
+<tt>radio_group_options</tt> -ra meghivja a kapott blokkot egyesével, a
+blokk paraméterként megkapja a radio_group_options elemeit, a blokk
+visszatérési értékét pedig összeilleszti, és becsomagolja a
+megfelelő formátumba:
+</p>
+<p>
+&lt;legend class=&quot;as-label&quot;&gt;options[:legend]&lt;/legend&gt;
+&lt;div class=&quot;radio-group&quot;&gt;
+</p>
+<pre>
+     ...&amp;block visszatérési értéke...
+</pre>
+<p>
+&lt;/div&gt;
+</p>
+<p>
+Így a formban csak ennyit kell tenni:
+</p>
+<h1>f.radio_group :order_type, @order_types, :legend =&gt; &quot;Fizetési és szállítási mód&quot; do |ot|</h1>
+<pre>
+     - radio_button(&quot;order&quot;, &quot;order_type_id&quot;, ot.id) + f.label(:order_type, ot.name)
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/helpers/my_form_builder.rb, line 105</span>
+105:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">radio_group</span>(<span class="ruby-identifier">method</span>,<span class="ruby-identifier">radio_group_options</span>,<span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+106:                 <span class="ruby-identifier">legend_class</span> = <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;as-label&quot;</span>
+107:                 <span class="ruby-identifier">legend_class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; as-label-with-error&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">invalid?</span>(<span class="ruby-identifier">method</span>)
+108:                 
+109:     <span class="ruby-identifier">wrapper_div_classes</span> = <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;radio-group&quot;</span>
+110:                 <span class="ruby-identifier">wrapper_div_classes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; radio-group-with-error&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">invalid?</span>(<span class="ruby-identifier">method</span>)
+111:                 
+112:                 <span class="ruby-identifier">radio_group_contents</span> = <span class="ruby-value str">&quot;&quot;</span>
+113:                 <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">option</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">radio_group_options</span>
+114:                         <span class="ruby-identifier">radio_group_contents</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">option</span>)
+115:                         <span class="ruby-identifier">radio_group_contents</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&lt;br/&gt;&quot;</span>
+116:                 <span class="ruby-keyword kw">end</span>
+117:                 
+118:                 <span class="ruby-identifier">output</span> = <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">content_tag</span>(<span class="ruby-identifier">:legend</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:legend</span>), <span class="ruby-identifier">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">legend_class</span>)
+119:                 <span class="ruby-identifier">output</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">content_tag</span>(<span class="ruby-identifier">:div</span>,<span class="ruby-identifier">radio_group_contents</span>, <span class="ruby-identifier">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">wrapper_div_classes</span>)
+120:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

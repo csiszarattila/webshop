@@ -22,6 +22,12 @@ class User < ActiveRecord::Base
     self.hashed_password = User.encrypt_password(password,self.salt)
   end
 
+	# Beállít egy új, véletlen [a-zA-Z0-9] karakterekből generált jelszót
+	def random_password(length=6)
+		pattern = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
+		self.password = length.times.collect { pattern[rand(pattern.size)] }.to_s
+	end
+
 	# Matched users and then password against stored ones.
 	# Return user only if it's match and password is correct otherwise return nil.
 	# 

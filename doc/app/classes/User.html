@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: User</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">User</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/models/user_rb.html">
+                app/models/user.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                ActiveRecord::Base
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000024">authenticate</a>&nbsp;&nbsp;
+      <a href="#M000025">create_a_customer</a>&nbsp;&nbsp;
+      <a href="#M000022">password=</a>&nbsp;&nbsp;
+      <a href="#M000023">random_password</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">password</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="#M000024" class="method-signature">
+          <span class="method-name">authenticate</span><span class="method-args">(username, password)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Matched users and then password against stored ones. Return user only if
+it&#8216;s match and password is correct otherwise return nil.
+</p>
+<p>
+Kikeresi a felhasználót majd összehasonlítja a jelszavát az
+adatbázisban lévővel. Egyezés esetén egy <tt><a
+href="User.html">User</a></tt> objektummal tér vissza, máskülönben nil
+értékkel.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 36</span>
+36:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)
+37:     <span class="ruby-identifier">user</span> = <span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">username</span>)
+38:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+39:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">hashed_password</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">encrypt_password</span>(<span class="ruby-identifier">password</span>,<span class="ruby-identifier">user</span>.<span class="ruby-identifier">salt</span>)
+40:         <span class="ruby-identifier">user</span> = <span class="ruby-keyword kw">nil</span>
+41:       <span class="ruby-keyword kw">end</span>
+42:     <span class="ruby-keyword kw">end</span>
+43:     <span class="ruby-identifier">user</span>
+44:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="#M000025" class="method-signature">
+          <span class="method-name">create_a_customer</span><span class="method-args">(user)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000025-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 46</span>
+46:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create_a_customer</span>(<span class="ruby-identifier">user</span>)
+47:                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">group</span> = <span class="ruby-constant">UserGroup</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-value str">&quot;customer&quot;</span>)
+48:                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>()
+49:                 <span class="ruby-constant">Customer</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">:user</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>)
+50:                 <span class="ruby-identifier">user</span>
+51:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="#M000022" class="method-signature">
+          <span class="method-name">password=</span><span class="method-args">(password)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<tt>password</tt> is a virtual attribute for setting passwords easily. Its
+generates and add <tt>salt</tt> and +hashed password+ to model&#8216;s
+object.
+</p>
+<p>
+A <tt>password</tt> egy virtuális attribútum, egyszerű jelszó
+hozzáadáshoz. Legenerálja és hozzá is adja a <tt>salt</tt>-ot és a
+<tt>hashed_password</tt>-öt a modell-objektumhoz.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000022-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 19</span>
+19:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">password=</span>(<span class="ruby-identifier">password</span>)
+20:     <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
+21:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">salt</span> = <span class="ruby-identifier">generate_salt</span>()
+22:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hashed_password</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">encrypt_password</span>(<span class="ruby-identifier">password</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">salt</span>)
+23:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="#M000023" class="method-signature">
+          <span class="method-name">random_password</span><span class="method-args">(length=6)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Beállít egy új, véletlen [a-zA-Z0-9] karakterekből generált jelszót
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 26</span>
+26:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">random_password</span>(<span class="ruby-identifier">length</span>=<span class="ruby-value">6</span>)
+27:                 <span class="ruby-identifier">pattern</span> = (<span class="ruby-value str">'a'</span><span class="ruby-operator">..</span><span class="ruby-value str">'z'</span>).<span class="ruby-identifier">to_a</span> <span class="ruby-operator">+</span> (<span class="ruby-value str">'A'</span><span class="ruby-operator">..</span><span class="ruby-value str">'Z'</span>).<span class="ruby-identifier">to_a</span> <span class="ruby-operator">+</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>).<span class="ruby-identifier">to_a</span>
+28:                 <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">password</span> = <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-identifier">pattern</span>[<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">size</span>)] }.<span class="ruby-identifier">to_s</span>
+29:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
