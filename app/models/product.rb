@@ -68,10 +68,7 @@ class Product < ActiveRecord::Base
 	end
 	
 	def existing_attrs=(product_attributes)
-		attrs.reject(&:new_record?).each do |attribute|
-			attribute.value = product_attributes[attribute.id.to_s][:value]
-			attribute.save(false)
-		end
+		self.attrs.update product_attributes.keys, product_attributes.values
 	end
 	
 	def new_attrs=(product_attributes)
