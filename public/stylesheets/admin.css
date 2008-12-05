@@ -92,6 +92,10 @@ form.sort{
  margin-bottom: 2em;
 }
 
+#content div.info-and-nav{
+  border-bottom:1px solid #bbb;
+}
+
 .list th{
  padding: 0.5em;
  text-align:center;
