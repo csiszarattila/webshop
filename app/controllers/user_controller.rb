@@ -21,13 +21,17 @@ class UserController < ApplicationController
 	# visszairányít az eredeti url-re, ha session[:original_uri] létezik, máskülönben
 	# a rendelés második részére.
   def login
-		@user = User.new()	
+		@user = User.new()
 		if params[:user]
-			user = User.authenticate(params[:user][:username],params[:user][:password])
+			user = User.authenticate(params[:user][:username], params[:user][:password])
 			if user
 				session[:user_id] = user.id
-				original_uri = flash[:original_uri]
-				redirect_to (original_uri || root_path)
+				flash[:notice] = I18n.t 'user.login.succeed'
+				if request.request_uri == login_url or not session[:cart]
+					redirect_to root_path
+				else
+					redirect_to order_address_path
+				end
 			else
 				@user.errors.add(:username,'')
 				@user.errors.add(:password,'')
@@ -38,7 +42,7 @@ class UserController < ApplicationController
 	def admin_login
 		@user = User.new()
 		if params[:user]
-			user = User.authenticate(params[:user][:username],params[:user][:password])
+			user = User.authenticate(params[:user][:username], params[:user][:password])
 			if user
 				session[:user_id] = user.id
 				original_uri = flash[:original_uri]
@@ -48,6 +52,7 @@ class UserController < ApplicationController
 				@user.errors.add(:password,'')
 			end
 		end
+		flash.keep(:original_uri)
 		render :layout => 'admin'
 	end
 	
