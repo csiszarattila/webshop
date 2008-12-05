@@ -73,7 +73,7 @@ form label{
  min-width:900px;
 }
 
-.green, .error{
+.green, .red{
  text-align:center;
  font-weight:bold;
  background:#0c0;
@@ -81,7 +81,7 @@ form label{
  padding:0.2em 1em;
 }
 
-.error{
+.red{
  background:#c00;
 }
 

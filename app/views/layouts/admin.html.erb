@@ -11,8 +11,8 @@
   <ul>
     <li><%= link_to 'Rendelések', admin_orders_path() %></li>
     <li><%= link_to 'Termék kategóriák', admin_categories_path() %></li>
-    <li><%= link_to 'Termékek', admin_products_path() %></a></li>
-    <li>Felhasználók</li>
+    <li><%= link_to 'Termékek', admin_products_path() %></li>
+    <li><%= link_to 'Felhasználók', admin_users_path() %></li>
     <% if @user %>
     <li><%= link_to 'Kilépés', logout_path %></li>
     <% end %>
@@ -23,7 +23,7 @@
     <div class="green"><%= flash[:notice]  %></div>
   <% end %>
   <% if flash[:error] %>
-    <div class="error"><%= flash[:error] %></div>
+    <div class="red"><%= flash[:error] %></div>
   <% end %>
 
   <%= yield %>
