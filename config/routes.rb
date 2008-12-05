@@ -39,6 +39,7 @@ ActionController::Routing::Routes.draw do |map|
 		admin.resources	:orders
 		admin.resources :categories, :has_many => [ :category_attributes ]
 		admin.resources :products, :has_many => [ :product_images ]
+		admin.resources :users
 	end
 	
 	map.with_options :controller => "cart" do |cart|
