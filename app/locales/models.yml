@@ -4,6 +4,7 @@ hu-HU:
       order_type: "Fizetési és rendelési mód"
       category: "Kategória"
       product: "termék"
+      user: felhasználó
     attributes:
       common_attributes: &commons
         name: "Elnevezés"
@@ -18,7 +19,7 @@ hu-HU:
         email: "E-mail"
         tel: "Telefonszám"
       category:
-        name: "Elnevezés"
+        <<: *commons
       product:
         <<: *commons
         image_file: "Termékkép"

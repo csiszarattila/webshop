@@ -6,6 +6,9 @@ hu-HU:
     item:
       destroyed: "A termék kikerült a kosaradból."
   user:
+    created: "A felhasználó sikeresen létrehozva."
+    updated: "A felhasználó adatai frissültek."
+    destroyed: "A felhasználó törlődött."
     login:
       succeed: "Sikeresen beléptél."
     registration:
