@@ -1,5 +1,6 @@
-class Admin::UserController < ApplicationController
+class Admin::UserController < AdminController
   def index
+		@users = User.admins
   end
 
   def edit
