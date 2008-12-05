@@ -1,0 +1,6 @@
+%tr{ :class=> cycle("tarka", "barka") }
+  %td
+    %h3= user.username
+  %td
+    =link_to 'Szerkeszt', edit_admin_user_path(user)
+    =link_to 'Törlés', admin_user_path(user), :method => :delete, :confirm => I18n.t('application.delete-confirm')

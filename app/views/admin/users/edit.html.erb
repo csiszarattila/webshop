@@ -1,2 +1,9 @@
-<h1>Admin::User#edit</h1>
-<p>Find me in app/views/admin/user/edit.html.erb</p>
+%h2= "#{@user.username} profiljának módosítása"
+%p.red Ha nem a saját profilod változtatod meg mindenképp értesítsd a felhasználót!
+
+- form_for @user, :url => admin_user_path(@user) do |f|
+
+  = render :partial => "form", :locals => { :f => f, :password_label => 'Új jelszó', :password_confirmation_label => 'Új jelszó megerősítése' }
+  
+  %br
+  = f.submit 'Módosítsd'
