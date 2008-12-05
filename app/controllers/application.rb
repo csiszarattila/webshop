@@ -60,8 +60,8 @@ class ApplicationController < ActionController::Base
 	before_filter :check_session_expiry_time, :only => [:authorize_as_admin, :authorize_as_customer]
 
 	def authorize_as_admin
-		@user = User.find_by_id(session[:user_id])
-		unless @user
+		@admin = User.find_by_id(session[:user_id])
+		unless @admin
 			flash[:error] = "Nincs jogod ezt a funkciót elérni!"
 			flash[:original_uri] = request.request_uri
 			redirect_to admin_login_path

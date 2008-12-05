@@ -13,7 +13,7 @@
     <li><%= link_to 'Termék kategóriák', admin_categories_path() %></li>
     <li><%= link_to 'Termékek', admin_products_path() %></li>
     <li><%= link_to 'Felhasználók', admin_users_path() %></li>
-    <% if @user %>
+    <% if @admin %>
     <li><%= link_to 'Kilépés', logout_path %></li>
     <% end %>
   </ul>
