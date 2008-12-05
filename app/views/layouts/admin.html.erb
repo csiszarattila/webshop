@@ -19,5 +19,12 @@
   </ul>
 </div>
 <div id="content">
+  <% if flash[:notice] %>
+    <div class="green"><%= flash[:notice]  %></div>
+  <% end %>
+  <% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% end %>
+
   <%= yield %>
 </div>

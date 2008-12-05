@@ -73,6 +73,7 @@ class Admin::CategoriesController < AdminController
     @category = Category.find(params[:id])
     @category.destroy
 
+		flash[:notice] = I18n.t 'categories.destroyed'
     respond_to do |format|
       format.html { redirect_to(admin_categories_path) }
       format.xml  { head :ok }

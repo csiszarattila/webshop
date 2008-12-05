@@ -6,10 +6,17 @@ hu-HU:
     item:
       destroyed: "A termék kikerült a kosaradból."
   user:
+    login:
+      succeed: "Sikeresen beléptél."
     registration:
       succeed: "Sikeresen regisztráltál."
     password:
       restored: "Jelszód sikeresen visszaállítottuk, a részletekért tekintsd meg a email postafiókod."
   categories:
     created: "A kategória sikeresen létrejött."
-    updated: "A kategória sikeresen frissült."
+    updated: "A kategória adatai frissültek."
+    destroyed: "A kategória törlődött."
+  products:
+    created: "A termék felkerült a listára."
+    updated: "A termék adatai frissültek."
+    destroyed: "A termék kikerült a rendszerből."

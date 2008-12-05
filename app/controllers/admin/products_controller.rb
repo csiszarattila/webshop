@@ -65,7 +65,7 @@ class Admin::ProductsController < AdminController
     @product = Product.find(params[:id])
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        flash[:notice] = I18n.t 'product.updated'
+        flash[:notice] = I18n.t 'products.updated'
         format.html { redirect_to edit_admin_product_path(@product) }
         format.xml  { head :ok }
       else
@@ -80,7 +80,7 @@ class Admin::ProductsController < AdminController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-
+		flash[:notice] = I18n.t 'products.destroyed'
     respond_to do |format|
       format.html { redirect_to(admin_products_path) }
       format.xml  { head :ok }
