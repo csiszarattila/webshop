@@ -1,6 +1,6 @@
 require 'test_helper'
-
 require 'test/mocks/zipcode_match.rb'
+
 class AddressTest < ActiveSupport::TestCase
 	def setup		
 		@valid_telephone_numbers = [
@@ -8,7 +8,7 @@ class AddressTest < ActiveSupport::TestCase
 			"06-30-622-3456", 
 			"06 30 622 3456", 
 			"06/30 622 3456",
-			"6223456"]
+			"30/6223456"]
 			
 		@expected_number = "06306223456" #how we store in db
 		@read_tel_as = ""#how we get back in formatted way
@@ -100,7 +100,6 @@ class AddressTest < ActiveSupport::TestCase
 		address = addresses(:my_address)
 		@valid_telephone_numbers.each do |tel|
 			address.tel = tel
-			assert_equal @expected_number, address.strip_everything_but_digits(tel)
 			address.valid? # after valid? we have to get back just plain numbers
 			assert_equal @expected_number, address.tel
 		end
@@ -111,7 +110,7 @@ class AddressTest < ActiveSupport::TestCase
 		@valid_telephone_numbers.each do |tel|
 			address.tel = tel
 			address.valid?
-			assert address.valid?, "Failed with: #{tel}, #{address.errors.full_messages}"
+			assert address.valid?, "Failed with: #{address.tel}, #{address.errors.full_messages}"
 		end
 	end
 	
