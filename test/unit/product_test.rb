@@ -27,7 +27,7 @@ class ProductTest < ActiveSupport::TestCase
 		product = @sample_product
 		product.category_id = 100
 		assert !product.valid?
-		assert product.errors.invalid?(:category_id)
+		assert product.errors.invalid?(:category)
 	end
 	
 	test "price is greater than or equal to 1 forint" do
