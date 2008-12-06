@@ -7,7 +7,7 @@ class Address < ActiveRecord::Base
 
 	# Utca mező formája: 
 	# Utcanév Típus Házszám(1-9999)[-(1-9999)].(pont)[/(a-z)|(A-Z)] + egyeb pl.[emelet|lakas]
-	validates_format_of :street, :with => /\A\w+\s+\w+\s+[1-9]{1,3}([-][1-9]\d{1,3})?\.[\/]?[A-Za-z]?.*\Z/
+	validates_format_of :street, :with => /\A\w+\s+\w+\s+([1-9]|([1-9]\d{1,3}))([-][1-9]\d{1,3})?\.[\/]?[A-Za-z]?.*\Z/
 	
 	#-- 
 	# Here tel numbers is validated after 
@@ -28,7 +28,10 @@ class Address < ActiveRecord::Base
 		# Strip every character from tel numbers
 		# so 06-30/623-4562 became 06306234562
 		# A telefonszámokat tisztán számsorként tároljuk
-		self.tel = strip_everything_but_digits(tel) if attribute_present?("tel")
+		if attribute_present?("tel")
+			self.tel = strip_everything_but_digits(tel) 
+			self.tel.insert(0,'06') unless self.tel =~ /\A06.*\Z/
+		end
 	end
 	
 	def validate
