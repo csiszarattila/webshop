@@ -1,45 +1,44 @@
 require 'test_helper'
 
 class Admin::CategoriesControllerTest < ActionController::TestCase
+	def setup
+		@admin_session = { :user_id => users(:admin).id }
+	end
+	
   test "should get index" do
-    get :index
+    get :index, nil, @admin_session
     assert_response :success
-    assert_not_nil assigns(:admin_categories)
+    assert_not_nil assigns(:categories)
   end
-
+   
   test "should get new" do
-    get :new
+    get :new, nil, @admin_session
     assert_response :success
   end
-
+ 
   test "should create category" do
-    assert_difference('Admin::Category.count') do
-      post :create, :category => { }
+    assert_difference('Category.count') do
+      post :create, {:category => { :name => 'foo category' }}, @admin_session
     end
-
-    assert_redirected_to category_path(assigns(:category))
-  end
-
-  test "should show category" do
-    get :show, :id => admin_categories(:one).id
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, :id => admin_categories(:one).id
-    assert_response :success
-  end
-
-  test "should update category" do
-    put :update, :id => admin_categories(:one).id, :category => { }
-    assert_redirected_to category_path(assigns(:category))
-  end
-
-  test "should destroy category" do
-    assert_difference('Admin::Category.count', -1) do
-      delete :destroy, :id => admin_categories(:one).id
-    end
-
+  
     assert_redirected_to admin_categories_path
   end
-end
+  
+  test "should get edit" do
+    get :edit, {:id => categories(:musics).id}, @admin_session
+    assert_response :success
+  end
+  
+  test "should update category" do
+    put :update, {:id => categories(:musics).id, :category => { :name => 'foo category' }}, @admin_session
+    assert_redirected_to edit_admin_category_path(assigns(:category))
+  end
+  
+  test "should destroy category" do
+    assert_difference('Category.count', -1) do
+      delete :destroy, {:id => categories(:musics).id}, @admin_session
+    end
+  
+    assert_redirected_to admin_categories_path
+  end
+ end
