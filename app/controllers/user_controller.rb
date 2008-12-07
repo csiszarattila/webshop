@@ -78,7 +78,7 @@ class UserController < ApplicationController
 		
 		if @user.valid?
 			@user = User.create_a_customer(@user)
-			session[:user_id] = user.id
+			session[:user_id] = @user.id
 			flash[:notice] = I18n.t 'user.registration.succeed'
 			if request.request_uri == registration_url
 				redirect_to root_path
