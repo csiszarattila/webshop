@@ -77,8 +77,8 @@ class UserController < ApplicationController
 		@user = User.new(params[:user])
 		
 		if @user.valid?
-			@user = User.create_a_customer(@user)
-			session[:user_id] = @user.id
+			user = User.create_a_customer(@user)
+			session[:user_id] = user.id
 			flash[:notice] = I18n.t 'user.registration.succeed'
 			if request.request_uri == registration_url
 				redirect_to root_path
@@ -131,6 +131,8 @@ class UserController < ApplicationController
 	private
 	def destroy_user_session
 		session[:user_id] = nil
+		session[:address] = nil
+		session[:order] = nil
 	end
 
 end
