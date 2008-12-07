@@ -45,6 +45,7 @@ class ApplicationController < ActionController::Base
 	
 	def destroy_cart
 		session[:cart] = nil
+		@cart = nil
 	end
 	
 	MAX_SESSION_TIME = 20.minutes
