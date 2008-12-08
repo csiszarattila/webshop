@@ -53,7 +53,7 @@ class UserControllerTest < ActionController::TestCase
 		@customer = customers(:peter)
 		@user_id = @customer.user.id
 		
-		post :edit, {:address => @address_to_hash}, {:user_id => @user_id}
+		post :update, {:address => @address_to_hash}, {:user_id => @user_id}
 		
 		assert assigns(:address).valid?
 		assert_equal @address.name, @customer.address.name
@@ -67,7 +67,7 @@ class UserControllerTest < ActionController::TestCase
 	test "change user password" do
 		@user = users(:peter)
 		new_password = "foo"
-		post :edit, {:user => {:password => new_password, :password_confirmation => new_password }}, {:user_id => @user.id}
+		post :update, {:user => {:password => new_password, :password_confirmation => new_password }}, {:user_id => @user.id}
 		
 		assert assigns(:user).valid?
 		assert_not_nil User.authenticate(@user.username,new_password)
