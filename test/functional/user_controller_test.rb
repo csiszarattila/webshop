@@ -39,4 +39,37 @@ class UserControllerTest < ActionController::TestCase
 		assert_equal users(:me).id, session[:user_id]
 		assert_redirected_to admin_root_path
 	end
+	
+	test "change customer address" do
+		@address = addresses(:my_address)
+		@address_to_hash = {
+			:zipcode => "#{@address.zipcode}",
+			:city => "#{@address.city}",
+			:name => "#{@address.name}",
+			:tel => "#{@address.tel}",
+			:street => "#{@address.street}",
+			:email  => "#{@address.email}"
+		}#for post
+		@customer = customers(:peter)
+		@user_id = @customer.user.id
+		
+		post :edit, {:address => @address_to_hash}, {:user_id => @user_id}
+		
+		assert assigns(:address).valid?
+		assert_equal @address.name, @customer.address.name
+		assert_equal @address.city, @customer.address.city
+		assert_equal @address.zipcode, @customer.address.zipcode
+		assert_equal @address.tel, @customer.address.tel
+		assert_equal @address.street, @customer.address.street
+		assert_equal @address.email, @customer.address.email
+	end
+	
+	test "change user password" do
+		@user = users(:peter)
+		new_password = "foo"
+		post :edit, {:user => {:password => new_password, :password_confirmation => new_password }}, {:user_id => @user.id}
+		
+		assert assigns(:user).valid?
+		assert_not_nil User.authenticate(@user.username,new_password)
+	end
 end

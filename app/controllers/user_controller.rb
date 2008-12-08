@@ -116,15 +116,23 @@ class UserController < ApplicationController
 	# Megmutatja a felhasználó profilját
 	def show
 		@user = @customer.user
+		@address = @customer.address
 	end
 	
 	# Change user's profile
 	# 
 	# Felhasználói adatok megváltoztatása
 	def edit
-		@user.password = params[:user][:password]
-		@user.password_confirmation = params[:user][:password_confirmation]
-		@user.save
+		@user = @customer.user
+		@address = @customer.address
+		if params[:user]
+			@user.password = params[:user][:password]
+			@user.password_confirmation = params[:user][:password_confirmation]
+			@user.save
+		elsif params[:address]
+			@address = Address.new(params[:address])
+			@customer.address.update_attributes(params[:address]) if @address.valid?
+		end
 		render :action => 'show'
 	end
 

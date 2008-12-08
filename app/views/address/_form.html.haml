@@ -1,0 +1,12 @@
+%fieldset
+  %legend Személyi adatok
+  = address.text_field :name, :label => 'Név'
+%fieldset
+  %legend Cím adatok
+  = address.text_field :city, :label => 'Település'
+  = address.text_field :zipcode, :label => 'Irányítószám'
+  = address.text_field :street, :label => 'Utca, házszám'
+%fieldset
+  %legend Elérhetőségek
+  = address.text_field :email, :label => 'Email cím'
+  = address.text_field :tel, :label => 'Telefonszám'
