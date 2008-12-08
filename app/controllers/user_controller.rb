@@ -108,6 +108,7 @@ class UserController < ApplicationController
 	# Törli a felhasználó munkamenetét ás átirányít
 	# Megjegyzés: a destroy_user_session -t már meghívtuk before_filter-ként
   def logout
+		flash[:notice] = I18n.t 'user.logout.succeed'
 		redirect_to root_path
   end
 
