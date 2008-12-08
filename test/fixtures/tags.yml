@@ -35,3 +35,9 @@ cd:
   
 brick_game:
   name: 'Építős játékok'
+  
+british:
+  name: Brit Rock
+
+detective:
+  name: Nyomozós

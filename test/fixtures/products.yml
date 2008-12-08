@@ -11,12 +11,14 @@ bob_dvd:
   price:  12450
   description: <%= DESCRIPTON %>
   category: movies
+  tags: war, spielberg, tv_series
 
 marple_book:
   name: Miss Marple At Bertram's Hotel
   price:  1245
   description: <%= DESCRIPTON %>
   category: books
+  tags: detective
 
 lego:
   name: Lego készlet
@@ -29,6 +31,7 @@ keane_cd:
   description: <%= DESCRIPTON %>
   price: 6888
   category: musics
+  tags: british, keane
 
 vs_display: 
   name: Viewsonic 17" VP730
@@ -52,9 +55,11 @@ rails_book:
   price: 6555
   description: <%= DESCRIPTON %>
   category: computer_books
+  tags: ruby, rails, programming
   
 arctic_monkeys_cd:
   name: Arctic Monkeys - Your Favourite Worst Nightmares
   price: 4665
   description: <%= DESCRIPTON %>
   category: musics
+  tags: british
