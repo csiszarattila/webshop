@@ -8,7 +8,7 @@ class AddressTest < ActiveSupport::TestCase
 			"06-30-622-3456", 
 			"06 30 622 3456", 
 			"06/30 622 3456",
-			"30/6223456"]
+			"30 6223456"]
 			
 		@expected_number = "06306223456" #how we store in db
 		@read_tel_as = ""#how we get back in formatted way
@@ -19,7 +19,7 @@ class AddressTest < ActiveSupport::TestCase
 			"2",
 			"234",
 			"30235",
-			"06/23-445-223"
+			"302302"
 			]
 			
 		@valid_email_addresses = [

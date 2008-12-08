@@ -20,7 +20,7 @@ class Address < ActiveRecord::Base
 	# Elfogadott telefonszám formátumok: 
 	# * Mobil: 06(1-99)1xxxxxx 
 	# * Vezetekes (1-99)-1xx-xxx
-	validates_format_of :tel, :with => /\A[1-9]([1-9]\d{5}|[0-9][1-9]\d{5})|06[1-9][0-9][1-9]\d{6}\Z/
+	validates_format_of :tel, :with => /\A06[0-9]{1,2}[1-9][0-9]{5,6}\Z/
 	
 	validates_format_of :email, :with => /\A[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}\Z/ 
 	
@@ -29,7 +29,7 @@ class Address < ActiveRecord::Base
 		# so 06-30/623-4562 became 06306234562
 		# A telefonszámokat tisztán számsorként tároljuk
 		if attribute_present?("tel")
-			self.tel = strip_everything_but_digits(tel) 
+			self.tel = strip_everything_but_digits(tel)
 			self.tel.insert(0,'06') unless self.tel =~ /\A06.*\Z/
 		end
 	end
