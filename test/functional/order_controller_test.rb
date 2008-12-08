@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'test/mocks/zipcode_match.rb'
 
 class OrderControllerTest < ActionController::TestCase
 	
@@ -50,11 +51,17 @@ class OrderControllerTest < ActionController::TestCase
 
   test "save address to customer unless has one" do
   	customer = customers(:customer_without_address)
-		post :address, {:address => @address_to_hash, :order => @order_to_hash }, {:user_id => @user_id}
+		post :address, {:address => @address_to_hash, :order => @order_to_hash }, {:user_id => customer.user.id}
 		
-		assert_redirected_to :order_confirm
+		assert_redirected_to order_confirm_path
+		assert_not_nil assigns(:customer)
 		assert_not_nil assigns(:customer).address
-		assert_equal @address, assigns(:customer).address
+		assert_equal @address.name, 	assigns(:customer).address.name
+		assert_equal @address.city, 	assigns(:customer).address.city
+		assert_equal @address.zipcode,assigns(:customer).address.zipcode
+		assert_equal @address.tel, 		assigns(:customer).address.tel
+		assert_equal @address.street, assigns(:customer).address.street
+		assert_equal @address.email, 	assigns(:customer).address.email
   end
 	
 	test "redirect when no address and order session was set" do
@@ -64,7 +71,7 @@ class OrderControllerTest < ActionController::TestCase
 	end
 	
 	test "order is created" do
-		get :create, nil, {:order=> @order, :address => @address, :user_id => @user_id, :cart => @cart }
+		get :create, nil, { :order => @order, :address => @address, :cart => @cart, :user_id => customers(:peter).user.id }
 		
 		# sessions destroyed
 		assert_nil session[:cart]
@@ -76,7 +83,12 @@ class OrderControllerTest < ActionController::TestCase
 		saved_order = Customer.find(@customer.id).orders.first
 		assert_not_nil saved_order
 		assert_equal @customer, saved_order.customer
-		assert_equal  @address, saved_order.address
+		assert_equal @address.name, saved_order.address.name
+		assert_equal @address.city, saved_order.address.city
+		assert_equal @address.zipcode, saved_order.address.zipcode
+		assert_equal @address.tel, saved_order.address.tel
+		assert_equal @address.street, saved_order.address.street
+		assert_equal @address.email, saved_order.address.email
 	end
 	
 end
