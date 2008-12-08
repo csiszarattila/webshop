@@ -53,16 +53,17 @@ form label{
 }
 
 #head ul li{
- display:inline;
  border:1px solid #bbb;
  border-bottom:0px;
  margin-right:5px;
- padding:5px;
  line-height:24px;
  background:#fff;
+ float:left;
 }
 
 #head ul li a{
+ display:block;
+ padding:5px;
 }
 
 #content{
