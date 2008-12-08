@@ -29,7 +29,7 @@
     -unless @product.tags.empty?
       .tags
         %h3 Keresés a hasonló címkéjű termékek között
-        = render :partial => 'tags/tag_cloud', :locals => {:tags => Tag.all}
+        = render :partial => 'tags/tag_cloud', :locals => {:tags => @product.tags}
 
 #related-products
   %h2 Kapcsolódó termékek
