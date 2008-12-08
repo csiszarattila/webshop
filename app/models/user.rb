@@ -27,6 +27,11 @@ class User < ActiveRecord::Base
 		pattern = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
 		self.password = length.times.collect { pattern[rand(pattern.size)] }.to_s
 	end
+	
+	def admin?
+		admin_group = UserGroup.find_by_name("admin")
+		self.group.id.equal? admin_group.id
+	end
 
 	# Matched users and then password against stored ones.
 	# Return user only if it's match and password is correct otherwise return nil.
