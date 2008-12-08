@@ -11,6 +11,8 @@ hu-HU:
     destroyed: "A felhasználó törlődött."
     login:
       succeed: "Sikeresen beléptél."
+    logout:
+      succeed: "Sikeresen kiléptél."
     registration:
       succeed: "Sikeresen regisztráltál."
     password:
