@@ -19,8 +19,8 @@
           <%= link_to 'Felhasználói adatok', user_show_path() %>
         <% end %>
       </li>
-      <li class="info"><a href="">Vásárlási információk</a></li>
-      <li class="about"><a href="">A boltról</a></li>
+      <li class="info"><%=  link_to 'Vásárlási információk', info_path %></li>
+      <li class="about"><%= link_to 'A boltról', info_path %></li>
     </ul>
   </div>
 
@@ -73,9 +73,11 @@
   </div>
   <div id="copyrights">
     <p>&copy; <a href="http://csiszarattila.com">Csiszár Attila</a>, 2008</p>
+    <p>A weboldal  <a href="http://szakdolgozat.csiszarattila.com">egy szakdolgozat</a> on-line elérhető példányaként működik, kizárólag demonstrációs célokat szolgál, használatáért a készítő semmilyen felelősséget nem vállal.</p>
     A webshop logója <a href="http://www.bartelme.at/journal/archive/shopping_cart_icon/" title="Bartelme Design | Shopping Cart Icon">Wolfgang Bartelme</a>; 
     az ikonok <a href="  http://www.icontexto.com" title="Bruno Maia, IconTexto">Bruno Maia, IconTexto</a>;
     a termékek alapértelmezett képe <a href="http://www.mattbango.com/about" title="About Matt Bango | MattBango.com">Matt Bango</a> munkája.
+    <p>Az oldal <a href="http://www.mozilla-europe.org/hu/firefox/" title="Firefox webböngésző | Gyorsabb, még biztonságosabb és testreszabható | Mozilla Europe">Mozilla Firefox</a> és <a href="http://www.apple.com/safari/" title="Apple - Safari">Safari</a> böngészőkre lett optimalizálva.</p>
   </div>
 </body>
 </html>

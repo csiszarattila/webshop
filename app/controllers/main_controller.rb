@@ -7,4 +7,7 @@ class MainController < ApplicationController
 	def search
 		@products = Product.search(params[:name])
 	end
+	
+	def info
+	end
 end
