@@ -1,4 +1,4 @@
-= render 'admin/categories/header.html' 
+= render :file => 'admin/categories/header.html' 
 %h2="#{@category.name} kategória"
 -form_for @category, :url => admin_category_path(@category), :builder => MyFormBuilder do |f|
   

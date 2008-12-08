@@ -1,4 +1,4 @@
-= render 'admin/categories/header.html'
+= render :file => 'admin/categories/header.html'
 %h2 Új kategória
 -form_for @category, :url => admin_categories_path, :builder => MyFormBuilder do |f|
   = render :partial => 'admin/categories/form', :locals => {:f => f}
