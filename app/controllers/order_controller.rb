@@ -28,7 +28,7 @@ class OrderController < ApplicationController
 			@order = Order.new(params[:order])
 			@address = Address.new(params[:address])
 			
-			@address.valid? # az if miatt, maskülönben nem adná hozzá a hibaüzeneteket
+			@address.valid? # az if miatt, máskülönben nem adná hozzá a hibaüzeneteket
 			if @order.valid? and @address.valid?
 				# Save the address if the customer haven't got one
 				# A címet mindenképp elmentjük, ha még nincs a vásárlónak
