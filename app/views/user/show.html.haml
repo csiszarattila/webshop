@@ -1,15 +1,22 @@
 %h2 Felhasználói adatok
-- form_for @user, :url => user_edit_path, :html => {:class => 'login-or-registration'}, :builder => MyFormBuilder do |f|
+- form_for @user, :url => user_update_path, :builder => MyFormBuilder do |f|
+
+  %h4 Jelszó megváltoztatása
   = f.custom_error_messages :header_message => 'A jelszóváltoztatás a következők miatt nem sikerült:'
   
-  %h4 Jelszó megváltoztatása
   %fieldset
     = f.password_field :password, :label => 'Új jelszó'
     %p.info Megengedett karakterek(a-z 0-9)
     = f.password_field :password_confirmation, :label =>'Új jelszó megerősítése'
     .submit
       = submit_tag 'Megváltoztat'
-
+  
+- form_for @address, :url => user_update_path, :builder => MyFormBuilder do |f|
+  %h4 Rendelési adatok
+  = f.custom_error_messages :header_message => 'Az adataid megváltoztatása a következők miatt nem sikerült:'
+  = render :partial => 'address/form', :locals => {:address => f}
+  = f.submit 'Megváltoztat'
+    
   %h4 Kijelentkezés
   %div
     = link_to 'Munkamenet törlése és kijelentkezés', logout_path

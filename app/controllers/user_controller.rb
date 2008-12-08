@@ -1,8 +1,8 @@
 class UserController < ApplicationController
 	
 	skip_before_filter :find_user
-	before_filter :destroy_user_session, :except => [:show, :edit, :password_remember]
-	before_filter :authorize_as_customer, :only => [:show,:edit]
+	before_filter :destroy_user_session, :except => [:show, :update, :password_remember]
+	before_filter :authorize_as_customer, :only => [:show,:update]
 	
 	def login_or_registration
 		@user = User.new()
@@ -119,10 +119,10 @@ class UserController < ApplicationController
 		@address = @customer.address
 	end
 	
-	# Change user's profile
+	# Change customer's profile
 	# 
-	# Felhasználói adatok megváltoztatása
-	def edit
+	# A vásárló felhasználói adatainak megváltoztatásához
+	def update
 		@user = @customer.user
 		@address = @customer.address
 		if params[:user]

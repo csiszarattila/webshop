@@ -57,7 +57,7 @@ ActionController::Routing::Routes.draw do |map|
 		user.password_remember 'user/password_remember/', :action => 'password_remember'
 		user.logout	'user/logout/', :action => 'logout'
 		user.user_show 'user/show', :action => 'show'
-		user.user_edit 'user/edit', :action => 'edit'
+		user.user_update 'user/update', :action => 'update'
 		user.admin_login 'admin/login', :action => 'admin_login'
 	end
 	
