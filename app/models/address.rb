@@ -18,8 +18,7 @@ class Address < ActiveRecord::Base
 	# ++
 	# 
 	# Elfogadott telefonszám formátumok: 
-	# * Mobil: 06(1-99)1xxxxxx 
-	# * Vezetekes (1-99)-1xx-xxx
+	# * 06(0-99)1xxxxxx
 	validates_format_of :tel, :with => /\A06[0-9]{1,2}[1-9][0-9]{5,6}\Z/
 	
 	validates_format_of :email, :with => /\A[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}\Z/ 
