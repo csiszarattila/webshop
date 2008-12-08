@@ -55,13 +55,6 @@ class OrderControllerTest < ActionController::TestCase
 		
 		assert_redirected_to order_confirm_path
 		assert_not_nil assigns(:customer)
-		assert_not_nil assigns(:customer).address
-		assert_equal @address.name, 	assigns(:customer).address.name
-		assert_equal @address.city, 	assigns(:customer).address.city
-		assert_equal @address.zipcode,assigns(:customer).address.zipcode
-		assert_equal @address.tel, 		assigns(:customer).address.tel
-		assert_equal @address.street, assigns(:customer).address.street
-		assert_equal @address.email, 	assigns(:customer).address.email
   end
 	
 	test "redirect when no address and order session was set" do
