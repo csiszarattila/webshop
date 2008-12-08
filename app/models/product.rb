@@ -28,7 +28,9 @@ class Product < ActiveRecord::Base
 	
 	# A Termékhez kapcsolódó további termékek pl. hasonló kategóriájúak, címkéjűek stb.
 	def releated(limit=10)
-		Product.in_category(self.category).order_by(:price).limit(limit)
+		products = Product.in_category(self.category).order_by(:price).limit(limit)
+		products.delete(self)
+		products
 	end
 	
 	def image_file=(uploaded_data)
