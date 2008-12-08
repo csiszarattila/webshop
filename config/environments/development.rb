@@ -15,12 +15,4 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-	:address =>  "mail.t-online.hu",
-	:port => 25,
-	:domain => "81.183.114.66",
-	:authentication => :plain,
-	:user_name => "c2VsbG8xQHQtb25saW5lLmh1",
-	:password  => "d0VzdDg2MDY="
-}
+config.action_mailer.delivery_method = :test
