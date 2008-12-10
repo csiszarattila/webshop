@@ -80,7 +80,7 @@ class UserController < ApplicationController
 			user = User.create_a_customer(@user)
 			session[:user_id] = user.id
 			flash[:notice] = I18n.t 'user.registration.succeed'
-			if request.request_uri == registration_url
+			if request.request_uri == registration_path
 				redirect_to root_path
 			else
 				redirect_to order_address_path
@@ -117,7 +117,7 @@ class UserController < ApplicationController
 	# Megmutatja a felhasználó profilját
 	def show
 		@user = @customer.user
-		@address = @customer.address
+		@address = @customer.address || Address.new()
 	end
 	
 	# Change customer's profile
@@ -125,14 +125,21 @@ class UserController < ApplicationController
 	# A vásárló felhasználói adatainak megváltoztatásához
 	def update
 		@user = @customer.user
-		@address = @customer.address
+		@address = @customer.address || Address.new()
 		if params[:user]
 			@user.password = params[:user][:password]
 			@user.password_confirmation = params[:user][:password_confirmation]
 			@user.save
 		elsif params[:address]
 			@address = Address.new(params[:address])
-			@customer.address.update_attributes(params[:address]) if @address.valid?
+			if @address.valid?
+				if @customer.address
+					@customer.address.update_attributes(params[:address]) 
+				else
+					@address.addressable = @customer
+					@address.save
+				end
+			end
 		end
 		render :action => 'show'
 	end
