@@ -13,7 +13,7 @@ class ProductImageTest < ActiveSupport::TestCase
 		# Restore deleted image
 		# Törölt kép visszaállítása
 		image_url = product_images(:rails_book_picture).image_url_before_type_cast
-		FileUtils.cp (
+		FileUtils.cp(
 			File.join(RAILS_ROOT, 'test', 'fixtures', 'images', image_url), 
 			File.join(RAILS_ROOT, 'public', product_images(:rails_book_picture).image_url)
 		)
