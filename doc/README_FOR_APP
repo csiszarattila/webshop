@@ -1,1 +1,60 @@
-README
+Ez az alkalmazás egy http://szakdolgozat.csiszarattila.com[szakdolgozat] keretében készült, a Ruby on Rails keretrendszer felhasználásával, egy komplett webáruházat valósít meg:
+
+* Rendszerezhető termékek
+  * Kategóriák
+  * Címkék
+* Rendelések felvétele
+* Vásárlói profilok
+* Adminisztrációs felület 
+  * Rendelések megtekintése
+  * Új termékek felvétele, szerkesztése
+  * Új kategóriák felvétele, rendszerezése
+  * Felhasználók menedzselése
+  
+==  Kipróbálható változat
+Az alkalmazás működő változata elérhető a http://webshop.csiszarattila.com URL-en keresztül. 
+Az adminisztrációs felületre a http://webshop.csiszarattila.com/admin/ URL-en keresztül egy admin nevű, admin jelszójú felhasználóval léphetünk be.
+
+== Telepítés és futtatás
+Az alkalmazás futtatásához szükséges:
+* a Ruby fordító (legalább 1.8.6-os verzió)
+  letölthető a http://www.ruby-lang.org/en/downloads/ címről.
+* a Rubygems csomagkezelő (legalább 1.3.1-es verzió) telepítéséhez lásd a http://www.rubygems.org/read/chapter/3 címet.
+* a Rake gem telepítéséhez lásd a http://rake.rubyforge.org/ címet.
+Az adatbázis használatához a Ruby megfelelő moduljának telepítése:
+* MySQL esetén lásd a http://www.tmtm.org/en/mysql/ruby/ címet. (Megjegyzés: tapasztalataim szerint csak a MySQL 5.0-ás verziójáig működik megbízhatóan.)
+
+Az alkalmazás külső forráskódokat is felhasznál működéséhez, ezek megtalálhatóak az alkalmazás forráskódja mellett, a vendor[link:../../vendor] könyvtárban, így az alkalmazás futtatásához telepítésük nem szükséges.
+
+=== Beállítások megadása
+Elsőként az adatbázis hozzáférési adatait adjuk meg a config/database.yml fájlban. Az alkalmazás futtatásához elég a development kulcsszó alatti adatok kitöltése.
+
+=== Adatbázisok létrehozása és feltöltése
+(A következő parancsokat az alkalmazás gyökérkönyvtárában kell kiadni.)
+Az adatbázis létrehozásához futtassuk előbb a rake db:create, majd a sémák betöltéséhez a rake db:schema:load parancsot. Ezután töltsük fel az alapadatokat a 
+rake db:fixtures:load, majd az irányítószámokat a rake db:zipcodes:load parancssal - ez utóbbi eltarthat egy ideig.
+
+=== Alkalmazás futtatása
+Végül indítsuk el a Rails beépített webszerverét a ruby script/server paranccsal, a futó alkalmazást ekkor a http://localhost:3000 -es címen érhetjük el egy webböngésző segítségével. Az adminisztrációs felületet pedig a http://localhost:3000/admin/ címen, egy admin nevű admin jelszójú felhasználóval.
+
+== Tesztek futtatása
+Az alkalmazáshoz részletesen megírt tesztek tartoznak, ezek biztosítják, hogy az alkalmazás a feladatait hibátlanul végezze el.
+
+A tesztek futtatásához mindenekelőtt meg kell adni a teszt adatbázis konfigurációját (config/database.yml fájl).
+
+Majd futtatni a teszteket:
+* A modellekét: rake test:units
+* A vezérlőkét: rake test:functionals
+parancsokkal.
+
+== Az alkalmazás függőségei
+* a Rails keretrendszer 2.2-es verziója
+* pluginek:
+  * haml
+  * acts_as_tree
+  * localized_dates
+  * validates_existence
+  * zipcode_match
+* gemek:
+  * haml-2.0.3
+  * will-paginate-2.3.6

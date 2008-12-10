@@ -364,7 +364,7 @@ adatokkal
 80:                         <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">create_a_customer</span>(<span class="ruby-ivar">@user</span>)
 81:                         <span class="ruby-identifier">session</span>[<span class="ruby-identifier">:user_id</span>] = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
 82:                         <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span> <span class="ruby-value str">'user.registration.succeed'</span>
-83:                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_uri</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">registration_url</span>
+83:                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_uri</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">registration_path</span>
 84:                                 <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span>
 85:                         <span class="ruby-keyword kw">else</span>
 86:                                 <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">order_address_path</span>
@@ -399,7 +399,7 @@ Megmutatja a felhasználó profilját
      <span class="ruby-comment cmt"># File app/controllers/user_controller.rb, line 118</span>
 118:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
 119:                 <span class="ruby-ivar">@user</span> = <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">user</span>
-120:                 <span class="ruby-ivar">@address</span> = <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">address</span>
+120:                 <span class="ruby-ivar">@address</span> = <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">address</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>()
 121:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
@@ -429,17 +429,24 @@ A vásárló felhasználói adatainak megváltoztatásához
      <span class="ruby-comment cmt"># File app/controllers/user_controller.rb, line 126</span>
 126:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
 127:                 <span class="ruby-ivar">@user</span> = <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">user</span>
-128:                 <span class="ruby-ivar">@address</span> = <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">address</span>
+128:                 <span class="ruby-ivar">@address</span> = <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">address</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>()
 129:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>]
 130:                         <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">password</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:password</span>]
 131:                         <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">password_confirmation</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:password_confirmation</span>]
 132:                         <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
 133:                 <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:address</span>]
 134:                         <span class="ruby-ivar">@address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:address</span>])
-135:                         <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">address</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:address</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">valid?</span>
-136:                 <span class="ruby-keyword kw">end</span>
-137:                 <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'show'</span>
-138:         <span class="ruby-keyword kw">end</span>
+135:                         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">valid?</span>
+136:                                 <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">address</span>
+137:                                         <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">address</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:address</span>]) 
+138:                                 <span class="ruby-keyword kw">else</span>
+139:                                         <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">addressable</span> = <span class="ruby-ivar">@customer</span>
+140:                                         <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">save</span>
+141:                                 <span class="ruby-keyword kw">end</span>
+142:                         <span class="ruby-keyword kw">end</span>
+143:                 <span class="ruby-keyword kw">end</span>
+144:                 <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'show'</span>
+145:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
