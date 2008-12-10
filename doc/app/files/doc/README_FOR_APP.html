@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Wed Oct 29 08:58:25 +0100 2008</td>
+      <td>Tue Dec 09 19:33:52 +0100 2008</td>
     </tr>
     </table>
   </div>
@@ -69,11 +69,198 @@
   <div id="contextContent">
 
     <div id="description">
-      <p>
-Use this README file to introduce your application and point to useful
-places in the API for learning more. Run &quot;rake doc:app&quot; to
-generate API documentation for your models, controllers, helpers, and
-libraries.
+      <h2>Bevezetés</h2>
+<p>
+Köszöntöm. Ön épp most a Webáruház Ruby On Rails alapokon című
+szakdolgozat példaalkalamzásának dokumentációját olvassa. Itt
+részletes információhoz juthat, hogyan futtassa az alkalmazást és
+hogyan győzödhet meg a működéséről.
+</p>
+<h3>Dokumentáció használata</h3>
+<p>
+A felső keretekben az alkalmazást működtető Ruby osztályokat és
+metódusokat érheti el - ezek automatikusan, a forráskódból lettek
+generálva. Ha a Ruby on Rails keretrendszer komplett dokumentációja
+érdekli, használja a következő <a
+href="../../../api/index.html">linket</a>.
+</p>
+<h2>Az alkalmazás képességei</h2>
+<p>
+Az alkalmazás a Ruby on Rails keretrendszer felhasználásával készült,
+egy komplett webáruházat valósít meg:
+</p>
+<ul>
+<li>Rendszerezhető termékek
+
+<ul>
+<li>Kategóriák
+
+</li>
+<li>Címkék
+
+</li>
+</ul>
+</li>
+<li>Rendelések felvétele
+
+</li>
+<li>Vásárlói profilok
+
+</li>
+<li>Adminisztrációs felület
+
+<ul>
+<li>Rendelések megtekintése
+
+</li>
+<li>Új termékek felvétele, szerkesztése
+
+</li>
+<li>Új kategóriák felvétele, rendszerezése
+
+</li>
+<li>Felhasználók menedzselése
+
+</li>
+</ul>
+</li>
+</ul>
+<h2>Kipróbálható változat</h2>
+<p>
+Az alkalmazás működő változata elérhető a <a
+href="http://webshop.csiszarattila.com">webshop.csiszarattila.com</a>
+URL-en keresztül. Az adminisztrációs felületre a <a
+href="http://webshop.csiszarattila.com/admin">webshop.csiszarattila.com/admin</a>/
+URL-en keresztül egy admin nevű, admin jelszójú felhasználóval
+léphetünk be.
+</p>
+<h2>Telepítés és futtatás</h2>
+<p>
+Az alkalmazás futtatásához szükséges:
+</p>
+<ul>
+<li>a Ruby fordító (legalább 1.8.6-os verzió) letölthető a <a
+href="http://www.ruby-lang.org/en/downloads">www.ruby-lang.org/en/downloads</a>/
+címről.
+
+</li>
+<li>a Rubygems csomagkezelő (legalább 1.3.1-es verzió) telepítéséhez
+lásd a <a
+href="http://www.rubygems.org/read/chapter/3">www.rubygems.org/read/chapter/3</a>
+címet.
+
+</li>
+<li>a Rake gem telepítéséhez lásd a <a
+href="http://rake.rubyforge.org">rake.rubyforge.org</a>/ címet.
+
+</li>
+</ul>
+<p>
+Az adatbázis használatához a Ruby megfelelő moduljának telepítése:
+</p>
+<ul>
+<li>MySQL esetén lásd a <a
+href="http://www.tmtm.org/en/mysql/ruby">www.tmtm.org/en/mysql/ruby</a>/
+címet. (Megjegyzés: tapasztalataim szerint csak a MySQL 5.0-ás
+verziójáig működik megbízhatóan.)
+
+</li>
+</ul>
+<p>
+Az alkalmazás külső forráskódokat is felhasznál működéséhez, ezek
+megtalálhatóak az alkalmazás forráskódja mellett, a <a
+href="../../../../vendor">vendor</a> könyvtárban, így az alkalmazás
+futtatásához telepítésük nem szükséges.
+</p>
+<h3>Beállítások megadása</h3>
+<p>
+Elsőként az adatbázis hozzáférési adatait adjuk meg a
+config/database.yml fájlban. Az alkalmazás futtatásához elég a
+development kulcsszó alatti adatok kitöltése.
+</p>
+<h3>Adatbázisok létrehozása és feltöltése</h3>
+<p>
+(A következő parancsokat az alkalmazás gyökérkönyvtárában kell
+kiadni.) Az adatbázis létrehozásához futtassuk előbb a rake db:create,
+majd a sémák betöltéséhez a rake db:schema:load parancsot. Ezután
+töltsük fel az alapadatokat a rake db:fixtures:load, majd az
+irányítószámokat a rake db:zipcodes:load parancssal - ez utóbbi
+eltarthat egy ideig.
+</p>
+<h3>Alkalmazás futtatása</h3>
+<p>
+Végül indítsuk el a Rails beépített webszerverét a ruby script/server
+paranccsal, a futó alkalmazást ekkor a <a
+href="http://localhost:3000">localhost:3000</a> -es címen érhetjük el
+egy webböngésző segítségével. Az adminisztrációs felületet pedig a
+<a href="http://localhost:3000/admin">localhost:3000/admin</a>/ címen, egy
+admin nevű admin jelszójú felhasználóval.
+</p>
+<h2>Tesztek futtatása</h2>
+<p>
+Az alkalmazáshoz részletesen megírt tesztek tartoznak, ezek
+biztosítják, hogy az alkalmazás a feladatait hibátlanul végezze el.
+</p>
+<p>
+A tesztek futtatásához mindenekelőtt meg kell adni a teszt adatbázis
+konfigurációját (config/database.yml fájl).
+</p>
+<p>
+Majd futtatni a teszteket:
+</p>
+<ul>
+<li>A modellekét: rake test:units
+
+</li>
+<li>A vezérlőkét: rake test:functionals
+
+</li>
+</ul>
+<p>
+parancsokkal.
+</p>
+<h2>Az alkalmazás függőségei</h2>
+<ul>
+<li>a Rails keretrendszer 2.2-es verziója
+
+</li>
+<li>pluginek:
+
+<ul>
+<li>haml
+
+</li>
+<li>acts_as_tree
+
+</li>
+<li>localized_dates
+
+</li>
+<li>validates_existence
+
+</li>
+<li>zipcode_match
+
+</li>
+</ul>
+</li>
+<li>gemek:
+
+<ul>
+<li>haml-2.0.3
+
+</li>
+<li>will-paginate-2.3.6
+
+</li>
+</ul>
+</li>
+</ul>
+<h2>Felhasználási feltételek</h2>
+<p>
+Az alkalmazás egy szakdolgozat működő példánya, kizárólag
+demonstrációs célokat szolgál, használatáért a készítő semmilyen
+felelősséget nem vállal.
 </p>
 
     </div>

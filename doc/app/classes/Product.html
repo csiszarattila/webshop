@@ -86,13 +86,13 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000049">existing_attrs=</a>&nbsp;&nbsp;
-      <a href="#M000045">image_file=</a>&nbsp;&nbsp;
-      <a href="#M000050">new_attrs=</a>&nbsp;&nbsp;
-      <a href="#M000047">new_tags_from_checkbox=</a>&nbsp;&nbsp;
-      <a href="#M000048">new_tags_from_string=</a>&nbsp;&nbsp;
-      <a href="#M000044">releated</a>&nbsp;&nbsp;
-      <a href="#M000046">search</a>&nbsp;&nbsp;
+      <a href="#M000052">existing_attrs=</a>&nbsp;&nbsp;
+      <a href="#M000048">image_file=</a>&nbsp;&nbsp;
+      <a href="#M000053">new_attrs=</a>&nbsp;&nbsp;
+      <a href="#M000050">new_tags_from_checkbox=</a>&nbsp;&nbsp;
+      <a href="#M000051">new_tags_from_string=</a>&nbsp;&nbsp;
+      <a href="#M000047">releated</a>&nbsp;&nbsp;
+      <a href="#M000049">search</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -114,37 +114,12 @@
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000046" class="method-detail">
-        <a name="M000046"></a>
-
-        <div class="method-heading">
-          <a href="#M000046" class="method-signature">
-          <span class="method-name">search</span><span class="method-args">(name)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000046-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000046-source">
-<pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 53</span>
-53:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">name</span>)
-54:                 <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name_is_like</span>(<span class="ruby-identifier">name</span>)
-55:         <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="section-bar">Public Instance methods</h3>
-
       <div id="method-M000049" class="method-detail">
         <a name="M000049"></a>
 
         <div class="method-heading">
           <a href="#M000049" class="method-signature">
-          <span class="method-name">existing_attrs=</span><span class="method-args">(product_attributes)</span>
+          <span class="method-name">search</span><span class="method-args">(name)</span>
           </a>
         </div>
       
@@ -153,70 +128,92 @@
             onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000049-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 70</span>
-70:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">existing_attrs=</span>(<span class="ruby-identifier">product_attributes</span>)
-71:                 <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">reject</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:new_record?</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribute</span><span class="ruby-operator">|</span>
-72:                         <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">value</span> = <span class="ruby-identifier">product_attributes</span>[<span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>][<span class="ruby-identifier">:value</span>]
-73:                         <span class="ruby-identifier">attribute</span>.<span class="ruby-identifier">save</span>(<span class="ruby-keyword kw">false</span>)
-74:                 <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 56</span>
+56:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">name</span>)
+57:                 <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name_is_like</span>(<span class="ruby-identifier">name</span>)
+58:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="#M000052" class="method-signature">
+          <span class="method-name">existing_attrs=</span><span class="method-args">(product_attributes)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000052-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 73</span>
+73:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">existing_attrs=</span>(<span class="ruby-identifier">product_attributes</span>)
+74:                 <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">update</span> <span class="ruby-identifier">product_attributes</span>.<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">product_attributes</span>.<span class="ruby-identifier">values</span>
 75:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000045" class="method-detail">
-        <a name="M000045"></a>
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
 
         <div class="method-heading">
-          <a href="#M000045" class="method-signature">
+          <a href="#M000048" class="method-signature">
           <span class="method-name">image_file=</span><span class="method-args">(uploaded_data)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000045-source">
+            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000048-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 33</span>
-33:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file=</span>(<span class="ruby-identifier">uploaded_data</span>)
-34:                 <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uploaded_data</span> <span class="ruby-operator">==</span> <span class="ruby-value str">''</span>
-35:                 <span class="ruby-identifier">file_extension</span> = <span class="ruby-identifier">uploaded_data</span>.<span class="ruby-identifier">original_filename</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;.&quot;</span>).<span class="ruby-identifier">last</span>
-36:                 <span class="ruby-identifier">file_upload_name</span> = <span class="ruby-node">&quot;product_image_#{self.images.count.next}.#{file_extension}&quot;</span>
-37:                 
-38:                 <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_record?</span>
-39:                         <span class="ruby-identifier">images</span>.<span class="ruby-identifier">build</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-40:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">image_url</span> = <span class="ruby-identifier">file_upload_name</span>
-41:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">description</span> = <span class="ruby-value str">&quot;&quot;</span>
-42:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">data</span> = <span class="ruby-identifier">uploaded_data</span> <span class="ruby-comment cmt"># ProductImage will be handle the upload</span>
-43:                         <span class="ruby-keyword kw">end</span>
-44:                 <span class="ruby-keyword kw">else</span>
-45:                         <span class="ruby-identifier">images</span>.<span class="ruby-identifier">create</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-46:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">image_url</span> = <span class="ruby-identifier">file_upload_name</span>
-47:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">description</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>
-48:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">data</span> = <span class="ruby-identifier">uploaded_data</span> <span class="ruby-comment cmt"># ProductImage will be handle the upload</span>
-49:                         <span class="ruby-keyword kw">end</span>
-50:                 <span class="ruby-keyword kw">end</span>
-51:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 36</span>
+36:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file=</span>(<span class="ruby-identifier">uploaded_data</span>)
+37:                 <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uploaded_data</span> <span class="ruby-operator">==</span> <span class="ruby-value str">''</span>
+38:                 <span class="ruby-identifier">file_extension</span> = <span class="ruby-identifier">uploaded_data</span>.<span class="ruby-identifier">original_filename</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;.&quot;</span>).<span class="ruby-identifier">last</span>
+39:                 <span class="ruby-identifier">file_upload_name</span> = <span class="ruby-node">&quot;product_image_#{self.images.count.next}.#{file_extension}&quot;</span>
+40:                 
+41:                 <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_record?</span>
+42:                         <span class="ruby-identifier">images</span>.<span class="ruby-identifier">build</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+43:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">image_url</span> = <span class="ruby-identifier">file_upload_name</span>
+44:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">description</span> = <span class="ruby-value str">&quot;&quot;</span>
+45:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">data</span> = <span class="ruby-identifier">uploaded_data</span> <span class="ruby-comment cmt"># ProductImage will be handle the upload</span>
+46:                         <span class="ruby-keyword kw">end</span>
+47:                 <span class="ruby-keyword kw">else</span>
+48:                         <span class="ruby-identifier">images</span>.<span class="ruby-identifier">create</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+49:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">image_url</span> = <span class="ruby-identifier">file_upload_name</span>
+50:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">description</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">name</span>
+51:                                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">data</span> = <span class="ruby-identifier">uploaded_data</span> <span class="ruby-comment cmt"># ProductImage will be handle the upload</span>
+52:                         <span class="ruby-keyword kw">end</span>
+53:                 <span class="ruby-keyword kw">end</span>
+54:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000050" class="method-detail">
-        <a name="M000050"></a>
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
 
         <div class="method-heading">
-          <a href="#M000050" class="method-signature">
+          <a href="#M000053" class="method-signature">
           <span class="method-name">new_attrs=</span><span class="method-args">(product_attributes)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000050-source">
+            onclick="toggleCode('M000053-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000053-source">
 <pre>
     <span class="ruby-comment cmt"># File app/models/product.rb, line 77</span>
 77:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_attrs=</span>(<span class="ruby-identifier">product_attributes</span>)
@@ -229,62 +226,62 @@
         </div>
       </div>
 
-      <div id="method-M000047" class="method-detail">
-        <a name="M000047"></a>
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
 
         <div class="method-heading">
-          <a href="#M000047" class="method-signature">
+          <a href="#M000050" class="method-signature">
           <span class="method-name">new_tags_from_checkbox=</span><span class="method-args">(tags)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000047-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000047-source">
+            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000050-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 57</span>
-57:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_tags_from_checkbox=</span>(<span class="ruby-identifier">tags</span>)
-58:                 <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tag_name</span><span class="ruby-operator">|</span>
-59:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tags</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag_name</span>)
-60:                 <span class="ruby-keyword kw">end</span>
-61:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 60</span>
+60:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_tags_from_checkbox=</span>(<span class="ruby-identifier">tags</span>)
+61:                 <span class="ruby-identifier">tags</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tag_name</span><span class="ruby-operator">|</span>
+62:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tags</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag_name</span>)
+63:                 <span class="ruby-keyword kw">end</span>
+64:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000048" class="method-detail">
-        <a name="M000048"></a>
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
 
         <div class="method-heading">
-          <a href="#M000048" class="method-signature">
+          <a href="#M000051" class="method-signature">
           <span class="method-name">new_tags_from_string=</span><span class="method-args">(tags_string)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000048-source">
+            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000051-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 63</span>
-63:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_tags_from_string=</span>(<span class="ruby-identifier">tags_string</span>)
-64:                 <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tags_string</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;&quot;</span>
-65:                 <span class="ruby-identifier">tags_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;, &quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tag_name</span><span class="ruby-operator">|</span>
-66:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tags</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag_name</span>)
-67:                 <span class="ruby-keyword kw">end</span>
-68:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 66</span>
+66:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_tags_from_string=</span>(<span class="ruby-identifier">tags_string</span>)
+67:                 <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tags_string</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;&quot;</span>
+68:                 <span class="ruby-identifier">tags_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;, &quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tag_name</span><span class="ruby-operator">|</span>
+69:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tags</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tag_name</span>)
+70:                 <span class="ruby-keyword kw">end</span>
+71:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000044" class="method-detail">
-        <a name="M000044"></a>
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
 
         <div class="method-heading">
-          <a href="#M000044" class="method-signature">
+          <a href="#M000047" class="method-signature">
           <span class="method-name">releated</span><span class="method-args">(limit=10)</span>
           </a>
         </div>
@@ -295,13 +292,15 @@ A Termékhez kapcsolódó további termékek pl. hasonló kategóriájúak,
 címkéjűek stb.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000044-source">
+            onclick="toggleCode('M000047-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000047-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/product.rb, line 29</span>
-29:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">releated</span>(<span class="ruby-identifier">limit</span>=<span class="ruby-value">10</span>)
-30:                 <span class="ruby-constant">Product</span>.<span class="ruby-identifier">in_category</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">category</span>).<span class="ruby-identifier">order_by</span>(<span class="ruby-identifier">:price</span>).<span class="ruby-identifier">limit</span>(<span class="ruby-identifier">limit</span>)
-31:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/product.rb, line 30</span>
+30:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">releated</span>(<span class="ruby-identifier">limit</span>=<span class="ruby-value">10</span>)
+31:                 <span class="ruby-identifier">products</span> = <span class="ruby-constant">Product</span>.<span class="ruby-identifier">in_category</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">category</span>).<span class="ruby-identifier">order_by</span>(<span class="ruby-identifier">:price</span>).<span class="ruby-identifier">limit</span>(<span class="ruby-identifier">limit</span>)
+32:                 <span class="ruby-identifier">products</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-keyword kw">self</span>)
+33:                 <span class="ruby-identifier">products</span>
+34:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

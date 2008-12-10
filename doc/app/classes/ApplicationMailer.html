@@ -86,7 +86,7 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000033">password_remember</a>&nbsp;&nbsp;
+      <a href="#M000036">password_remember</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -108,25 +108,25 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000033" class="method-detail">
-        <a name="M000033"></a>
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
 
         <div class="method-heading">
-          <a href="#M000033" class="method-signature">
+          <a href="#M000036" class="method-signature">
           <span class="method-name">password_remember</span><span class="method-args">(email_address, name, new_password, sent_at = Time.now)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000033-source">
+            onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000036-source">
 <pre>
     <span class="ruby-comment cmt"># File app/models/application_mailer.rb, line 4</span>
  4:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">password_remember</span>(<span class="ruby-identifier">email_address</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">new_password</span>, <span class="ruby-identifier">sent_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
  5:     <span class="ruby-identifier">subject</span>    <span class="ruby-value str">'Webshop jelszó visszaállítása'</span>
  6:     <span class="ruby-identifier">recipients</span> <span class="ruby-identifier">email_address</span>
- 7:     <span class="ruby-identifier">from</span>       <span class="ruby-value str">'index@webshop.csiszarattila.com'</span>
+ 7:     <span class="ruby-identifier">from</span>       <span class="ruby-value str">'&lt;csiszar1@t-online.hu&gt;'</span>
  8:     <span class="ruby-identifier">sent_on</span>    <span class="ruby-identifier">sent_at</span>
  9:     
 10:     <span class="ruby-identifier">body</span>       <span class="ruby-identifier">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">:new_password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">new_password</span>

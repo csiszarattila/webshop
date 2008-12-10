@@ -86,10 +86,12 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000024">authenticate</a>&nbsp;&nbsp;
-      <a href="#M000025">create_a_customer</a>&nbsp;&nbsp;
-      <a href="#M000022">password=</a>&nbsp;&nbsp;
-      <a href="#M000023">random_password</a>&nbsp;&nbsp;
+      <a href="#M000025">admin?</a>&nbsp;&nbsp;
+      <a href="#M000026">authenticate</a>&nbsp;&nbsp;
+      <a href="#M000027">create_a_customer</a>&nbsp;&nbsp;
+      <a href="#M000028">create_an_admin</a>&nbsp;&nbsp;
+      <a href="#M000023">password=</a>&nbsp;&nbsp;
+      <a href="#M000024">random_password</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -124,11 +126,11 @@
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000024" class="method-detail">
-        <a name="M000024"></a>
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
 
         <div class="method-heading">
-          <a href="#M000024" class="method-signature">
+          <a href="#M000026" class="method-signature">
           <span class="method-name">authenticate</span><span class="method-args">(username, password)</span>
           </a>
         </div>
@@ -145,30 +147,84 @@ href="User.html">User</a></tt> objektummal tér vissza, máskülönben nil
 értékkel.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000024-source">
+            onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000026-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/user.rb, line 36</span>
-36:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)
-37:     <span class="ruby-identifier">user</span> = <span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">username</span>)
-38:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
-39:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">hashed_password</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">encrypt_password</span>(<span class="ruby-identifier">password</span>,<span class="ruby-identifier">user</span>.<span class="ruby-identifier">salt</span>)
-40:         <span class="ruby-identifier">user</span> = <span class="ruby-keyword kw">nil</span>
-41:       <span class="ruby-keyword kw">end</span>
-42:     <span class="ruby-keyword kw">end</span>
-43:     <span class="ruby-identifier">user</span>
-44:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 41</span>
+41:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)
+42:     <span class="ruby-identifier">user</span> = <span class="ruby-identifier">find_by_username</span>(<span class="ruby-identifier">username</span>)
+43:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+44:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">hashed_password</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">encrypt_password</span>(<span class="ruby-identifier">password</span>,<span class="ruby-identifier">user</span>.<span class="ruby-identifier">salt</span>)
+45:         <span class="ruby-identifier">user</span> = <span class="ruby-keyword kw">nil</span>
+46:       <span class="ruby-keyword kw">end</span>
+47:     <span class="ruby-keyword kw">end</span>
+48:     <span class="ruby-identifier">user</span>
+49:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="#M000027" class="method-signature">
+          <span class="method-name">create_a_customer</span><span class="method-args">(user)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000027-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 51</span>
+51:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create_a_customer</span>(<span class="ruby-identifier">user</span>)
+52:                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">group</span> = <span class="ruby-constant">UserGroup</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-value str">&quot;customer&quot;</span>)
+53:                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>()
+54:                 <span class="ruby-constant">Customer</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">:user</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>)
+55:                 <span class="ruby-identifier">user</span>
+56:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="#M000028" class="method-signature">
+          <span class="method-name">create_an_admin</span><span class="method-args">(params)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000028-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 58</span>
+58:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create_an_admin</span>(<span class="ruby-identifier">params</span>)
+59:                 <span class="ruby-identifier">user</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">params</span>)
+60:                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">group</span> = <span class="ruby-constant">UserGroup</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-value str">&quot;admin&quot;</span>)
+61:                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>()
+62:                 <span class="ruby-identifier">user</span>
+63:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
 
       <div id="method-M000025" class="method-detail">
         <a name="M000025"></a>
 
         <div class="method-heading">
           <a href="#M000025" class="method-signature">
-          <span class="method-name">create_a_customer</span><span class="method-args">(user)</span>
+          <span class="method-name">admin?</span><span class="method-args">()</span>
           </a>
         </div>
       
@@ -177,25 +233,21 @@ href="User.html">User</a></tt> objektummal tér vissza, máskülönben nil
             onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000025-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/user.rb, line 46</span>
-46:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create_a_customer</span>(<span class="ruby-identifier">user</span>)
-47:                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">group</span> = <span class="ruby-constant">UserGroup</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-value str">&quot;customer&quot;</span>)
-48:                 <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>()
-49:                 <span class="ruby-constant">Customer</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">:user</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>)
-50:                 <span class="ruby-identifier">user</span>
-51:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 31</span>
+31:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">admin?</span>
+32:                 <span class="ruby-identifier">admin_group</span> = <span class="ruby-constant">UserGroup</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-value str">&quot;admin&quot;</span>)
+33:                 <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">equal?</span> <span class="ruby-identifier">admin_group</span>.<span class="ruby-identifier">id</span>
+34:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <h3 class="section-bar">Public Instance methods</h3>
-
-      <div id="method-M000022" class="method-detail">
-        <a name="M000022"></a>
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
 
         <div class="method-heading">
-          <a href="#M000022" class="method-signature">
+          <a href="#M000023" class="method-signature">
           <span class="method-name">password=</span><span class="method-args">(password)</span>
           </a>
         </div>
@@ -212,8 +264,8 @@ hozzáadáshoz. Legenerálja és hozzá is adja a <tt>salt</tt>-ot és a
 <tt>hashed_password</tt>-öt a modell-objektumhoz.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000022-source">
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
 <pre>
     <span class="ruby-comment cmt"># File app/models/user.rb, line 19</span>
 19:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">password=</span>(<span class="ruby-identifier">password</span>)
@@ -226,11 +278,11 @@ hozzáadáshoz. Legenerálja és hozzá is adja a <tt>salt</tt>-ot és a
         </div>
       </div>
 
-      <div id="method-M000023" class="method-detail">
-        <a name="M000023"></a>
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
 
         <div class="method-heading">
-          <a href="#M000023" class="method-signature">
+          <a href="#M000024" class="method-signature">
           <span class="method-name">random_password</span><span class="method-args">(length=6)</span>
           </a>
         </div>
@@ -240,8 +292,8 @@ hozzáadáshoz. Legenerálja és hozzá is adja a <tt>salt</tt>-ot és a
 Beállít egy új, véletlen [a-zA-Z0-9] karakterekből generált jelszót
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000023-source">
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
 <pre>
     <span class="ruby-comment cmt"># File app/models/user.rb, line 26</span>
 26:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">random_password</span>(<span class="ruby-identifier">length</span>=<span class="ruby-value">6</span>)

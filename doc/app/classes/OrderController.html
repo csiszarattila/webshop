@@ -88,9 +88,9 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000037">address</a>&nbsp;&nbsp;
-      <a href="#M000038">confirm</a>&nbsp;&nbsp;
-      <a href="#M000036">create</a>&nbsp;&nbsp;
+      <a href="#M000040">address</a>&nbsp;&nbsp;
+      <a href="#M000041">confirm</a>&nbsp;&nbsp;
+      <a href="#M000039">create</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -112,19 +112,19 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000037" class="method-detail">
-        <a name="M000037"></a>
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
 
         <div class="method-heading">
-          <a href="#M000037" class="method-signature">
+          <a href="#M000040" class="method-signature">
           <span class="method-name">address</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000037-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000037-source">
+            onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000040-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/order_controller.rb, line 22</span>
 22:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">address</span>
@@ -136,7 +136,7 @@
 28:                         <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:order</span>])
 29:                         <span class="ruby-ivar">@address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:address</span>])
 30:                         
-31:                         <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">valid?</span> <span class="ruby-comment cmt"># az if miatt, maskülönben nem adná hozzá a hibaüzeneteket</span>
+31:                         <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">valid?</span> <span class="ruby-comment cmt"># az if miatt, máskülönben nem adná hozzá a hibaüzeneteket</span>
 32:                         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">valid?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@address</span>.<span class="ruby-identifier">valid?</span>
 33:                                 <span class="ruby-comment cmt"># Save the address if the customer haven't got one</span>
 34:                                 <span class="ruby-comment cmt"># A címet mindenképp elmentjük, ha még nincs a vásárlónak</span>
@@ -167,19 +167,19 @@
         </div>
       </div>
 
-      <div id="method-M000038" class="method-detail">
-        <a name="M000038"></a>
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
 
         <div class="method-heading">
-          <a href="#M000038" class="method-signature">
+          <a href="#M000041" class="method-signature">
           <span class="method-name">confirm</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000038-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000038-source">
+            onclick="toggleCode('M000041-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000041-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/order_controller.rb, line 58</span>
 58:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">confirm</span>
@@ -190,19 +190,19 @@
         </div>
       </div>
 
-      <div id="method-M000036" class="method-detail">
-        <a name="M000036"></a>
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
 
         <div class="method-heading">
-          <a href="#M000036" class="method-signature">
+          <a href="#M000039" class="method-signature">
           <span class="method-name">create</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000036-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000036-source">
+            onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000039-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/order_controller.rb, line 6</span>
  6:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>

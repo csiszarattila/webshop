@@ -86,9 +86,9 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000059">before_validation</a>&nbsp;&nbsp;
-      <a href="#M000061">strip_everything_but_digits</a>&nbsp;&nbsp;
-      <a href="#M000060">validate</a>&nbsp;&nbsp;
+      <a href="#M000062">before_validation</a>&nbsp;&nbsp;
+      <a href="#M000064">strip_everything_but_digits</a>&nbsp;&nbsp;
+      <a href="#M000063">validate</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -110,75 +110,78 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000059" class="method-detail">
-        <a name="M000059"></a>
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
 
         <div class="method-heading">
-          <a href="#M000059" class="method-signature">
+          <a href="#M000062" class="method-signature">
           <span class="method-name">before_validation</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000059-source">
+            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000062-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/address.rb, line 27</span>
-27:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">before_validation</span>
-28:                 <span class="ruby-comment cmt"># Strip every character from tel numbers</span>
-29:                 <span class="ruby-comment cmt"># so 06-30/623-4562 became 06306234562</span>
-30:                 <span class="ruby-comment cmt"># A telefonszámokat tisztán számsorként tároljuk</span>
-31:                 <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tel</span> = <span class="ruby-identifier">strip_everything_but_digits</span>(<span class="ruby-identifier">tel</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attribute_present?</span>(<span class="ruby-value str">&quot;tel&quot;</span>)
-32:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/address.rb, line 26</span>
+26:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">before_validation</span>
+27:                 <span class="ruby-comment cmt"># Strip every character from tel numbers</span>
+28:                 <span class="ruby-comment cmt"># so 06-30/623-4562 became 06306234562</span>
+29:                 <span class="ruby-comment cmt"># A telefonszámokat tisztán számsorként tároljuk</span>
+30:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attribute_present?</span>(<span class="ruby-value str">&quot;tel&quot;</span>)
+31:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tel</span> = <span class="ruby-identifier">strip_everything_but_digits</span>(<span class="ruby-identifier">tel</span>)
+32:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tel</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">0</span>,<span class="ruby-value str">'06'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tel</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\A06.*\Z/</span>
+33:                 <span class="ruby-keyword kw">end</span>
+34:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000061" class="method-detail">
-        <a name="M000061"></a>
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
 
         <div class="method-heading">
-          <a href="#M000061" class="method-signature">
+          <a href="#M000064" class="method-signature">
           <span class="method-name">strip_everything_but_digits</span><span class="method-args">(string)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000061-source">
+            onclick="toggleCode('M000064-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000064-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/address.rb, line 40</span>
-40:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">strip_everything_but_digits</span>(<span class="ruby-identifier">string</span>)
-41:                 <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[^0-9]/</span>, <span class="ruby-value str">&quot;&quot;</span>)
-42:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/address.rb, line 42</span>
+42:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">strip_everything_but_digits</span>(<span class="ruby-identifier">string</span>)
+43:                 <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[^0-9]/</span>, <span class="ruby-value str">&quot;&quot;</span>)
+44:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000060" class="method-detail">
-        <a name="M000060"></a>
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
 
         <div class="method-heading">
-          <a href="#M000060" class="method-signature">
+          <a href="#M000063" class="method-signature">
           <span class="method-name">validate</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000060-source">
+            onclick="toggleCode('M000063-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000063-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/address.rb, line 34</span>
-34:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate</span>
-35:                 <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">ZipcodeMatch</span><span class="ruby-operator">::</span><span class="ruby-identifier">match?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">city</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">zipcode</span>)
-36:                                 <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span> <span class="ruby-identifier">:zip_and_city_not_match</span>
-37:                 <span class="ruby-keyword kw">end</span>
-38:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/address.rb, line 36</span>
+36:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate</span>
+37:                 <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">ZipcodeMatch</span><span class="ruby-operator">::</span><span class="ruby-identifier">match?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">city</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">zipcode</span>)
+38:                                 <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span> <span class="ruby-identifier">:zip_and_city_not_match</span>
+39:                 <span class="ruby-keyword kw">end</span>
+40:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
