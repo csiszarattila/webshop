@@ -220,6 +220,14 @@ div.product h3{
  height:2em;
 }
 
+div.product img{
+  border:0px;
+}
+
+div.product a[rel="lightbox"]:hover{
+  background:0px !important;
+}
+
 table.products, div#product-details, div#related-products{
  width:53em;
 }
