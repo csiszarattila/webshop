@@ -58,3 +58,9 @@ parancsokkal.
 * gemek:
   * haml-2.0.3
   * will-paginate-2.3.6
+  
+== Jogi feltételek a felhasználásra
+Jelen programra a GNU/GPL licensz harmadik számú változata érvényes.
+
+== Kapcsolat
+Email: csiszar [dot] ati [at] gmail [dot] com
