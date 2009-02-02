@@ -62,5 +62,7 @@ parancsokkal.
 == Jogi feltételek a felhasználásra
 Jelen programra a GNU/GPL licensz harmadik számú változata érvényes.
 
+Mindez azt jelenti, hogy szabadon felhasználható és módosítható, de elérhetővé kell tenned mások számára is! Valamint ebben az esetben kérlek tüntesd fel a nevem az alkalmazás mellett és értesíts e-mailben.
+
 == Kapcsolat
 Email: csiszar [dot] ati [at] gmail [dot] com
