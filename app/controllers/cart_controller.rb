@@ -16,11 +16,16 @@ class CartController < ApplicationController
 	end
 	
 	def remove
-		@cart.remove_product(params[:id])
+		cart_item = @cart.remove_product(params[:id])
 		
-		redirect_to :action => 'empty' and return if @cart.items.empty?
+    respond_to do |format|
+      format.html { 
+        redirect_to :action => 'empty' and return if @cart.items.empty?
+        redirect_to :action => 'index'
+      }
+      format.js { render :json =>  cart_item }
+    end
 		
-		redirect_to :action => 'index'
 		
 	rescue ActiveRecord::RecordNotFound
 		logger.error("Olyan terméket akartak kivenni a kosárból amely benne sem volt. ID: #{params[:id]}")

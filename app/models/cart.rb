@@ -27,7 +27,9 @@ class Cart
 			destroy_item(id)
 		else
 			current_cart_item.decrement_quantity
-		end
+	  end
+  
+    current_cart_item
 	end
 	
 	def destroy_item(id)
