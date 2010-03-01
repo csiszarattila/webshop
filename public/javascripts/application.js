@@ -19,5 +19,17 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	$(".increase").click(function() {
+    var button = $(this);
+    $.get($(this).attr("href"), $(this).serialize(), 
+      function(cart_item){
+        button.prev().html(cart_item["quantity"]);
+        button.parent().parent(".price").html(cart_item["price"]);
+      },
+    "json"
+    );
+    
+    return false;
+  });
+	
 });
-
