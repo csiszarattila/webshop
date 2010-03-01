@@ -20,7 +20,7 @@ module ProductsHelper
 			:precision => 0,
 			:unit => "Ft", 
 			:delimiter => ",",
-			:format => "%n<span class='currency'>%u</span>" )
+			:format => "<span class='value'>%n</span><span class='currency'>%u</span>" )
 	end
 	
 	def price_for_product(product)

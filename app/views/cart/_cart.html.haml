@@ -9,7 +9,7 @@
   
   %tr
     %td.sum{ :colspan => "2" } Összesen
-    %td.price.price-sum 
+    %td.price#price-sum 
       = format_price(@cart.total_price)
     %td
       = link_to 'Kosár kiürítése', empty_cart_path
