@@ -7,9 +7,12 @@ class CartController < ApplicationController
 	
 	def add
 		product = Product.find(params[:id])
-		@cart.add_product(product)
-		redirect_to :action => 'index'
-		
+		item = @cart.add_product(product)
+	
+		respond_to do |format|
+		  format.html { redirect_to :action => 'index' }
+		  format.js   { render :json => item }
+	  end
 	rescue ActiveRecord::RecordNotFound
 		logger.error("Olyan terméket akartak elhelyezni a kosárban amely nem nem létezik. ID: #{params[:id]}")
 		redirect_to :root

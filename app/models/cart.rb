@@ -17,6 +17,7 @@ class Cart
 		else
 			current_cart_item.increment_quantity
 		end
+		current_cart_item
 	end
 	
 	def remove_product(id)
