@@ -5,28 +5,29 @@ $(document).ready(function(){
 	
 	$(".decrease").click(function() {
 		var decrease_button = $(this);
-		$.get($(this).attr("href"), $(this).serialize(), function(cart_item)
+		$.get($(this).attr("href"), $(this).serialize(), function(cart)
 		{
 			// Mennyiség frissítése
-			decrease_button.next().html(cart_item["quantity"]);
-			var price = cart_item["quantity"] * cart_item["product"]["product"]["price"];
+			decrease_button.next().html(cart["item"]["quantity"]);
 			// Ár frissítése
-			decrease_button.parent().siblings(".price").children(".value").html(price);
-			$("#price-sum ").(".price").children(".value").html(price);
+			decrease_button.parent().siblings(".price").children(".value").html(cart["item"]["price"]);
 			// Kosár Összár frissítése
-			 $("#price-sum > .value").html()
+			 $("#price-sum > .value").html(cart["total_price"]);
 		}, "json");
 		return false;
 	});
 	
 	$(".increase").click(function() {
-    var button = $(this);
+    var increase_button = $(this);
     $.get($(this).attr("href"), $(this).serialize(), 
-      function(cart_item){
-        button.prev().html(cart_item["quantity"]);
-        button.parent().parent(".price").html(cart_item["price"]);
-      },
-    "json"
+      function(cart){
+        // Mennyiség frissítése
+        increase_button.prev().html(cart["item"]["quantity"]);
+  			// Ár frissítése
+  			increase_button.parent().siblings(".price").children(".value").html(cart["item"]["price"]);
+  			// Kosár Összár frissítése
+  			 $("#price-sum > .value").html(cart["total_price"]);
+      },"json"
     );
     
     return false;

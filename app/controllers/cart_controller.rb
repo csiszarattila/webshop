@@ -11,24 +11,38 @@ class CartController < ApplicationController
 	
 		respond_to do |format|
 		  format.html { redirect_to :action => 'index' }
-		  format.js   { render :json => item }
+		  format.js   { render :json => { 
+		        :item => { 
+		          :quantity => item.quantity(), 
+		          :price => item.price() 
+		        }, 
+		        :total_price => @cart.total_price 
+		      }
+		  }
 	  end
+	  
 	rescue ActiveRecord::RecordNotFound
 		logger.error("Olyan terméket akartak elhelyezni a kosárban amely nem nem létezik. ID: #{params[:id]}")
 		redirect_to :root
 	end
 	
 	def remove
-		cart_item = @cart.remove_product(params[:id])
+		item = @cart.remove_product(params[:id])
 		
     respond_to do |format|
       format.html { 
         redirect_to :action => 'empty' and return if @cart.items.empty?
         redirect_to :action => 'index'
       }
-      format.js { render :json =>  cart_item }
+      format.js   { render :json => { 
+		        :item => { 
+		          :quantity => item.quantity(), 
+		          :price => item.price() 
+		        }, 
+		        :total_price => @cart.total_price 
+		      }
+		  }
     end
-		
 		
 	rescue ActiveRecord::RecordNotFound
 		logger.error("Olyan terméket akartak kivenni a kosárból amely benne sem volt. ID: #{params[:id]}")
