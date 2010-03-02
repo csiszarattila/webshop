@@ -5,6 +5,12 @@ $(document).ready(function(){
 	
 	$(".decrease").click(function() {
 		var decrease_button = $(this);
+		quantity = decrease_button.next().html()
+		if( quantity == 1 )
+		{
+		  return confirm("Ki akarod venni a terméket a kosaradból?");
+		}
+		
 		$.get($(this).attr("href"), $(this).serialize(), function(cart)
 		{
 			// Mennyiség frissítése
