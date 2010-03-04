@@ -38,5 +38,14 @@ $(document).ready(function(){
     
     return false;
   });
+  
+  $("#address_city").autocomplete({ 
+    source: '/order/address_autocompleter',
+    select: function(event, ui) {
+    	$('#address_city').val(ui.item.label);
+    	$('#address_zipcode').val(ui.item.zipcode);
+    	return false;
+    },
+  });
 	
 });

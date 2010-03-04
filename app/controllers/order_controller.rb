@@ -58,4 +58,18 @@ class OrderController < ApplicationController
 	def confirm
 		redirect_to order_address_path and return unless session[:order]
 	end
+	
+	def address_autocompleter
+	  require 'models/zipcode'
+	  city = params[:term]
+	  cities = Zipcode.find(:all, :conditions => [ "city LIKE ?", city + "%"])
+	  
+	  ActiveRecord::Base.include_root_in_json = false
+	  
+	  respond_to do |format|
+	    format.js { 
+	      render :json => cities.collect { |c| { :label => c.city, :zipcode => c.zipcode } } 
+	    }
+    end
+  end
 end
