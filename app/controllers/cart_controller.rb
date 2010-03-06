@@ -71,5 +71,6 @@ class CartController < ApplicationController
 	private
 	def find_cart
 		@cart = (session[:cart] ||= Cart.new)
+    
 	end
 end

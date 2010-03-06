@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def find_cart
-		@cart = session[:cart]
+		@cart = (session[:cart] ||= Cart.new)
 	end
 	
 	def show_cart

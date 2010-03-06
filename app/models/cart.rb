@@ -47,5 +47,11 @@ class Cart
 		@items.sum do |item| 
 			item.price
 		end
-	end
+  end
+
+  def empty?
+    @items.empty?
+  end
+
+
 end

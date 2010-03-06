@@ -1,5 +1,12 @@
 %h2 A kosarad pillanatnyi tartalma
-= render "cart/cart"
-.cart-commands
-  = link_to 'Vásárlás folytatása', root_path
-  = link_to 'Tovább a rendeléshez', order_address_path
+- if not @cart.empty?
+  = render "cart/cart"
+  .cart-commands
+    = link_to 'Vásárlás folytatása', root_path
+    = link_to 'Tovább a rendeléshez', order_address_path
+- else
+  %p 
+    A kosarad pillanatnyilag üres.
+  %p.info
+    A kosárba pakolással tudod összegyűjteni azokat a termékeket, amelyeket szeretnél megrendelni.
+  = link_to 'Válassz a kínálatunkból!', root_path

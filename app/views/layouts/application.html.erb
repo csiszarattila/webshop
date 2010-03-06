@@ -47,7 +47,7 @@
       </form>
     </div>
     <div id="leftcolumn">
-      <% if @cart and @show_cart %>
+      <% if not @cart.empty? and @show_cart %>
       <h2>A kosarad tartalma</h2>
       <div id="cartbox">
         <%= render :partial => 'cart/mini', :object => @cart %>
