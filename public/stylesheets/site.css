@@ -289,6 +289,8 @@ table.products .product .details td{
 .cart-commands a:hover{
  background:#0c0;
  color:#fff;
+ border-radius: 0.4em;
+ -moz-border-radius: 0.4em;
 }
 
 .products tr.commands{
@@ -373,6 +375,7 @@ table.products .product .details td{
  line-height:0.7em;
  margin:0px 0.3em;
  font-size:2.5em;
+ font-weight:bold;
  border:1px solid #fff;
  text-align:center;
 }
@@ -383,9 +386,11 @@ table.products .product .details td{
  line-height:2em;
  width:2em;
  height:2em;
- background:#0c0;
+ background:#d0d0d0;
  color:#fff;
- font-size:1em;
+ font-size:1.1em;
+ border-radius: 0.4em;
+ -moz-border-radius: 0.4em;
 }
 
 .cart-commands{

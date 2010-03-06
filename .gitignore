@@ -5,3 +5,7 @@ config/*.online
 vendor/rails*
 vendor/gems*
 doc/api
+.project
+.buildpath
+.settings
+.tmp*
