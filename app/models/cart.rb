@@ -1,17 +1,21 @@
 class Cart
 	
-	def find(id)
-		lambda { |item| item.product.id.to_i == id.to_i }
-	end
-	
-	attr_reader :items
-	
+  attr_reader :items
+    	
 	def initialize
 		@items = []
-	end
+  end
+
+  def by_product_id(id)
+    lambda { |item| item.product_id.to_i == id.to_i }
+  end
+  
+  def find_product(product_id)
+    @items.find &by_product_id(product_id)
+  end
 
 	def add_product(product)
-		current_cart_item = @items.find do |item| item.product == product end
+		current_cart_item = find_product(product.id)
 		if current_cart_item.nil?
 			@items << CartItem.new(product)
 		else
@@ -21,7 +25,7 @@ class Cart
 	end
 	
 	def remove_product(id)
-		current_cart_item = @items.find &find(id)
+		current_cart_item = find_product(id)
 		if current_cart_item.nil?
 			raise ActiveRecord::RecordNotFound
 		elsif current_cart_item.quantity == 1
@@ -34,7 +38,7 @@ class Cart
 	end
 	
 	def destroy_item(id)
-		item = @items.index &find(id)
+		item = @items.index &by_product_id(id)
 		raise ActiveRecord::RecordNotFound if item.nil?
 		@items.delete_at(item)
 	end

@@ -1,8 +1,9 @@
 class CartItem
-	attr_reader :product, :quantity
+	attr_reader :product_id, :quantity, :price
 	
 	def initialize(product)
-		@product = product
+		@product_id = product.id
+    @price = product.price
 		@quantity = 1
 	end
 	
@@ -15,6 +16,10 @@ class CartItem
 	end
 	
 	def price
-		@quantity * @product.price
+		@quantity * @price
 	end
+  
+  def product
+    Product.find(@product_id)
+  end
 end
