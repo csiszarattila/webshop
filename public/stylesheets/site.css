@@ -14,6 +14,10 @@ a{
  color:#551A8B;
 }
 
+img{
+ border:none;
+}
+
 form fieldset{
  border:0px;
 }
@@ -220,10 +224,6 @@ div.product h3{
  height:2em;
 }
 
-div.product img{
-  border:0px;
-}
-
 div.product a[rel="lightbox"]:hover{
   background:0px !important;
 }
@@ -293,6 +293,10 @@ table.products .product .details td{
  -moz-border-radius: 0.4em;
 }
 
+#cart .title a:hover {
+ background-color:#fff !important;
+}
+
 .products tr.commands{
  text-align:right;
 }
@@ -340,6 +344,9 @@ table.products .product .details td{
  margin-top:3em !important;
 }
 
+/**
+ * Cart's detailed page
+ */
 #cart{
  margin-top:3em;
  width:100%;
@@ -347,19 +354,19 @@ table.products .product .details td{
  border-collapse:collapse;
 }
 
-#cart th{
+#cart thead th{	
  font-size:1.4em;
  background:#0c0;
  color:#fff;
 }
 
-#cart td.price, td.sum{
- text-align:right;
- font-weight:bold;
+#cart tbody tr{
+ border-bottom: 1px solid #d0d0d0;
 }
 
-#cart td.price-sum{
- border-top:1px solid #000;
+#cart td.price{
+ text-align:right;
+ font-weight:bold;
 }
 
 #cart td.title img{
@@ -367,7 +374,7 @@ table.products .product .details td{
 }
 
 #cart td.quantity{
-  min-width:10em;  
+  width:12em;  
 }
 
 #cart span.quantity{
@@ -391,6 +398,15 @@ table.products .product .details td{
  font-size:1.1em;
  border-radius: 0.4em;
  -moz-border-radius: 0.4em;
+}
+
+#cart tfoot tr {	
+ border-top: 2px solid #d0d0d0;
+}
+
+#cart tfoot tr td.sum {
+ font-weight: bold;
+ text-align:center;
 }
 
 .cart-commands{
