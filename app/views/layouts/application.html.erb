@@ -54,25 +54,7 @@
       </div>
       <% end %>
       <h2>Kategóriák</h2>
-      <ul id="cat-list">
-        <% if @current_category %>
-            <li class="current">
-              <%= link_to @current_category[:root].name, category_path(@current_category[:root]) %>
-              <ul>
-                <%= nested_list_for_categories(@current_category[:ancestors]) %>
-                <% unless @current_category[:current].is_root? %>
-                <li class='current'><%= link_to @current_category[:current].name, category_path(@current_category[:current]) %></li>
-                <% end %>
-                <% @current_category[:children].each do |child| %>
-                <li><%= link_to child.name, category_path(child) %></li>
-                <% end %>
-              </ul>
-            </li>
-        <% end %>
-        <% @categories.each do |category| %>
-          <li><%= link_to category.name, category_path(category) %></li>
-        <% end %>
-    	</ul>
+      <%= render :partial => "categories/menu", :object => @categories %>
     </div>
     <div id="middlecolumn">
       <% if flash[:notice]%>

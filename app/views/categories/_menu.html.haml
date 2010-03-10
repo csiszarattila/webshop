@@ -1,0 +1,16 @@
+%ul#cat-list
+  - if @current_category
+    %li.current
+      = link_to(@current_category[:current].root.name, category_path(@current_category[:current].root))
+      %ul
+        - @current_category[:ancestors].each do |ancestor|
+          %li.current= link_to(ancestor.name, category_path(ancestor))
+      
+        - unless @current_category[:current].is_root?
+          %li.current= link_to(@current_category[:current].name, category_path(@current_category))
+      
+        - @current_category[:current].children.each do |child|
+          %li link_to child.name, category_path(child)
+    
+  - @categories.each do |category|
+    %li= link_to category.name, category_path(category)
