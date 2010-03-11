@@ -12,7 +12,7 @@ module ProductsHelper
 		options = {:size => '150x150', :alt => ""}
 		options[:alt] = image.description
 		options.merge!(args) unless args.nil? # Given args overwrites default options
-		link_to image_tag( image.image_url, options ), image.image_url, {:rel=>"lightbox"}
+		link_to image_tag( image.image_url, options ), image.image_url, {:title => image.description }
 	end
 	
 	def format_price(price)
