@@ -2,7 +2,9 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(document).ready(function(){
-				 
+
+  	$(".product > a").fancybox();
+	
 	$(".decrease").click(function() {
 		var decrease_button = $(this);
 		quantity = decrease_button.next().html()
