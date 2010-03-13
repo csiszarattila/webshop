@@ -5,11 +5,11 @@
       %th Mennyiség
       %th.price Összár
       %th 
-  %tbody
+  %tbody.cart-items
     = render :partial => 'cart/cart_item', :collection => @cart.items
   
   %tfoot
-    %tr
+    %tr#cart-sum
       %td.sum Összesen
       %td.price#price-sum{ :colspan => "2" }  
         = format_price(@cart.total_price)

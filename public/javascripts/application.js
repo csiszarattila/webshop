@@ -2,7 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(document).ready(function(){
-	
+				 
 	$(".decrease").click(function() {
 		var decrease_button = $(this);
 		quantity = decrease_button.next().html()
@@ -18,7 +18,10 @@ $(document).ready(function(){
 			// Ár frissítése
 			decrease_button.parent().siblings(".price").children(".value").html(cart["item"]["price"]);
 			// Kosár Összár frissítése
-			 $("#price-sum > .value").html(cart["total_price"]);
+			$("#price-sum > .value").html(cart["total_price"]);
+			 
+			decrease_button.parent().parent().effect("highlight",{}, "slow");	 
+			$("#cart-sum").effect("highlight",{}, "slow");
 		}, "json");
 		return false;
 	});
@@ -29,10 +32,13 @@ $(document).ready(function(){
       function(cart){
         // Mennyiség frissítése
         increase_button.prev().html(cart["item"]["quantity"]);
-  			// Ár frissítése
-  			increase_button.parent().siblings(".price").children(".value").html(cart["item"]["price"]);
-  			// Kosár Összár frissítése
-  			 $("#price-sum > .value").html(cart["total_price"]);
+  		// Ár frissítése
+  		increase_button.parent().siblings(".price").children(".value").html(cart["item"]["price"]);
+  		// Kosár Összár frissítése
+  		$("#price-sum > .value").html(cart["total_price"]);
+		
+		increase_button.parent().parent().effect("highlight",{}, "slow");	 
+		$("#cart-sum").effect("highlight",{}, "slow");
       },"json"
     );
     
