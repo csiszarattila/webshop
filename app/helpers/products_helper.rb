@@ -19,7 +19,7 @@ module ProductsHelper
 		number_to_currency(	price, 
 			:precision => 0,
 			:unit => "Ft", 
-			:delimiter => ",",
+			:delimiter => " ",
 			:format => "<span class='value'>%n</span><span class='currency'>%u</span>" )
 	end
 	
