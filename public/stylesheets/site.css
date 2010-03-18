@@ -98,7 +98,7 @@ form fieldset{
 }
 
 #search h2, #leftcolumn h2, #middlecolumn h2:first-child{
- margin:0px;
+ margin-top:0px;
 }
 
 #search h2{
@@ -226,6 +226,10 @@ div.product h3{
 
 div.product a[rel="lightbox"]:hover{
   background:0px !important;
+}
+
+.product img.product-image{
+  border: 4px solid #E9E9e2;
 }
 
 table.products, div#product-details, div#related-products{

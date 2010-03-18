@@ -9,7 +9,7 @@ module ProductsHelper
 	end
 	
 	def image_for_product(image, args=nil)
-		options = {:size => '150x150', :alt => ""}
+		options = {:size => '150x150', :alt => "", :class => "product-image"}
 		options[:alt] = image.description
 		options.merge!(args) unless args.nil? # Given args overwrites default options
 		link_to image_tag( image.image_url, options ), image.image_url, {:title => image.description }

@@ -1,3 +1,4 @@
 .picture
-  = image_for_product(image)
+  = link_to image_tag( image.image_url, {:size => '150x150'} ), edit_admin_product_product_image_path( product, image ) , {:title => image.description, :class => "dialog" }
+
   = link_to 'Törlés', admin_product_product_image_path( product, image ), :method => :delete, :confirm => I18n.t('application.delete-confirm')
