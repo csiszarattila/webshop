@@ -3,7 +3,7 @@
 
 $(document).ready(function(){
 
-  	$(".product > a").fancybox();
+  $("a.lightbox").fancybox();
 	
 	$(".decrease").click(function() {
 		var decrease_button = $(this);
