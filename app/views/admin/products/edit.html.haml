@@ -6,5 +6,6 @@
     %fieldset#pictures
       %legend Kapcsolódó képek
       = render :partial => 'admin/products/image_on_edit.html.haml', :collection => @product.images, :as => :image, :locals => { :product => @product }
+      #dialog
   #submit
     =f.submit "Mentés"
