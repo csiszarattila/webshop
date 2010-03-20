@@ -1,14 +1,19 @@
 <html>
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Webshop Adminisztrációs Felülete</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Webshop Adminisztrációs Felülete</title>
 
-    <%= stylesheet_link_tag 'admin' %>
+  <!-- JQuery/JQuery UI -->
+  <%= javascript_include_tag "/lib/jquery-1.4.2.min.js" %>
+  <%= javascript_include_tag "/lib/jquery-ui-1.8rc3/js/jquery-ui-1.8rc3.custom.min.js" %>
+  <%= stylesheet_link_tag "/lib/jquery-ui-1.8rc3/css/ui-lightness/jquery-ui-1.8rc3.custom.css" %>
+  <!-- Fancybox -->
+  <%= javascript_include_tag '/lib/fancybox/jquery.fancybox-1.3.1.pack.js' %>
+  <%= stylesheet_link_tag '/lib/fancybox/jquery.fancybox-1.3.1.css' %>
    
-    <link type="text/css" href="http://jqueryui.com/latest/themes/base/jquery.ui.all.css" rel="stylesheet" />
-    <%= javascript_include_tag '/jquery-ui-1.8rc3.custom/js/jquery-1.4.2.min.js' %>
-    <%= javascript_include_tag '/jquery-ui-1.8rc3.custom/js/jquery-ui-1.8rc3.custom.min.js' %>
-    <%= javascript_include_tag 'admin.js' %>
+	<!-- Custom CSS/JS -->
+  <%= javascript_include_tag 'admin.js' %>
+  <%= stylesheet_link_tag 'admin' %>
 </head>
 <body>
 <div id="head">
