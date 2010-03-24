@@ -35,18 +35,14 @@ class Product < ActiveRecord::Base
 	
 	def image_file=(uploaded_data)
 		return if uploaded_data == ''
-		file_extension = uploaded_data.original_filename.split(".").last
-		file_upload_name = "product_image_#{self.images.count.next}.#{file_extension}"
 		
 		if self.new_record?
 			images.build do |i|
-				i.image_url = file_upload_name
-				i.description = ""
+				i.description = self.name
 				i.data = uploaded_data # ProductImage will be handle the upload
 			end
 		else
 			images.create do |i|
-				i.image_url = file_upload_name
 				i.description = self.name
 				i.data = uploaded_data # ProductImage will be handle the upload
 			end

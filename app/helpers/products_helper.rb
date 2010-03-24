@@ -9,15 +9,15 @@ module ProductsHelper
   end
   
   def product_image_tag(image, args=nil)
-    options = {:size => '150x150', :alt => "", :class => "product-image", :alt => image.description }
+    options = {:size => 'normal', :alt => "", :class => "product-image", :alt => image.description }
     
     options.merge!(args) unless args.nil? # Given args overwrites default options
-    image_tag( image.image_url, options )
+    image_tag( image.image_url(options.delete(:size)), options )
   end
   	
 	def product_image_url(image, args=nil)
 		options = {
-      :size => '150x150', :class => "product-image", :alt => image.description, 
+      :size => 'normal', :class => "product-image", :alt => image.description, 
       :url => image.image_url, :lightbox => true, :title => image.description }
     options.merge!(args) unless args.nil? # Given args overwrites default options
     

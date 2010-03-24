@@ -8,9 +8,17 @@ class ProductImage < ActiveRecord::Base
 	# Alapértelmezett kép, ha nem tartozik egy sem a termékhez
 	DEFAULT_PRODUCT_IMAGE_NAME = 'default.png'
 	
+  def image_name(size='normal')
+    image_name = self[:image_url].gsub(/(\{:size\})/, size)
+  end
+
+  def image_path(size)
+	  File.join(RAILS_ROOT,'public', PRODUCT_IMAGES_PATH, image_name(size))
+  end
+  
 	# Az +image_url+ -hez hozzáadjuk a +PRODUCT_IMAGES_PATH+ -ot
-	def image_url
-		PRODUCT_IMAGES_PATH + '/' + self[:image_url]
+	def image_url(size='normal')
+		PRODUCT_IMAGES_PATH + '/' + image_name(size)
 	end
 	
 	def after_destroy
@@ -20,8 +28,15 @@ class ProductImage < ActiveRecord::Base
 	
 	# upload data
 	def data=(uploaded_data)
-		file_upload_path = File.join(RAILS_ROOT,'public',self.image_url) #assumed that image_url has setted!
-		File.open(file_upload_path,'w') { |file| file.write(uploaded_data.read) }
+		file_extension = uploaded_data.original_filename.split(".").last
+		self.image_url = "#{ProductImage.last.id+1}_{:size}.#{file_extension}"
+
+		File.open(self.image_path('uploaded'),'w') { |file| file.write(uploaded_data.read) }
+		image = MiniMagick::Image.from_file(self.image_path('uploaded'))
+    image.resize "150x150"
+    image.write(self.image_path('normal'))
+    image.resize "50x50"
+    image.write(self.image_path('small'))
 	end
 	
 	def self.default
