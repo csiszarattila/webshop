@@ -1,7 +1,7 @@
 #product-details
   %h2= @product.name
   #imagecolumn
-    =sample_image_for_product(@product,:class=>"main-picture")
+    =product_sample_image_url(@product,:class=>"main-picture")
     .price 
       = price_for_product(@product)
     .commands

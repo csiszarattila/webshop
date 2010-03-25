@@ -1,6 +1,6 @@
 %tr
   %td.title
-    = product_sample_image_url(cart_item.product, {:size => '75x75'})        
+    = product_sample_image_url(cart_item.product, {:size => 'medium'})        
     %h4= cart_item.product.name
   %td.quantity
     = link_to '-', remove_from_cart_path(:id => cart_item.product), :class=>'decrease'

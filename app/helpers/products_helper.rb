@@ -17,8 +17,9 @@ module ProductsHelper
   	
 	def product_image_url(image, args=nil)
 		options = {
-      :size => 'normal', :class => "product-image", :alt => image.description, 
-      :url => image.image_url, :lightbox => true, :title => image.description }
+		  :size => 'normal', :image_url_size => "uploaded", :class => "product-image", 
+		  :alt => image.description, :lightbox => true, :title => image.description }
+    options[:url] = image.image_url(options[:image_url_size])
     options.merge!(args) unless args.nil? # Given args overwrites default options
     
     url_options = { :title => image.description }

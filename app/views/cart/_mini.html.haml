@@ -1,7 +1,7 @@
 %table#index-cart
   -for item in @cart.items 
     %tr
-      %td.img= product_sample_image_url(item.product, {:size => '50x50', :url => product_path(item.product), :title => "Megnézem!", :lightbox=>false} )
+      %td.img= product_sample_image_url(item.product, {:size => 'small', :url => product_path(item.product), :title => "Megnézem!", :lightbox=>false} )
       %td.quantity= item.quantity
       %td.price= format_price(item.price)
     %tr.title

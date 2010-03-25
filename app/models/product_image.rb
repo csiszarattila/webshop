@@ -9,6 +9,7 @@ class ProductImage < ActiveRecord::Base
 	DEFAULT_PRODUCT_IMAGE_NAME = 'default.png'
 	
   def image_name(size='normal')
+    size ='normal' unless ["uploaded","normal","medium","small"].include?(size)
     image_name = self[:image_url].gsub(/(\{:size\})/, size)
   end
 
@@ -35,6 +36,8 @@ class ProductImage < ActiveRecord::Base
 		image = MiniMagick::Image.from_file(self.image_path('uploaded'))
     image.resize "150x150"
     image.write(self.image_path('normal'))
+    image.resize "75x75"
+    image.write(self.image_path('medium'))
     image.resize "50x50"
     image.write(self.image_path('small'))
 	end
