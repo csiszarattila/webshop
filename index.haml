@@ -1,0 +1,449 @@
+!!! Strict
+<html>
+%head
+  %meta{ :'http-equiv'=>"Content-type", :content=>"text/html; charset=utf-8" }
+  %meta{ :'http-equiv'=>"Content-Language", :content=>"hu-HU" }
+  %meta{ :name=>"description" , :content=>"Szakdolgozat egy webáruház fejlesztéséről Ruby on Rails alapokon."}
+  
+  %title Csiszár Attila - Szakdolgozat | Webáruház fejlesztése Ruby on Rails alapokon
+  %style{:type=>"text/css"}
+    :sass
+      body
+        padding: 20px 100px 60px 60px
+        font-family: Helvetica, Verdana, sans-serif
+        
+        color: #222
+        counter-reset: chapter
+        
+      h1
+        font-family: Georgia, sans-serif
+        
+      a 
+        font-weight: bold
+        
+      a img
+        border: none
+      
+      a:hover
+        background-color: #ffb
+      
+      h2 a:hover, #images a
+        background-color: #fff
+        
+      h2
+        margin-top: 40px
+      
+      h2:before
+        content: counter(chapter) "."
+        counter-increment: chapter
+      
+      img
+        margin: 20px
+      
+      #copy
+        margin-top: 40px
+        border-top: 1px solid #bbb 
+        
+      .doc-download-link
+        display: block
+        line-height: 48px
+        width: 100px
+        padding-left: 60px
+        margin-left: 10px
+        background: url("images/download.png") no-repeat left center 
+        
+      #nav
+        position: fixed
+        top: 200px
+        right: 0px
+        margin: 0px
+        padding: 10px
+        text-align: right
+        background: #ffc
+        
+      #nav #menu
+        display: none
+        list-style: none
+      
+      #nav a
+        display: block
+        text-decoration: none
+          
+      #nav:hover #menu
+        display: inline
+      
+      #nav #menu a:hover
+        text-decoration: underline
+        
+      .top
+        font-size: 0.8em
+        
+      @media print
+        #nav
+          display: none
+        
+%body
+  %p
+    %a{:href=>"http://csiszarattila.com"}csiszarattila.com
+    \/ szakdolgozat
+  %h1 
+    Csiszár Attila: Webáruház fejlesztése Ruby On Rails alapokon, szakdolgozat
+  %h3 Kivonat
+  %p A szakdolgozatomat 2008-ban készítettem Webáruház fejlesztése Ruby On Rails alapokon címmel. A szakdolgozat ismerteti egy webalkalmazás tervezési fázisait(funkciók, protípus, adatbázis), kisebb ízelítőt ad a Ruby nyelvről, összefoglalja a Rails keretrendszer koncepcióját, bemutatja annak kulcsrészeit az alkalmazás implementálásán keresztül valamint ismerteti az alkalmazás tesztelését(egység ill. funkcionális tesztek). Az alábbi oldalon nemcsak a szakdolgozatot töltheted le, hanem olyan információkat is találhatsz, amelyek hely hiányában nem kerülhettek a végső változatba.
+  
+  
+  %a{:name=>"tartalom"}
+  %h3 Tartalom
+  %ol
+    %li
+      %a{:href=>"#bevezeto"} Miért pont webáruházat, miért pont Ruby on Railsben?
+    %li
+      %a{:href=>"#ajanlo"} Kinek érdemes elolvasnia?
+    %li
+      %a{:href=>"#szakdolgozat"} Szakdolgozat letöltése
+    %li
+      %a{:href=>"#kepek"}Képek az alkalmazásról
+    %li
+      %a{:href=>"#webshop"} Működő alkalmazás kipróbálása
+    %li
+      %a{:href=>"#source"} Forráskód megtekintése
+    %li
+      %a{:href=>"#tapasztalatok"} Fejlesztési tapasztalatok és gondolatok
+    %li
+      %a{:href=>"#tovabbfejlesztes"} Továbbfejlesztési ötletek
+    %li
+      %a{:href=>"#tippek"} Tippek más szakdolgozóknak
+    %li
+      %a{:href=>"#kapcsolat"} Kapcsolat
+    
+  
+  %h2
+    %a{:name=>"bevezeto"} Miért pont webáruházat, miért pont Ruby on Railsben?
+  
+  %p Lassan három éve foglalkozom webfejlesztéssel. Tanulás mellett, eleinte hobbinak, jó időtöltésnek indult, mára elsődleges érdeklődési körömmé vált. Az évek alatt igyekeztem folyamatosan bővíteni a tudásomat, igyekeztem minden területét megismerni.
+  
+  %p Így már jóval a szakdolgozat témaválasztása előtt tudtam, hogy mindenképp egy webfejlesztéssel kapcsolatos témát szeretnék kidolgozni. Mivel az utóbbi időszakban kizárólag PHP-ban fejlesztettem - és az elmúlt években amúgy is szinte Dunát lehet rekeszteni a PHP-s szakdolgozatokból - ezért mindenféleképpen szerettem volna valami egyedivel, újszerűvel előrukkolni, olyan témakörrel foglalkozni, amiből ráadásul tanulhatok is.
+  
+  %p A Ruby on Rails jó lehetőségnek tűnt erre és mivel már korábban is szerettem volna kipróbálni ezért abszolút adta magát, mint szakdolgozati témaválasztás. A konzulensem tanácsára ugyanakkor a keretrendszert egy alkalmazás fejlesztésével igyekeztem demonstrálni. Egy webáruház implementálása szinte minden területet lefed - az adatbázis-struktúra valamint a felhasználói-felület megtervezésén át, a felhasználók és a dinamikus tartalomak kiszolgálásáig.
+  
+  %p Az alkalmazás megtervezése és elkészítése közben összefoglalhattam az eddig tanultakat, ráadásul időközben a Rubynak és a Rails keretrendszernek köszönhetően új ismereteket is elsajátíhattam. Az elmúlt fél évben rengeteg tapasztalattal lettem gazdagabb, úgy érzem komoly szakmai előrelépést értem el a szakdolgozat elkészítésével.
+    
+  %h2
+    %a{:name=>"ajanlo"} Kinek érdemes elolvasnia?
+    
+  %p A szakdolgozat írásakor elsődleges szempont volt, hogy korszerűen mutassam be egy webes alkalmazás  fejlesztésének lépéseit, a tervezéstől a megvalósításig. Így bátran ajánlhatom azoknak, akik most ismerkednek a témakörrel és szeretnék bővíteni a tudásukat egy gyakorlati példán keresztül - természetesen ez nem azt jelenti, hogy minden alapvető webfejlesztési ismeretet közöl, például a HTML és CSS nyelv ismertetése helyett inkább tervezési kérdéseket feszeget - így elsősorban azoknak ajánlom, akik ezeken a témakörökön túljutva, most ismerkednek egy scriptnyelv lehetőségeivel.
+  
+  %p A szakdolgozat továbbá olyan újszerű elveket is bemutat, amelyeket az utóbbi időszakban kezdtek el szélesebb körben is alkalmazni és amelyekre nagy valószínűséggel a jövőben kulcsszerep jut. Ezek: a REST elvű alkalmazások, alkalmazások tesztelése Unit Testing elvekkel, HTML prototipizálás. Ezért azoknak is ajánlhatom a szakdolgozatot akik jártasabbak a webfejlesztésben de érdekelik ezek a témakörök, és szeretnének gyakorlati példákat látni ezek használatára.
+  
+  %p Ugyanakkor nem titkoltan a Ruby on Rails keretrendszer és ezen keresztül a Ruby nyelv bemutatása is célom volt, ezért azoknak is ajánlom akik most szeretnének megismerkedni a webfejlesztés legfrissebb trendjével, de megfelelő magyar nyelvű irodalom hiányában nem volt rá lehetőségük.
+  
+  %p És talán a tapasztalt Rubys és Rails fejlesztők is találnak hasznos ismereteket és újdonságokat a szakdolgozat elolvasása közben annál is inkább mivel a szakdolgozat az elérhető legaktuálisabb verzió (2.2-es) alapján készült. Nekik ehhez a szakdolgozat második felének a tanulmányozását javaslom.
+      
+  %h2
+    %a{:name=>"szakdolgozat"} Szakdolgozat letöltése
+    
+  %p Az alábbi linkek segítségével különböző formátumokban érheted el a szakdolgozat teljes szövegét (a szakdolgozat terjedelme 80, A4-es oldal):
+  
+  %p
+    %a.doc-download-link{:href=>"csiszar_attila_webaruhaz_ror_alapokon.pdf"} PDF (721KB)
+  %p
+    %a.doc-download-link{:href=>"csiszar_attila_webaruhaz_ror_alapokon.odt"} ODT (791KB)
+    
+  %h4 Tartalomismertető
+  
+  %p Részlet a bevezető fejezetből:
+  %blockquote{:cite=>"#szakdolgozat"}
+    %p A szakdolgozatom első részében a webáruházakkal kapcsolatos általános jellemzőkre keresem majd a választ, néhány konkrét példával illusztrálva, amelyekből megpróbálom leszűrni mik azok a főbb követelmények amelyeket megfogalmazhatunk egy webáruházzal kapcsolatban.
+    
+    %p A meghatározott jellemzőkből következhet a rendszer-specifikáció elkészítése valamint a tervezési folyamatok elvégzése: a szükséges adatbázisséma(háttér) megtervezése, a felhasználó felületek és folyamatmenetek illusztrálása. Ebben az egységben a hangsúlyt a rendszer-függetlenségre fektetem: fontosnak tartom, hogy az alkalmazás tervei akár más keretrendszerben is nyugodtan megvalósíthatóak legyenek.
+    %p A kész tervek alapján pedig következhet a webáruház megvalósítása Ruby on Rails környezetben, ahol egy-egy kulcsrészen keresztül szeretném bemutatni, milyen megoldásokat ajánl a keretrendszer a webalkalmazások fejlesztése közben előforduló gyakori problémákra. A fejlesztést végül a tesztelési fázis zárja majd, ahol az elkészült alkalmazás hibamentes működésének biztosításán lesz a hangsúly, gyakorlati módszerekkel.
+  
+  %h4 Tartalomjegyzék:
+  %ul
+    %li 1. Bevezetés
+    %li 
+      2. Webáruházak általános jellemzői
+      %ul
+        %li 2.1. A termékek rendszerezése
+        %li 2.2. A kosár szerepe
+        %li 2.3. Felhasználói  szerepkörök
+    %li
+      3. Rendszer-specifikáció készítése
+      %ul 
+        %li 3.1. A termékek rendszere
+        %li 
+          3.2.A kosár
+          %ul 
+            %li 3.2.1. A kosarak felhasználókhoz rendelése – munkamenet kezelés alkalmazása
+            %li 3.2.2. A kosár felhasználói esetei
+        %li
+          3.3. Rendelési folyamatok
+          %ul 
+            %li 3.3.1. Rendelések rögzítése
+        %li
+          3.4. Felhasználók azonosítása és kezelése
+          %ul
+            %li 3.4.1. A jelszavak titkosítása
+            %li 3.4.2. A felhasználók beléptetése
+            %li 3.4.3. Felhasználói jogkörök kiosztása
+            %li 3.4.4. Használati esetek
+    %li
+      4. Tervezési folyamat - az adattárolás megtervezése
+      %ul
+        %li 4.1. A termékek és kategóriák valamint a kapcsolódó jellemzők tárolása
+        %li 4.2. A rendelésekhez kapcsolódó adatok tárolása
+        %li 
+          4.3. Felhasználói adatok
+          %ul
+            %li 4.3.1. Felhasználói jogkörök
+    %li 
+      5. A felhasználói felületek megtervezése
+      %ul
+        %li 5.1. Navigációs terv
+        %li 5.2. HTML prototípus elkészítése
+        %li 5.3. Tervezési szempontok
+    %li 
+      6. A Ruby on Rails keretrendszer
+      %ul                               
+        %li 6.1. Mi az a Ruby on Rails?	
+        %li 6.2. Mit tud a Ruby nyelv?
+        %li 6.2.1. A Ruby építőkövei
+        %li 6.2.2. A Ruby magasabb szintjei
+        %li 6.2.3. Ruby segédprogramok
+        %li 
+          6.3. A Rails az MVC szemszögéből
+          %ul
+            %li 6.3.1. Az ActiveRecord modul - a Rails 'M'-je
+            %li 6.3.2. Az ActionPack modul
+        %li 6.4. A Rails további moduljai
+    %li 
+      7. Alkalmazás áttervezése Rails környezetre
+      %ul
+        %li 7.1. Modellek
+        %li 7.2. Útvonalak és vezérlők megtervezése
+    %li 
+      8. Programfejlesztés Railsben
+      %ul
+        %li 8.1. Kezdő lépések az alkalmazás létrehozásában
+        %li 
+          8.2. Modellek létrehozása
+          %ul
+            %li 8.2.1. Adatbázissémák migrációkkal
+            %li 8.2.2. Kapcsolatok kialakítása a modellek között
+            %li 8.2.3. A felhasználók modell virtuális attribútumai
+            %li 8.2.4. Kosár implementálása
+            %li 8.2.5. Ellenőrzések
+            %li 8.2.6. Az irányítószámokat ellenőrző plugin
+            %li 8.2.7. Modellek gyors ellenőrzése
+        %li
+          8.3. Vezérlők és nézetek használata
+          %ul
+            %li 8.3.1. Nézetek meghívása és használata
+            %li 8.3.2. Helperek
+        %li
+          8.4. Űrlapok előállítása és kezelése
+          %ul
+            %li 8.4.1. Egyedi FormBuilder létrehozása
+            %li 8.4.2. Az űrlap paramétereinek kezelése
+        %li
+          8.5. A Rails munkamenet kezelése
+          %ul
+            %li 8.5.1. Flash - a Rails egy speciális munkamenet eljárása
+        %li 8.6. Felhasználók kezelése
+        %li 8.7. Adminisztrációs felület leválasztása
+        %li 8.8. Az alkalmazás lokalizációja magyar nyelvre
+    %li
+      9. Tesztelés
+      %ul
+        %li 9.1. Tesztadatok bevitele
+        %li 9.2. Modellek tesztelése egység tesztekkel
+        %li 9.3. Vezérlők tesztelése
+        %li 9.4. Tesztek futtatása
+        %li 9.5. Összefoglalva
+    %li 10.Összefoglalás
+          
+  %h2
+    %a{:name=>"kepek"}Képek az alkalmazásról
+    
+  #images
+    -[ "webshop_front", "webshop_category", "webshop_product_details", "webshop_tag", "webshop_tags_full_list", "webshop_cart_details", "webshop_cart_details_second", "webshop_cart_mini_second", "webshop_login", "webshop_login_failed", "webshop_registration_false", "webshop_address"].each do |image|
+      %a{:href=>"images/#{image}.jpg"}
+        %img{:src=>"images/thumbs/#{image}.gif", :alt=>"images/#{image}.jpg"}
+      
+    %h4 Adminisztrációs felület
+    -%w[webshop_admin_order_details webshop_admin_orders webshop_admin_product_edit webshop_admin_products].each do |image|
+      %a{:href=>"images/#{image}.jpg"}
+        %img{:src=>"images/thumbs/#{image}.gif", :alt=>"images/#{image}.jpg"}
+    
+  %h2
+    %a{:name=>"webshop"} Működő alkalmazás kipróbálása
+  %p Az elkészült alkalmazás működés közben is <a href="http://webshop.csiszarattila.com/">megtekinthető illetve kipróbálható a webshop.csiszarattila.com címen</a>.
+
+  %p Az alkalmazáshoz tartozó <a href="http://webshop.csiszarattila.com/admin/">adminisztrációs felület</a> eléréséhez szükséges adatok:
+  %table
+    %tr
+      %th Felhasználónév 
+      %td admin
+    %tr
+      %th Jelszó  
+      %td admin
+        
+  %h2
+    %a{:name=>"source"} Forráskód megtekintése
+  %p
+    A webáruház teljes, Ruby on Rails alapú forráskódja megtalálható és böngészhető a következő címen:
+  %p 
+    %a{:href=>"http://github.com/csiszarattila/webshop/tree/master"}
+      http://github.com/csiszarattila/webshop/tree/master
+
+  %h4 Illetve letölthető:
+  %dl
+    %dt Git verzókezelővel, a következő parancs kiadásával:
+    %dd 
+      git clone git://github.com/csiszarattila/webshop_prototype.git
+      
+    %dt Zip vagy tar csomagban
+    %dd A <a href="http://github.com/csiszarattila/webshop/tree/master">fenti címen</a> a Download opcióra kattinva.
+    
+  %p 
+    A programra a GNU/GPL licensz harmadik számú változata vonatkozik.
+    %strong Mindez azt jelenti, hogy szabadon felhasználható és módosítható, de elérhetővé kell tenned mások számára is! Valamint ebben az esetben kérlek tüntesd fel a nevem az alkalmazás mellett és értesíts e-mailben.
+    
+  %h2
+    %a{:name=>"tapasztalatok"}Fejlesztési tapasztalatok és gondolatok
+
+  %p A szakdolgozat témaválasztásakor elsődleges szempont volt, hogy a meglévő ismereteim mellé sok új tapasztalatot gyűjtsek, amelyeket a későbbiekben hasznosítani tudok. Visszatekintve azt hiszem több ismeretre tettem szert mint amire előzetesen számítottam. A következőkben megpróbálom ezeket összefoglalni.
+  
+  %p Bár már korábban is terveztem weboldalakat, és programokat - ahol általában elsődlegesen mindig valamilyen komplexebb tartalomkezelő-rendszer megalkotása volt a cél - egy konkrét alkalmazást megtervezni és megvalósítani nagy kihívást és rengeteg tapasztalatot jelentett. A munkafolyamatok lebontása és kidolgozása eddig sem jelentett sok problémát, ugyanakkor a szakdolgozat megoldása segített ezeket tisztázni és jól meghatározott sorrendbe tenni.
+    
+  %h4 HTML prototípizálás
+  %p Az első problémát talán a felhasználói felületek tervezése jelentette, no nem az ötletek hiányával volt a gond, hanem, hogy milyen módszerekkel lehetne a készülő webalkalmazás kinézetét és működését szemléletesen megtervezni. A tervezés korai fázisában szeretek skiccekel ötleteket rajzolni egy füzetbe - általában tipográfiai, elrendezési ötleteket ábrázolok így. De tapasztalataim alapján a korábban jónak tűnő tervek átületése a gyakorlatba általában nem mindig a várt eredményeket hozza, mert sok részletkérdés felett hajlamos elsiklani az ember. Grafikai programokkal nem igen akartam bajlódni, előtervezésre viszont szükségem volt, hogy lássam miként kell majd az egyes működési fázisokat megvalósítani. Ekkor szinte véletlen ötletként jutott eszembe, hogy a kulcs ott hever az orrom előtt: mi lenne, ha egyszerűen készítenék egy HTML alapú prototípust.
+  
+  %p A prototípussal kipróbálhattam, hogy mi történjen, ha egy vásárló rákattint egy kategóriára, betesz egy terméket a kosarába, milyen űrlapokat kell kitöltenie, hogy feladja a megrendelését. Ugyanígy az adminisztrációs felületen az eladókhoz kapcsolódó funkciókat: megrendelések listázása, termékek, felhasználók és kategóriák menedzselése hogyan történjen. A valós működést ugyanakkor csak szimuláltam: amikor egy felhasználó például elhelyez a kosarában egy terméket valamelyik link segítségével, akkor a következő nézetben úgy állítottam be, mintha már lenne termék a kosarában - valós adat nem volt mögötte. Amikor kiválaszt egy kategóriát a következő nézetben egy fiktív kategória fiktív termékeit tekintheti meg. Ugyanígy szimuláltam, hogy ha a felhasználó kitölt egy űrlapot, hogyan jelenjenek meg a hibás kitöltésből eredő hibaüzenetek.
+  
+  %p A prototípusra ráadásul ráhúzhattam az alkalmazás végső kinézetét is. Ezzel a folyamattal rengeteg energiát és fejlesztési időt spórolhattam meg, mert az elkészült programkódokat felhasználhattam a végső alkalmazásban is.
+  
+  %p Ugyanakkor, hogy csökkentsem a prototípus elkészítési idejét igyekeztem minden segédeszközt bevetni. Ebben az időben találtam rá a <a href="http://webby.rubyforge.org">Webby</a>-re, amely egy Ruby alapú statikus mikro-cms: az előre megírt sablonokat - melyek tartalmazhatnak HTML-be ágyazott Ruby kódokat(Erb), valamint HTML-t leíró nyelveken ( például <a href="http://haml.hamptoncatlin.com">Haml</a>, <a href="http://hobix.com/textile/">Textile</a>, <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>) is készülhetnek - a Webby statikus HTML oldalakká fordítja.(Én az Erb/Haml párosnál maradtam, mert ezt Railsbe is könnyen átültethettem.) A kész prototípust <a href="/webshop_proto/>itt kipróbálhatod</a>, a forráskódját pedig <a href="https://github.com/csiszarattila/webshop_prototype/tree">megtekintheted a GitHubos projekjeim között</a>.
+  
+  %p Az alkalmazástervezésnek ezt módját rendkívül intuitívnak találtam, amelyet igyekszek majd követni a továbbiakban is, illetve másokat is erre ösztönzök. Ezért is szenteltem <a href="http://csiszarattila.com/rubysztan/html_prototipizalas">egy hoszabb lélegzetvételű bejegyzést</a> a blogomon a témáról.
+    
+  %h4 Ruby nyelv
+  %p Szerencsésnek érzem magam, hogy a szakdolgozatomnak köszönhetően megismerhettem és az átlagosnál mélyebben el is merülhettem a Ruby programozási nyelvben. A szakdolgozat készítése során a Ruby nyelv elsajátítása új szemléletmódokat és megközelítéseket tanított meg a számomra. A rövid és tömör nyelvnek köszönhetően sokszor érzem úgy nincs is szükség a programkód dokumentálására. Raadásul szinten mindig arra ösztönzi az embert, hogy jobb, egyszerűbb megoldásokat találjon ki, még akkor is, ha már működik a megírt kód.
+  
+  %p A Ruby számomra ezért is ideális nyelv, mert a bonyolult problémákat is egyszerűen megoldhatjuk benne, és rendkívül flexibilis: ha nincs szükségem objektum-orientált elemekre elhasznhagytom őket, ha funkcionális programozást akarok használni megtehetem - talán nem a legprofibb módon de mindenképp egyszerűbben mint egy tisztán funkcionális programozási nyelvben -, ha akarom procedurális nyelvként is használhatom. Többek között ezért is tartanám ideális nyelvnek a programozás tanítására, mert a programozás kulcselemeit fokozatosan lehetne bevezetni, megtanítani vele anélkül, hogy mélyebben el kelle merülni ode nem illő - például architektúrális - okokban.
+  
+  %p De ami talán a legjobban megfogott az a nyelv mögött álló filozófia: programming is fun - a programozás lehet élvezetes is. Mindezt nagyon nehéz megmagyarázni azoknak akik nem találkoztak még a Rubyval és talán ezt igazán csak azok érthetik, akiknek lehetősége volt/van komolyabban foglalkozni a nyelvvel(és ebben abszolút nincs semmilyen felsőbbrendűségi érzés).
+  
+  %p A Ruby sok nyelv közül kiemelkedik az a mögötte található közösségi szellemmével. Talán a nyelvben rejlő filozófia, vagy az egyelőre - viszonylag - kis létszámú felhasználótábor teszi, de a programozók egytől egyig segítőkészek és rendkívül kreatívak. Ráadásul az erők szétforgácsolása helyett inkább a közösségi problémamegoldás jut előtérbe - ezért sem találunk egy-egy libraryból ezerféle megvalósítást Ruby alatt.
+  
+  %p Őszintén remélem, hogy a következő években a Ruby nagyobb szerephez jut, több ember ismeri meg és kezdi el használni, de eközben az eredeti elvek megmaradnak.
+  
+  %p Egyedüli gondom, hogy a Ruby nyelvvet úgy tűnik a mindennapi munkám során kénytelen leszek mellőzni, mivel rövidtávon nem valószínű, hogy túl elterjedtté válik idehaza, de ki tudja...
+  
+  %h4 Rails keretrendszer
+  
+  %p A Rails használata számomra nemcsak a gyors és kényelmes alkalmazásfejlesztést mutatta meg, hanem nagyon sok tekintetben fel is nyitotta a szemem. Ezek elsősorban a programozástechnikai módszerek és filozófiák - agilis programozás - megismerését jelentették.
+  
+  %p A Rails erénye szerintem az, hogy azokat a gyakori problémákat, amelyekkel a webfejlesztés során nap mint nap találkozunk elfedi vagy lehetővé teszi, hogy egyszerűen oldjuk meg, így sokkal több energiát fektethetünk az alkalmazás tényleges fejlesztésére.
+  
+  %p Számomra újdonságot jelentett az MVC minta használata is. A koncepcióját már ismertem, de élesben még nem próbálhattam ki és nagyon megtetszett - szerintem remekül beleillik a webes alkalmazások felépítésébe, mivel rendkívül ésszerű logikai egységekre bontja a programkódot. 
+  
+  %p Hasonló tapasztalatot jelentett az Egység Tesztek (Unit test) alkalmazása. A tesztelési részt nem szerettem volna elnagyolni, ezért elég alaposan elmerültem a témában és sok újdonságot tanultam. Tetszett ahogy a Rails integrálta mindezt: a tesztek felbontása (egység, funkcionális, integrációs) jól illeszkedik az MVC mintához.
+  
+  %p Az ActiveRecordnak köszönhetően az adatbázisok használata szinte gyerekjáték volt, ezt jól mutatja, hogy egy sor SQL lekérdezést sem kellet írnom! Ráadásul az, hogy mindez külön modulként, a Rails használata nélkül is elérhető hatalmas erény - ezt más Ruby alapú alkalmazások esetében is felhasználtam már.
+  
+  %p A keretrendszer stabilitását jól jelzi a következő példa. A fejlesztés megkezdése előtt nagy dilemmával szembesültem. Mivel magyar lokalizációra mindendéleképpen szükségem volt két lehetőségem adódott: vagy maradok a 2.0-ás Rails változatnál és külső pluginekkel oldom meg a lokalizációt vagy hazárdírozok és a fejlesztői változatot használom (a Rails fejlesztők erre mondják Living on The Edge, mivel az Edge az épp aktuális változatot jelenti), amely beépítettként tartalmazta a lokalizációs lehetőségeket. Végül ez utóbbinál maradtam, és különösebb bugok nélkül sikerült befejezni a fejlesztést és mire elkészültem a Rails 2.2-es változatát is véglegesítették.
+
+  %p Persze némi hiányosságot azért éreztem, ez elsősorban a keretrendszer dokumentációját érintette. A Rails API-ja önmagában elegendő információt nyújt, de kicsit nehézkes a használata, a megtanulása eltart egy ideig, és ha nem vagyunk tisztában, hogy pontosan mit is keresünk esélyünk sincs megtalálni. A <a href="http://wiki.rubyonrails.org/rails">Rails Wikijén</a> már több információhoz juthatunk, ugyanakkor ezek többsége már jócskán elavult és az oldalak finoman szólva is kesze-kusza állapotban vannak. Önmagában tehát az API és a Wiki forgatásával nem lehet a keretrendszert elsajátítani, egy jó könyv kézbevétele és elolvasása szinte elengedhetetlen az elinduláshoz és az alapvető tippek-trükkök elsajátításához. 
+
+  %p Hasonló gond a keretrendszer újításainak a követése: ehhez nemárt, ha a tűz közelében lévő programozók által írt blogokat gyakran járatjuk. Ugyanakkor jó jel, hogy ezeket a problémákat a Rails közössége is felismerte és szokás szerint igyekeznek minél profibb módon, egységesen megoldani. Így született meg a <a href="http://guides.rubyonrails.org/">Rails Guides szekció</a>, ahol egy-egy nagyobb témakört(tesztelés, debuggolás, sablonozás stb.) részletesen kidolgozva találunk meg.
+  
+  %h4 Irányítószámokat ellenőrző plugin
+  
+  %p Az címadatok felvételénél érdemesnek találtam, ha beépítek egy kis ellenőrzést az irányítószámok és városok egyezésére. Ezt eredetileg is pluginként kezdtem el implementálni, majd a szakdolgozat befejezése után kibővítettem, és elérhetővé tettem mások számára is remélve, hogy több hazai alkalmazásnál is fel lehet használni. A pluginról részletesebb információkhoz juthatsz <a href="http://wiki.github.com/csiszarattila/zipcodematch">a projekt GitHub-os oldalán</a>.
+    
+  %h4 Átállás SVN-ről Git verziókezelőre
+  
+  %p Elég régóta használok verziókezelőket a programozási feladataimhoz, mivel még akkor is hasznosnak érzem őket, ha csak egyedül dolgozom. Az SVN-nel kezdtem és sikerült is egész jól elsajátítanom a használatát - a kézikönyve rendkívül jó - de minden elemével nem sikerült megbarátkoznom. Többek között ezért is szerettem volna valami újat kipróbálni. Abban az időben sok Rubys projekt kezdett átállni a Git verziókezelőre, így én is tettem vele egy próbát és megszerettem. Bár tény, hogy nem feltétlenül egyszerű a használata, de hamar bele lehet tanulni, főleg, ha a koncepcióját is megértjük.
+  %p Leghasznosabbnak a commit-olás előtti indexbe gyűjtést találtam, amely sok bosszúságtól menthet meg, illetve az elosztott jellege is sokkal inkább illik a fejlesztési módszereimhez. Ezért mostantól a mindennapi munkáim során kizárólag Git-et használok SVN-t pedig, ha csak szükséges akkor.
+  
+  %h4 Amire nem jutott idő, ami kimaradt
+  
+  %p Szerettem volna természetesen több információt és újdonságot is belepréselni a szakdolgozatba. Sajnos nem mindenre jutott hely és idő. Amit mindenféleképpen szerettem volna beletenni, de kimaradt az az AJAX kérések használata Railsben, JavaScript kódok írása RJS-el, részletesebb tesztelés és próba több felhasználó bevonásával - így akár több ötlet is születhetett volna a továbbfejlesztéshez. Szerettem volna részletesebben bemutatni a Ruby nyelvet, konkrét felhasználási példákkal. Hasonlóan a Rails keretrendszert. De remélem ezekre jut még lehetőségem, mert szeretném folyamatosan bővíteni új fejezetekkel a jegyzetet.
+    
+  %h2 
+    %a{:name=>"tovabbfejlesztes"} Továbbfejlesztési ötletek
+  %p A szakdolgozat elkészítésével nem állt le a webáruház fejlesztése, bár az utóbbi időszakban nem jutott rá túl sok időm, ötletekben nincs hiány.
+  
+  %p Elsőként új funkciók hozzáadása helyett a meglévőeken szeretnék még csiszolni: a keresési funkciót lehetne még bővíteni, a termékajánlókon is lehetne még finomítani, valamint az e-mail értesítéséken is lenne még mit csiszolni.
+  
+  %p Legfőképp azonban most az adminisztrációs felület továbbfejlesztésén dolgozom: szeretném a különválasztását megszüntetni és átemelni a webáruház felhasználói felületére. Ez nagy kihívásak igérkezik mivel sok problémát kell leküzdeni a megvalósításához, de ugyanakkor kreatív megoldásokra is ösztönöz.
+  
+  %p Ha valaki érez kedvet és lelkesedést és szívesen beszállna a fejlesztésbe szívesen <a href="#kapcsolat">várom a segítségét</a>.
+    
+  %h2
+    %a{:name=>"tippek"} Tippek más szakdolgozóknak
+  %p Az alábbiakban szeretnék megosztani pár tapasztalatot és pár tippet-trükköt adni azoknak akik a szakdolgozatkészítés előtt állnak. Az alábbiak nemcsak és kizárólag informatikus hallgatóknak lehetnek hasznosak, hanem mindenkinek.
+  
+  %h4 Témaválasztás és kérdései
+  %p A megfelelő téma kiválasztásánál a legfontosabb, hogy előre lásd milyen részletességgel tudod majd Te és nem más feldolgozni azt. Egy sokszor jónak tűnő címhez lehet, hogy valójában nagyon kevés háttéranyagot, szakirodalmat találsz ergó sokkal több időt kell a megértésére ráfordítanod, mit amire számítottál. Nekem szerencsém volt, mert pontosan tudtam milyen témakörök érdekelnek és ebben már elég sokrétűen tudtam választani. Ha nem saját témakörrel dolgozol mindig gondold végig azt teljesen és legyen fogalmad mit tudsz belőle kihozni adott idő alatt, ha úgy érzed ez nem fog menni ne válaszd! Mindezzel persze nem arra buzdítalak, hogy légy óvatos és ne kockáztass, de ne is vállald túl magad. Fontos, hogy megértsd a szakdolgozatot magadért csinálod: egy újszerű témakörből nagyon sokat tudsz tanulni de meg kell találni a határokat.
+  
+  %h4 Időterv felállítása
+  %p Szakdolgozatkészítésnél egyedi mércéd csak a leadási határidő lesz. Persze mindenki azt hajtja majd, hogy a 'leadásig hosszú idő áll rendelkezésre, de oszt be jól, mert könnyen kifuthaszt az időből'. Kicsit olyan ez, mint amikor év elején megfogadod, hogy folyamatosan készül majd egy tantárgyra, és persze, hogy csak a ZH előtt pár nappal veszed elő az anyagaidat - ideális esetben. De ez most nem fog menni.
+  
+  %p Ezen könnyen segíthetsz, ha felállítasz magadban egy elfogadható időtervet - a szakdolgozat-készítést ugyanúgy meg kell tervezed, mint egy programot. Ezért nem árt, ha első lépésként felállítassz pár sarokpontot és ezekhez időintervallumokat rendelsz. Például az első 2 hétben kutatómunka, a szakdolgozat körvonalazása, főbb címpontok kigondolása, a következő 2 hétben ötleteken töröd a fejed, megtervezed az alkalmazásod, a következő 4-5 hetet a programozásra, vagy a kutatómunkára szánod, utána 2 hét tesztelés, javítások elvégzése, a szöveg pontosítása, valamint újabb egy hetet szánsz a köttetésre és leadásra.  
+  
+  %p Hidd el ez rendkívül hasznos lesz, mivel pontosan tudni fogod épp hol jársz a szakdolgozati munkádban és segít nem az utolsó pillanatra hagyni a dolgokat. Természetesen ezt sem kell kőbe vésettnek tekinted, hiszen mindig becsúszhatnak előre nemvárt forgatókönyvek, és lehet, hogy egy egy rész több energiába, és időbe kerül, mint amire számítottál, de az időterv pont az ilyenkor fellépő pánik leküzdésében segít;)
+  
+  %h4 Mások munkáinak megtekintése
+  %p Szerezz be pár hasonló vagy akár pár teljesen eltérő témájú szakdolgozatot, és tanulmányozd, vagy olvasd el teljesen őket (elsőként talán kezd az <a href="#doc">enyémmel</a>:). Vond le a következtetéseket: te mit csináltál volna másképp, vagy épp ellenkezőleg mit tudnál átemelni belőlük - nem, nem a másolásra gondolok! Gondolatok, elvek mindig jó ötleteket adhatnak a saját munkádhoz, néha pedig nem tartalmilag, hanem formailag tudsz ötleteket venni másoktól.
+  
+  %h4 Szöveg kidolgozása
+  %p Végeredményben a szakdolgozat szövege lesz munkád legfontosabb mércéje, végezz akármilyen jó kutatást, vagy készíts akármilyen jó programot is, a bírálónak nem biztos, hogy lesz ideje ezek részletes tanulmányozására és csak a szöveg lesz az elsődleges támpontja.
+  
+  %p Épp ezért folyamatosan bővítsd, írj, dolgozz a szövegen, ne halaszd az utolsó pillanatra, mert sok ötlet, és gondolat a fejlesztés/kutatás/ötletelés után elhal. Lehet, hogy arra, amit 5-6 héttel korábban csináltál már nem is fog részletesen emlékezni.
+  
+  %p A szakdolgozat szövegénél a legfontosabb az alaphang megtalálása, ha ez úgy érzed sikerült már félig nyert dolgod van. A legnagyobb dilemma szerintem az, hogy végülis kinek írjuk, ki lesz a célközönség vagy a bíráló aki majd értékeli a munkánkat: bizonyos témaköröket csak felszínesen érintsek, azt feltételezve, hogy az olvasónak már vannak előismeretei, vagy épp ellenkezőleg. A helyes arány, az aranyközépút megtalálása sokszor nem könnyű feladat, de valahol ez kell, hogy legyen a célod.
+  
+  %p Hasznos lehet továbbá, ha a szöveg írásakor nemcsak az épp aktuális fejezettel foglalkozol, hanem időnként más-más részeket is elkezdesz kidolgozni - néha egy-egy ötletből hetekkel később remek végeredmény születik. Ez ráadásul segít kicsit elterelni a gondolatainkat egy meghatározott részről, amelyhez egy kis kitérő után visszatérve frissült fejjel tudunk újra hozzákezdeni. Ráadásul így sokkal gyorsabban összegyűlhet egy elég jó törzsanyag, amelyet könyebben lehet rostálni.
+  
+  %p Hasonlóan jó ötlet lehet időnként átnézni egy egy már elkészült fejezetet és nem az utolsó pillanatokra hagyni a végső simításokat - hidd el 70 oldal elolvasása és kijavítása komoly koncentrációt igényel, amelyet nem lehet egy napra hagyni. Ráadásul így folyamatosan tudod ellenőrizni a szöveget és képben leszel az eddig érintett részekkel, elkerülve az ismétlést vagy akár újabb ötleteket is belecsempészhetsz.
+      
+  %h2 
+    %a{:name=>"kapcsolat"} Kapcsolat
+  %p Ha kérdések, véleményed van a fentebb olvasottakkal (vagy esetleg tudsz egy jó állást:) a következő formákban érhetsz el:
+  
+  %p e-mail: csiszar [pont] ati [kukac] gmail [pont] com
+  %p web: <a href="http://csiszarattila.com">csiszarattila.com</a>
+  %p blog: <a href="http://csiszarattila.com/rubysztan/">csiszarattila.com/rubysztan</a>
+      
+  #copy
+    %p 
+      &copy; 2008-2009 Csiszár Attila
+      %br
+      Ez az oldal utoljára 2009. február 04-én modosult.
+  
+  #nav
+    %a{:href=>"#tartalom"} Tartalom
+    %ul#menu
+      %li
+        %a{:href=>"#bevezeto"} Miért pont webáruházat, miért pont Ruby on Railsben?
+      %li
+        %a{:href=>"#ajanlo"} Kinek érdemes elolvasnia?
+      %li
+        %a{:href=>"#szakdolgozat"} Szakdolgozat letöltése
+      %li
+        %a{:href=>"#kepek"}Képek az alkalmazásról
+      %li
+        %a{:href=>"#webshop"} Működő alkalmazás kipróbálása
+      %li
+        %a{:href=>"#source"} Forráskód megtekintése
+      %li
+        %a{:href=>"#tapasztalatok"} Fejlesztési tapasztalatok és gondolatok
+      %li
+        %a{:href=>"#tovabbfejlesztes"} Továbbfejlesztési ötletek
+      %li
+        %a{:href=>"#tippek"} Tippek más szakdolgozóknak
+      %li
+        %a{:href=>"#kapcsolat"} Kapcsolat
+</html>
