@@ -1,46 +1,46 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 marple_book_picture:
-  image_url: marple_book.jpg
+  image_url: "1001848916_{:size}.jpg"
   product: marple_book
   description: Sample image
 
 sony_tv_picture:
-  image_url: sony_tv.jpg
+  image_url: "1001848929_{:size}.jpg"
   product: sony_tv
   description: Sample image
 
 bob_dvd_picture:
-  image_url: bob.jpg
+  image_url: "1001848925_{:size}.jpg"
   product: bob_dvd
   description: Sample image
 
 lego_picture:
-  image_url: lego.jpg
+  image_url: "1001848928_{:size}.jpg"
   product: lego
   description: Sample image
 
 keane_cd_picture:
-  image_url: keane.jpg
+  image_url: "1001848931_{:size}.jpg"
   product: keane_cd
   description: Sample image
 
 vs_display_picture:
-  image_url: vs.jpg
+  image_url: "1001848926_{:size}.jpg"
   product: vs_display
   description: Sample image
   
 why_book_picture:
-  image_url: book_why.jpg
+  image_url: "1001848923_{:size}.jpg"
   product: why_book
   description: Sample image
   
 rails_book_picture:
-  image_url: book_rails.jpg
+  image_url: "1001848927_{:size}.jpg"
   product: rails_book
   description: Sample image
   
 arctic_monkeys_picture:
-  image_url: arctic_monkeys_cd.jpg
+  image_url: "1001848930_{:size}.jpg"
   product: arctic_monkeys_cd
   description: Sample image
